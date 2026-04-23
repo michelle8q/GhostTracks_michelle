@@ -67,7 +67,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="org.netbeans.modules.form.InvalidComponent" name="pnlForm">
+        <Container class="javax.swing.JPanel" name="pnlForm">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7" green="5e" red="e6" type="rgb"/>
