@@ -1,0 +1,9 @@
+itson\org\ghosttracks\mocks\PedidosMockDAO.class
+itson\org\ghosttracks\daos\IPedidosDAO.class
+itson\org\ghosttracks\daos\IProductosDAO.class
+itson\org\ghosttracks\daos\IAdministradoresDAO.class
+itson\org\ghosttracks\daos\IClientesDAO.class
+itson\org\ghosttracks\mocks\ProductosMockDAO.class
+itson\org\ghosttracks\mocks\AdministradoresMockDAO.class
+itson\org\ghosttracks\mocks\ClientesMockDAO.class
+itson\org\ghosttracks\exceptions\PersistenciaException.class
