@@ -4,6 +4,8 @@
  */
 package itson.org.ghosttracks.utilerias;
 
+import itson.org.ghosttracks.dtos.ItemCarritoDTO;
+
 /**
  *
  * @author cinca
@@ -30,7 +32,7 @@ public class pnlResumenProducto extends javax.swing.JPanel {
         pnlImg = new javax.swing.JPanel();
         nombre = new javax.swing.JLabel();
         artista = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        precio = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setForeground(new java.awt.Color(0, 0, 0));
@@ -77,8 +79,8 @@ public class pnlResumenProducto extends javax.swing.JPanel {
         artista.setForeground(new java.awt.Color(51, 51, 51));
         artista.setText("Artista");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("$0");
+        precio.setForeground(new java.awt.Color(0, 0, 0));
+        precio.setText("$0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -95,7 +97,7 @@ public class pnlResumenProducto extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(nombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(precio)
                         .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
@@ -109,19 +111,27 @@ public class pnlResumenProducto extends javax.swing.JPanel {
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nombre)
-                            .addComponent(jLabel1))
+                            .addComponent(precio))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(artista)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel artista;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nombre;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado1;
     private javax.swing.JPanel pnlImg;
+    private javax.swing.JLabel precio;
     // End of variables declaration//GEN-END:variables
+
+    public void enviarDatos(ItemCarritoDTO item) {
+        nombre.setText(item.getProductoSeleccionado().getNombre());
+        artista.setText(item.getProductoSeleccionado().getArtista());
+        precio.setText("$" + item.getSubtotal());
+    }
+
+
 }

@@ -10,6 +10,7 @@ import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.enums.EstadoPedidoDTO;
 import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
+import itson.org.ghosttracks.utilerias.pnlResumenPedido;
 import itson.org.ghosttracksventaenlinea.fachada.VentaEnLineaFachada;
 import itson.org.ghosttracksventaenlinea.interfaces.IVentaEnLinea;
 import java.util.List;
@@ -108,6 +109,10 @@ public class ControlVentaEnLinea {
         } catch (Exception ex) {
             navegador.mostrarMensaje("Error al eliminar el producto del carrito.", true);
         }
+    }
+    
+    public void llenarResumenPedido(pnlResumenPedido panel) {
+        panel.cargarProductos(this.carrito);
     }
     
     // Extras

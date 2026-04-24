@@ -60,11 +60,10 @@
                       <Component id="lblTitulo2" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
                       <Component id="lblMetodoDePago19" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtnTarjetaDebito2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="rbtnApplePay2" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                       <Component id="rbtnMercadoPago2" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                       <Component id="btnContinuar19" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="355" max="32767" attributes="0"/>
+                  <EmptySpace pref="354" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -78,10 +77,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="rbtnTarjetaDebito2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="rbtnApplePay2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="rbtnMercadoPago2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Component id="btnContinuar19" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
@@ -116,18 +113,9 @@
             <Property name="text" type="java.lang.String" value="Mercado Pago"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtnApplePay2">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup1"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Corbel" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Apple Pay"/>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnMercadoPago2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnTarjetaDebito2">
           <Properties>

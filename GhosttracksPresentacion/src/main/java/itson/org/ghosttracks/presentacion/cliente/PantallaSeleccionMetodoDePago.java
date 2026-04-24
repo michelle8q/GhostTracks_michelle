@@ -5,7 +5,9 @@ import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
 import itson.org.ghosttracks.dtos.DatosPagoDTO;
 import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelMetodoPagoTarjetaDebito;
 import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelSeleccionMetodoPago;
+import itson.org.ghosttracks.utilerias.pnlResumenPedido;
 import java.awt.CardLayout;
+import java.util.List;
 
 /**
  *
@@ -18,6 +20,7 @@ public class PantallaSeleccionMetodoDePago extends javax.swing.JPanel {
     
     public PantallaSeleccionMetodoDePago(ControlVentaEnLinea ctrl) {
         this.control = ctrl;
+        
         initComponents();
         
         cardLayout = new CardLayout();

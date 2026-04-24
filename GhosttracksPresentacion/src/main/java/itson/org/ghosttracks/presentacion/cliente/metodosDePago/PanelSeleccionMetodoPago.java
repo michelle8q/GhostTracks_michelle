@@ -21,7 +21,7 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
         btnContinuar19.addActionListener(e -> {
             if (rbtnTarjetaDebito2.isSelected()) {
                 principal.cambiarPantalla("PAGO_TARJETA");
-            } else if (rbtnApplePay2.isSelected() || rbtnMercadoPago2.isSelected()) {
+            } else if (rbtnMercadoPago2.isSelected()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Método no implementado aún.");
             } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Por favor seleccione un método.");
@@ -43,7 +43,6 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
         lblMetodoDePago19 = new javax.swing.JLabel();
         lblTitulo2 = new javax.swing.JLabel();
         rbtnMercadoPago2 = new javax.swing.JRadioButton();
-        rbtnApplePay2 = new javax.swing.JRadioButton();
         rbtnTarjetaDebito2 = new javax.swing.JRadioButton();
         btnContinuar19 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
 
@@ -62,11 +61,7 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
         rbtnMercadoPago2.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         rbtnMercadoPago2.setText("Mercado Pago");
         rbtnMercadoPago2.setContentAreaFilled(false);
-
-        buttonGroup1.add(rbtnApplePay2);
-        rbtnApplePay2.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        rbtnApplePay2.setText("Apple Pay");
-        rbtnApplePay2.setContentAreaFilled(false);
+        rbtnMercadoPago2.addActionListener(this::rbtnMercadoPago2ActionPerformed);
 
         buttonGroup1.add(rbtnTarjetaDebito2);
         rbtnTarjetaDebito2.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -90,10 +85,9 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
                     .addComponent(lblTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMetodoDePago19)
                     .addComponent(rbtnTarjetaDebito2)
-                    .addComponent(rbtnApplePay2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnMercadoPago2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnContinuar19, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
         panelRedondeado19Layout.setVerticalGroup(
             panelRedondeado19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,10 +99,8 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbtnTarjetaDebito2)
                 .addGap(18, 18, 18)
-                .addComponent(rbtnApplePay2)
-                .addGap(18, 18, 18)
                 .addComponent(rbtnMercadoPago2)
-                .addGap(18, 18, 18)
+                .addGap(64, 64, 64)
                 .addComponent(btnContinuar19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -131,6 +123,10 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rbtnMercadoPago2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMercadoPago2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnMercadoPago2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnContinuar19;
@@ -138,7 +134,6 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
     private javax.swing.JLabel lblMetodoDePago19;
     private javax.swing.JLabel lblTitulo2;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado19;
-    private javax.swing.JRadioButton rbtnApplePay2;
     private javax.swing.JRadioButton rbtnMercadoPago2;
     private javax.swing.JRadioButton rbtnTarjetaDebito2;
     // End of variables declaration//GEN-END:variables
