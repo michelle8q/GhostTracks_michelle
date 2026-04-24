@@ -14,7 +14,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Nahomi Figueroa
+ * @author cinca
  */
 public class BotonRedondeado extends JButton{
     private int arcAncho = 30;

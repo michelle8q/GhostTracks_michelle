@@ -13,11 +13,13 @@ import java.io.Serializable;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
+
 /**
  *
- * @author Nahomi Figueroa
+ * @author cinca
  */
-public class TextFieldRedondeado extends JTextField implements Serializable{
+public class TextFieldRedondeado extends JTextField implements Serializable {
+ 
     private int arcAncho = 20;
     private int arcAlto = 20;
     private Color borderColor = Color.WHITE;

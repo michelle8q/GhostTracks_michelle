@@ -8,12 +8,12 @@ package itson.org.ghosttracks.utilerias;
  *
  * @author cinca
  */
-public class pnllResumenProducto extends javax.swing.JPanel {
+public class pnlResumenProducto extends javax.swing.JPanel {
 
     /**
      * Creates new form pnllResumenProducto
      */
-    public pnllResumenProducto() {
+    public pnlResumenProducto() {
         initComponents();
     }
 
