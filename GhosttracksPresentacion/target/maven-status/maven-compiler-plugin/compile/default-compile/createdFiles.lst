@@ -26,6 +26,7 @@ itson\org\ghosttracks\utilerias\pnlMenuLateralAdmin.class
 itson\org\ghosttracks\utilerias\pnlProductoLCarrito$2.class
 itson\org\ghosttracks\presentacion\cliente\PantallaCarrito$ButtonEditor.class
 itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelMetodoPagoTarjetaDebito.class
+itson\org\ghosttracks\utilerias\pnlDetallesPedido.class
 itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelSeleccionMetodoPago.class
 itson\org\ghosttracks\utilerias\TextFieldRedondeado.class
 itson\org\ghosttracks\utilerias\pnlProductoCatalogo$1.class

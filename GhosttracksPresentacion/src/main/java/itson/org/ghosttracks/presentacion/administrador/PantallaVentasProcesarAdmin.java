@@ -26,35 +26,98 @@ public class PantallaVentasProcesarAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlResumenPedido1 = new itson.org.ghosttracks.utilerias.pnlResumenPedido();
         btnVolver = new javax.swing.JButton();
+        pnlDetallesPedido1 = new itson.org.ghosttracks.utilerias.pnlDetallesPedido();
+        jLabel1 = new javax.swing.JLabel();
+        lblNombreCliente = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        textFieldRedondeado1 = new itson.org.ghosttracks.utilerias.TextFieldRedondeado();
+        btnContinuar = new itson.org.ghosttracks.utilerias.BotonRedondeado();
 
         jPanel1.setBackground(new java.awt.Color(237, 229, 222));
         jPanel1.setPreferredSize(new java.awt.Dimension(1100, 675));
 
+        btnVolver.setBackground(new java.awt.Color(204, 0, 0));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(this::btnVolverActionPerformed);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Por favor, prepara el pedido de");
+
+        lblNombreCliente.setBackground(new java.awt.Color(0, 0, 0));
+        lblNombreCliente.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblNombreCliente.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombreCliente.setText("Nombre");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Una vez empaquetado, ingrese el numero de guia y confirme el envio");
+
+        textFieldRedondeado1.setBackground(new java.awt.Color(255, 255, 255));
+        textFieldRedondeado1.setForeground(new java.awt.Color(0, 0, 0));
+        textFieldRedondeado1.setText("textFieldRedondeado1");
+        textFieldRedondeado1.addActionListener(this::textFieldRedondeado1ActionPerformed);
+
+        btnContinuar.setBackground(new java.awt.Color(204, 0, 0));
+        btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuar.setText("Confirmar");
+        btnContinuar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnContinuar.addActionListener(this::btnContinuarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(pnlResumenPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 625, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(40, 40, 40))
+                .addGap(23, 23, 23)
+                .addComponent(pnlDetallesPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNombreCliente)
+                        .addGap(186, 186, 186))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(btnVolver))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(296, 296, 296)
+                                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(229, 229, 229)
+                                .addComponent(textFieldRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(pnlResumenPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(46, 46, 46))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(pnlDetallesPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombreCliente)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textFieldRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -77,10 +140,23 @@ public class PantallaVentasProcesarAdmin extends javax.swing.JPanel {
         control.volverAVentas();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void textFieldRedondeado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRedondeado1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldRedondeado1ActionPerformed
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnContinuar;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private itson.org.ghosttracks.utilerias.pnlResumenPedido pnlResumenPedido1;
+    private javax.swing.JLabel lblNombreCliente;
+    private itson.org.ghosttracks.utilerias.pnlDetallesPedido pnlDetallesPedido1;
+    private itson.org.ghosttracks.utilerias.TextFieldRedondeado textFieldRedondeado1;
     // End of variables declaration//GEN-END:variables
 }

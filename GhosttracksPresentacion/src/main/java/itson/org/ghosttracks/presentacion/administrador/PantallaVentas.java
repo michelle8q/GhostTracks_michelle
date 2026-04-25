@@ -32,6 +32,7 @@ public class PantallaVentas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPedidos = new javax.swing.JTable();
         btnContinuar = new javax.swing.JButton();
+        pnlDetallesPedido1 = new itson.org.ghosttracks.utilerias.pnlDetallesPedido();
 
         setPreferredSize(new java.awt.Dimension(1100, 675));
 
@@ -56,6 +57,7 @@ public class PantallaVentas extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPedidos);
 
+        btnContinuar.setBackground(new java.awt.Color(204, 0, 0));
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(this::btnContinuarActionPerformed);
 
@@ -65,21 +67,26 @@ public class PantallaVentas extends javax.swing.JPanel {
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(375, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnContinuar)
-                .addGap(18, 1013, Short.MAX_VALUE))
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnContinuar))
+                .addGap(18, 18, 18)
+                .addComponent(pnlDetallesPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnContinuar)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnContinuar))
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(pnlDetallesPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -102,6 +109,7 @@ public class PantallaVentas extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JScrollPane jScrollPane1;
+    private itson.org.ghosttracks.utilerias.pnlDetallesPedido pnlDetallesPedido1;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JTable tblPedidos;
     // End of variables declaration//GEN-END:variables
