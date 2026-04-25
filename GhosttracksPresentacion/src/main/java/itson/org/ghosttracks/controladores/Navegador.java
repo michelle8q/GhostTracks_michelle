@@ -9,6 +9,7 @@ import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaFormularioContacto;
 import itson.org.ghosttracks.presentacion.cliente.PantallaFormularioEntrega;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
+import itson.org.ghosttracks.presentacion.cliente.PantallaSeguimientoPedido;
 import itson.org.ghosttracks.presentacion.cliente.PantallaSeleccionMetodoDePago;
 import itson.org.ghosttracks.presentacion.cliente.PantallaVistaProducto;
 import itson.org.ghosttracks.presentacion.panelLogin;
@@ -73,6 +74,11 @@ public class Navegador {
     
     public void irSeleccionMetodoPago() {
         PantallaSeleccionMetodoDePago vista = new PantallaSeleccionMetodoDePago(ctrlVentaLinea);
+        ventana.cambiarPantalla(vista);
+    }
+    
+    public void irSeguimientoPedido() {
+        PantallaSeguimientoPedido vista = new PantallaSeguimientoPedido(ctrlVentaLinea);
         ventana.cambiarPantalla(vista);
     }
     

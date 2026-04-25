@@ -71,7 +71,10 @@ public class PanelMetodoPagoTarjetaDebito extends javax.swing.JPanel {
 
         if (validarDatos(numero, fecha, cvv, titular)) {
             enviarDatos(numero, fecha, cvv, titular);
+            
+            principal.cambiarPantalla("SEGUIMIENTO_PEDIDO");
         }
+        
     }
     
     private boolean validarDatos(String num, String fec, String cvv, String tit) {
