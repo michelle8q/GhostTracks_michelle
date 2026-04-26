@@ -570,6 +570,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         lblNombreProducto.setText(producto.getNombre());
         lblArtista.setText(producto.getArtista());
         lblPrecio.setText(String.format("$%.2f", producto.getPrecio()));
+        
         // 2. Acomodamos el setlist (usamos HTML básico para que el JLabel acepte saltos de línea)
         if (producto.getSetlist() != null && !producto.getSetlist().isEmpty()) {
             String canciones = String.join("<br>", producto.getSetlist());

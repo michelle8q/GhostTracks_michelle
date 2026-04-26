@@ -2,6 +2,8 @@
 package itson.org.ghosttracks.utilerias;
 
 import itson.org.ghosttracks.controladores.Navegador;
+import itson.org.ghosttracks.dtos.AdministradorDTO;
+import itson.org.ghosttracks.dtos.ClienteDTO;
 
 /**
  *
@@ -10,10 +12,27 @@ import itson.org.ghosttracks.controladores.Navegador;
 public class PanelHeader extends javax.swing.JPanel {
 
     private final Navegador navegador;
+    private final ClienteDTO cliente;
+    private final AdministradorDTO admin;
+    private final String rol;
     
-    public PanelHeader(Navegador nav) {
+    public PanelHeader(Navegador nav, ClienteDTO cliente, AdministradorDTO admin, String rol) {
         this.navegador = nav;
+        this.cliente = cliente;
+        this.admin = admin;
+        this.rol = rol;
         initComponents();
+        
+        lblRol.setText(rol);
+        
+        if(cliente != null) {
+            lblNombre.setText(cliente.getNombres());
+        } else if (admin != null){
+            lblNombre.setText(admin.getNombres());
+        } else {
+            
+        }
+        
     }
 
     /**
@@ -28,12 +47,13 @@ public class PanelHeader extends javax.swing.JPanel {
         panelRedondeado1 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
         btnFavoritos = new javax.swing.JButton();
         btnCarrito = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblRol = new javax.swing.JLabel();
         btnUsuario = new javax.swing.JButton();
         panelRedondeado2 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
         jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(237, 229, 222));
         setForeground(new java.awt.Color(237, 229, 222));
@@ -55,12 +75,12 @@ public class PanelHeader extends javax.swing.JPanel {
         btnCarrito.setFocusPainted(false);
         btnCarrito.addActionListener(this::btnCarritoActionPerformed);
 
-        jLabel4.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Nombre Apellido");
+        lblNombre.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNombre.setText("Nombre");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setText("Administrador");
+        lblRol.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblRol.setText("Administrador");
 
         btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoUsuario.png"))); // NOI18N
         btnUsuario.setBorderPainted(false);
@@ -98,6 +118,9 @@ public class PanelHeader extends javax.swing.JPanel {
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jLabel1.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
+        jLabel1.setText("Apellido");
+
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
         panelRedondeado1Layout.setHorizontalGroup(
@@ -107,13 +130,16 @@ public class PanelHeader extends javax.swing.JPanel {
                 .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(22, 22, 22)
+                    .addComponent(lblRol)
+                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                        .addComponent(lblNombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)))
+                .addGap(4, 4, 4)
                 .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(btnCarrito)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(btnFavoritos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -135,9 +161,11 @@ public class PanelHeader extends javax.swing.JPanel {
                         .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombre)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(lblRol)
                         .addGap(17, 17, 17))))
         );
 
@@ -168,10 +196,11 @@ public class PanelHeader extends javax.swing.JPanel {
     private javax.swing.JButton btnCarrito;
     private javax.swing.JButton btnFavoritos;
     private javax.swing.JButton btnUsuario;
-    private javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblNombre;
+    public javax.swing.JLabel lblRol;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado1;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado2;
     // End of variables declaration//GEN-END:variables

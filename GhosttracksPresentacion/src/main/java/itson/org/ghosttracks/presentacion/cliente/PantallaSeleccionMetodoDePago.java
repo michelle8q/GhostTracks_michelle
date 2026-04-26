@@ -17,11 +17,14 @@ public class PantallaSeleccionMetodoDePago extends javax.swing.JPanel {
 
     private ControlVentaEnLinea control;
     private CardLayout cardLayout;
+    private pnlResumenPedido panelResumen;
     
     public PantallaSeleccionMetodoDePago(ControlVentaEnLinea ctrl) {
         this.control = ctrl;
         
         initComponents();
+        
+        this.panelResumen = new pnlResumenPedido();
         
         cardLayout = new CardLayout();
         panelContenido.setLayout(cardLayout);
@@ -34,13 +37,15 @@ public class PantallaSeleccionMetodoDePago extends javax.swing.JPanel {
         panelContenido.add(debito, "PAGO_TARJETA");
         
         cardLayout.show(panelContenido, "PAGO_SELECCION");
+        control.llenarResumenPedido(panelResumen);
         
     }
     
     public void setDatosPago(DatosPagoDTO dto) {
         control.agregarMetodoPago(dto);
         control.procesarPedido();
-        control.volverACatalogo();
+        control.mostrarSeguimientoPedido();
+        
     }
     
     public void cambiarPantalla(String nombrePantalla) {

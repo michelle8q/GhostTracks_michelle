@@ -27,14 +27,8 @@ public class PedidosBO implements IPedidosBO {
 
     @Override
     public PedidoDTO generarPedido(PedidoDTO pedidoDto) throws NegocioException {
-        if (pedidoDto == null || pedidoDto.getProductos() == null || pedidoDto.getProductos().isEmpty()) {
-            throw new NegocioException("No se puede procesar un pedido vacío.");
-        }
 
         try {
-            if (pedidoDto.getTotal() == null || pedidoDto.getTotal() == 0) {
-                pedidoDto.calcularTotales(150.0); 
-            }
 
             Pedido entidadPedido = new Pedido();
             entidadPedido.setFechaPedido(LocalDateTime.now());
@@ -74,12 +68,6 @@ public class PedidosBO implements IPedidosBO {
     
     @Override
     public PedidoDTO actualizarEstadoPedido(Long idPedido, EstadoPedidoDTO nuevoEstadoDTO) throws NegocioException {
-        if (idPedido == null || idPedido <= 0) {
-            throw new NegocioException("El ID del pedido no es válido.");
-        }
-        if (nuevoEstadoDTO == null) {
-            throw new NegocioException("Debe proporcionar un estado válido para actualizar.");
-        }
 
         try {
             EstadoPedido estadoDominio = EstadoPedido.valueOf(nuevoEstadoDTO.name());

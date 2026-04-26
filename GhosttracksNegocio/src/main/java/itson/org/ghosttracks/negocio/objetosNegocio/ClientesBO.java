@@ -15,7 +15,7 @@ import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException
 
 /**
  *
- * @author nafbr
+ * @author Cinca
  */
 public class ClientesBO implements IClientesBO{
     private final IClientesDAO clientesDAO;

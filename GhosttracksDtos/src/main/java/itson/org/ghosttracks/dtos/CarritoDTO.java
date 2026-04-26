@@ -5,13 +5,14 @@ import java.util.List;
 
 /**
  *
- * @author emyla
+ * @author Cinca
  */
 public class CarritoDTO {
     
     private Long idCliente;
     private List<ItemCarritoDTO> productos = new ArrayList<>();
     private Double total;
+    private Double subtotal;
 
     public CarritoDTO() {
     }
@@ -23,6 +24,7 @@ public class CarritoDTO {
             this.total += producto.getSubtotal();
         }
     }
+
 
     public CarritoDTO(Long idCliente, Double total) {
         this.idCliente = idCliente;

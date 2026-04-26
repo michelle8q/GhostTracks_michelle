@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author oliro
+ * @author Cinca
  */
 public class ControladorVentasAdmin {
     

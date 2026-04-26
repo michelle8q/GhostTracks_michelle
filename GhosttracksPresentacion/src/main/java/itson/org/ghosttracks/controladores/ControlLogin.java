@@ -1,9 +1,12 @@
 
 package itson.org.ghosttracks.controladores;
 
+import itson.org.ghosttracks.dtos.AdministradorDTO;
+import itson.org.ghosttracks.dtos.ClienteDTO;
+
 /**
  *
- * @author oliro
+ * @author cinca
  */
 public class ControlLogin {
     
@@ -13,13 +16,19 @@ public class ControlLogin {
         this.navegador = navegador;
     }
     
-    public void loginCliente() {
-        navegador.iniciarSesionClienteExitoso();
+    public void loginCliente(String nombre) {
+        ClienteDTO cliente = new ClienteDTO();
+        cliente.setNombres(nombre);
+        
+        navegador.iniciarSesionClienteExitoso(cliente);
         navegador.irInicioCliente();
     }
     
-    public void loginAdmin() {
-        navegador.iniciarSesionAdminExitoso();
+    public void loginAdmin(String nombre) {
+        AdministradorDTO admin = new AdministradorDTO();
+        admin.setNombres(nombre);
+        
+        navegador.iniciarSesionAdminExitoso(admin);  
         navegador.irVentasAdmin();
     }
     

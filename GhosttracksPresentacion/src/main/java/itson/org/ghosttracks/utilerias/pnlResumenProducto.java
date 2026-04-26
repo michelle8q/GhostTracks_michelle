@@ -5,6 +5,7 @@
 package itson.org.ghosttracks.utilerias;
 
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
+import itson.org.ghosttracks.dtos.ProductoDTO;
 
 /**
  *
@@ -15,8 +16,13 @@ public class pnlResumenProducto extends javax.swing.JPanel {
     /**
      * Creates new form pnllResumenProducto
      */
-    public pnlResumenProducto() {
+    public pnlResumenProducto(ProductoDTO producto) {
         initComponents();
+        
+        lblNombre.setText(producto.getNombre());
+        lblArtista.setText(producto.getArtista());
+        lblPrecio.setText(String.format("$%.2f", producto.getPrecio()));
+        
     }
 
     /**
@@ -30,13 +36,16 @@ public class pnlResumenProducto extends javax.swing.JPanel {
 
         panelRedondeado1 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
         pnlImg = new javax.swing.JPanel();
-        nombre = new javax.swing.JLabel();
-        artista = new javax.swing.JLabel();
-        precio = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblArtista = new javax.swing.JLabel();
+        lblPrecio = new javax.swing.JLabel();
+        lblCantidad = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setForeground(new java.awt.Color(0, 0, 0));
         setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        setMaximumSize(new java.awt.Dimension(330, 118));
         setPreferredSize(new java.awt.Dimension(330, 118));
 
         panelRedondeado1.setBackground(new java.awt.Color(153, 153, 153));
@@ -71,16 +80,22 @@ public class pnlResumenProducto extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        nombre.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        nombre.setForeground(new java.awt.Color(0, 0, 0));
-        nombre.setText("Nombre");
+        lblNombre.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombre.setText("Nombre");
 
-        artista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        artista.setForeground(new java.awt.Color(51, 51, 51));
-        artista.setText("Artista");
+        lblArtista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblArtista.setForeground(new java.awt.Color(51, 51, 51));
+        lblArtista.setText("Artista");
 
-        precio.setForeground(new java.awt.Color(0, 0, 0));
-        precio.setText("$0");
+        lblPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        lblPrecio.setText("$0");
+
+        lblCantidad.setForeground(new java.awt.Color(0, 0, 0));
+        lblCantidad.setText("Cantidad");
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Cantidad:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -92,46 +107,52 @@ public class pnlResumenProducto extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(artista)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                                .addComponent(lblPrecio))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblArtista)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(precio)
-                        .addGap(15, 15, 15))))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCantidad)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombre)
-                            .addComponent(precio))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(artista)))
+                .addContainerGap()
+                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(lblPrecio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblArtista)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblCantidad))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel artista;
-    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblArtista;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPrecio;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado1;
     private javax.swing.JPanel pnlImg;
-    private javax.swing.JLabel precio;
     // End of variables declaration//GEN-END:variables
-
-    public void enviarDatos(ItemCarritoDTO item) {
-        nombre.setText(item.getProductoSeleccionado().getNombre());
-        artista.setText(item.getProductoSeleccionado().getArtista());
-        precio.setText("$" + item.getSubtotal());
-    }
 
 
 }

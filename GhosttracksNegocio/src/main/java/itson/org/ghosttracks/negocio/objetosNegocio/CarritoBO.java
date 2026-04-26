@@ -13,21 +13,11 @@ import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException
 
 /**
  *
- * @author nafbr
+ * @author Cinca
  */
 public class CarritoBO implements ICarritoBO{
    @Override
     public CarritoDTO agregarProducto(CarritoDTO carrito, ProductoDTO producto, Integer cantidad) throws NegocioException {
-        
-        if (carrito == null) {
-            carrito = new CarritoDTO();
-        }
-        if (producto == null || cantidad == null || cantidad <= 0) {
-            throw new NegocioException("Producto o cantidad inválidos al intentar agregar al carrito.");
-        }
-        if (producto.getStock() == null || cantidad > producto.getStock()) {
-            throw new NegocioException("No hay suficiente stock para el producto: " + producto.getNombre());
-        }
 
         boolean existe = false;
         for (ItemCarritoDTO item : carrito.getProductos()) {
@@ -53,9 +43,6 @@ public class CarritoBO implements ICarritoBO{
 
     @Override
     public CarritoDTO eliminarProducto(CarritoDTO carrito, Long idProducto) throws NegocioException {
-        if (carrito == null || carrito.getProductos().isEmpty()) {
-            throw new NegocioException("No hay productos en el carrito para eliminar.");
-        }
 
         carrito.getProductos().removeIf(item -> 
             item.getProductoSeleccionado().getIdProducto().equals(idProducto)

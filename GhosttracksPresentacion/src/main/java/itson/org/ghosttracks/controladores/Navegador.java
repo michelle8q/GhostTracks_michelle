@@ -1,6 +1,8 @@
 
 package itson.org.ghosttracks.controladores;
 
+import itson.org.ghosttracks.dtos.AdministradorDTO;
+import itson.org.ghosttracks.dtos.ClienteDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.presentacion.VentanaPrincipal;
 import itson.org.ghosttracks.presentacion.administrador.PantallaVentasProcesarAdmin;
@@ -19,16 +21,21 @@ import itson.org.ghosttracks.utilerias.pnlMenuLateralAdmin;
 
 /**
  *
- * @author oliro
+ * @author Cinca
  */
 public class Navegador {
 
     private final VentanaPrincipal ventana;
     private final ControlVentaEnLinea ctrlVentaLinea;
+    private ClienteDTO cliente;
+    private AdministradorDTO admin;
+    private String rol;
+
 
     public Navegador(VentanaPrincipal ventana) {
         this.ctrlVentaLinea = new ControlVentaEnLinea(this);
         this.ventana = ventana;
+        cliente = null;
     }
     
     public void irLogin() {
@@ -40,9 +47,11 @@ public class Navegador {
     
     // Paneles cliente
     
-    public void iniciarSesionClienteExitoso() {
-         ventana.fijarMenuLateral(new pnlMenuLateral(this));
-         ventana.fijarHeader(new PanelHeader(this));
+    public void iniciarSesionClienteExitoso(ClienteDTO cliente) {
+        this.cliente = cliente;
+        this.rol = "Cliente";
+        ventana.fijarMenuLateral(new pnlMenuLateral(this));
+        ventana.fijarHeader(new PanelHeader(this, cliente, null, rol));   
     }
     
     public void irInicioCliente() {
@@ -84,9 +93,12 @@ public class Navegador {
     
     // Paneles admin
     
-    public void iniciarSesionAdminExitoso() {
+    public void iniciarSesionAdminExitoso(AdministradorDTO admin) {
+        this.admin = admin;
+        this.rol = "Administrador";
+        
         ventana.fijarMenuLateral(new pnlMenuLateralAdmin(this));
-        ventana.fijarHeader(new PanelHeader(this));
+        ventana.fijarHeader(new PanelHeader(this, null, admin, rol));
     }
     
     public void irVentasAdmin() {

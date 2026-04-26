@@ -57,9 +57,6 @@ public class ProductosBO implements IProductosBO {
 
     @Override
     public ProductoDTO obtenerProductoPorId(Long id) throws NegocioException {
-        if (id == null || id <= 0) {
-            throw new NegocioException("El ID de producto proporcionado no es válido.");
-        }
 
         try {
             Producto entidad = productosDAO.buscarPorId(id);

@@ -1,4 +1,5 @@
 
+
 package itson.org.ghosttracks.controladores;
 
 import itson.org.ghosttracks.dtos.CarritoDTO;
@@ -50,6 +51,11 @@ public class ControlVentaEnLinea {
     public void volverACatalogo() {
         navegador.irInicioCliente();
     }
+    
+    public void mostrarSeguimientoPedido() {
+        navegador.irSeguimientoPedido();
+    }
+    
     
     // Pantallas
     

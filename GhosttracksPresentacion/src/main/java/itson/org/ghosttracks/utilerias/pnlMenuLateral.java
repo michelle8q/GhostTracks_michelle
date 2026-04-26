@@ -126,7 +126,7 @@ public class pnlMenuLateral extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCompraENLineaActionPerformed
 
     private void btnSeguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeguimientoActionPerformed
-        // TODO add your handling code here:
+        navegador.irSeguimientoPedido();
     }//GEN-LAST:event_btnSeguimientoActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed

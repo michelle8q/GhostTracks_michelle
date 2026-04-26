@@ -269,10 +269,9 @@ public class PantallaFormularioEntrega extends javax.swing.JPanel {
         dto.setEstado(estado);
         
         control.agregarDireccionPedido(dto);
-        control.mostrarMensaje("Dirección guardada con éxito.", false);
-        
         control.procesarPedidoMetodoPago();
-        
+        control.mostrarMensaje("Dirección guardada con éxito.", false);
+         
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
