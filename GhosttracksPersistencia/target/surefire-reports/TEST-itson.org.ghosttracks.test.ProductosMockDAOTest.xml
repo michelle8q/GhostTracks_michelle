@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.179" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.186" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\cinca\AppData\Local\Temp\surefire2714603766085871489\surefirebooter-20260426004448698_3.jar C:\Users\cinca\AppData\Local\Temp\surefire2714603766085871489 2026-04-26T00-44-44_269-jvmRun1 surefire-20260426004448698_1tmp surefire_0-20260426004448698_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\cinca\AppData\Local\Temp\surefire9739296758190689309\surefirebooter-20260426214148994_3.jar C:\Users\cinca\AppData\Local\Temp\surefire9739296758190689309 2026-04-26T21-41-44_628-jvmRun1 surefire-20260426214148994_1tmp surefire_0-20260426214148994_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPersistencia\target\test-classes;C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPersistencia\target\classes;C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksDtos\target\GhosttracksDtos-1.0.jar;C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksDominio\target\GhosttracksDominio-1.0.jar;C:\Users\cinca\.m2\repository\org\springframework\data\spring-data-mongodb\4.2.0\spring-data-mongodb-4.2.0.jar;C:\Users\cinca\.m2\repository\org\springframework\spring-tx\6.1.0\spring-tx-6.1.0.jar;C:\Users\cinca\.m2\repository\org\springframework\spring-context\6.1.0\spring-context-6.1.0.jar;C:\Users\cinca\.m2\repository\org\springframework\spring-aop\6.1.0\spring-aop-6.1.0.jar;C:\Users\cinca\.m2\repository\io\micrometer\micrometer-observation\1.12.0\micrometer-observation-1.12.0.jar;C:\Users\cinca\.m2\repository\io\micrometer\micrometer-commons\1.12.0\micrometer-commons-1.12.0.jar;C:\Users\cinca\.m2\repository\org\springframework\spring-beans\6.1.0\spring-beans-6.1.0.jar;C:\Users\cinca\.m2\repository\org\springframework\spring-core\6.1.0\spring-core-6.1.0.jar;C:\Users\cinca\.m2\repository\org\springframework\spring-jcl\6.1.0\spring-jcl-6.1.0.jar;C:\Users\cinca\.m2\repository\org\springframework\spring-expression\6.1.0\spring-expression-6.1.0.jar;C:\Users\cinca\.m2\repository\org\springframework\data\spring-data-commons\3.2.0\spring-data-commons-3.2.0.jar;C:\Users\cinca\.m2\repository\org\mongodb\mongodb-driver-core\4.11.1\mongodb-driver-core-4.11.1.jar;C:\Users\cinca\.m2\repository\org\mongodb\bson\4.11.1\bson-4.11.1.jar;C:\Users\cinca\.m2\repository\org\mongodb\bson-record-codec\4.11.1\bson-record-codec-4.11.1.jar;C:\Users\cinca\.m2\repository\org\slf4j\slf4j-api\2.0.2\slf4j-api-2.0.2.jar;C:\Users\cinca\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\cinca\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\cinca\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\cinca\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\cinca\AppData\Local\Temp\surefire2714603766085871489\surefirebooter-20260426004448698_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\cinca\AppData\Local\Temp\surefire9739296758190689309\surefirebooter-20260426214148994_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.2+10-LTS-69"/>
@@ -60,11 +60,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testBuscarPorIdHappyPath" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.074"/>
-  <testcase name="testAgregarProductoNulo" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.005"/>
-  <testcase name="testBuscarPorIdNoExiste" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.006"/>
-  <testcase name="testAgregarProductoNombreVacio" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.006"/>
-  <testcase name="testAgregarHappyPath" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.004"/>
-  <testcase name="testBuscarPorIdNulo" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.004"/>
-  <testcase name="testObtenerTodosHappyPath" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.004"/>
+  <testcase name="testBuscarPorIdHappyPath" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.078"/>
+  <testcase name="testAgregarProductoNulo" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.006"/>
+  <testcase name="testBuscarPorIdNoExiste" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.004"/>
+  <testcase name="testAgregarProductoNombreVacio" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.004"/>
+  <testcase name="testAgregarHappyPath" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.003"/>
+  <testcase name="testBuscarPorIdNulo" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.003"/>
+  <testcase name="testObtenerTodosHappyPath" classname="itson.org.ghosttracks.test.ProductosMockDAOTest" time="0.003"/>
 </testsuite>

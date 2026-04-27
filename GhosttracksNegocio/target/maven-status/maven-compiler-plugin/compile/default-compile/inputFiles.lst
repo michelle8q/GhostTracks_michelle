@@ -3,6 +3,12 @@ C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\i
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\IClientesBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\IPedidosBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\IProductosBO.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\mappers\AdministradorAdapter.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\mappers\ClienteAdapter.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\mappers\PedidoAdapter.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\mappers\ProductoAdapter.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\mappers\ProductoPedidoAdapter.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\mappers\SucursalAdapter.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\AdministradoresBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\CarritoBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\ClientesBO.java

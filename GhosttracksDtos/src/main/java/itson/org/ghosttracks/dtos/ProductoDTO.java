@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author Emy
+ * @author Cinca
  */
 public class ProductoDTO {
     

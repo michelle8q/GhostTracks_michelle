@@ -27,6 +27,8 @@ public class ClienteDTO extends UsuarioDTO {
         this.telefono = telefono;
         this.direccion = direccion;
     }
+    
+    
 
     public String getTelefono() {
         return telefono;

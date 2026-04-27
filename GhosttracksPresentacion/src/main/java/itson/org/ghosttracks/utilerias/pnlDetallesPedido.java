@@ -4,6 +4,8 @@
  */
 package itson.org.ghosttracks.utilerias;
 
+import itson.org.ghosttracks.dtos.PedidoDTO;
+
 /**
  *
  * @author cinca
@@ -15,6 +17,11 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
      */
     public pnlDetallesPedido() {
         initComponents();
+        
+        lblFolio.setText(TOOL_TIP_TEXT_KEY);
+        lblNombre.setText(TOOL_TIP_TEXT_KEY);
+        lblSucursal.setText(TOOL_TIP_TEXT_KEY);
+        lblEstado.setText(TOOL_TIP_TEXT_KEY);
     }
 
     /**
@@ -27,7 +34,7 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lvlFolio = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -35,7 +42,7 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
         lblFolio = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblSucursal = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
         pnlPrecios = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         lblSubtotal = new javax.swing.JLabel();
@@ -51,9 +58,9 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Detalles del pedido");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Folio de venta");
+        lvlFolio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lvlFolio.setForeground(new java.awt.Color(0, 0, 0));
+        lvlFolio.setText("Folio de venta");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -83,9 +90,9 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
         lblSucursal.setForeground(new java.awt.Color(0, 0, 0));
         lblSucursal.setText("Sucursal");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Estado");
+        lblEstado.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblEstado.setForeground(new java.awt.Color(0, 0, 0));
+        lblEstado.setText("Estado");
 
         pnlPrecios.setBackground(new java.awt.Color(153, 153, 153));
         pnlPrecios.setForeground(new java.awt.Color(153, 153, 153));
@@ -156,7 +163,7 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(lvlFolio)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
@@ -167,7 +174,7 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
                     .addComponent(lblFolio)
                     .addComponent(lblNombre)
                     .addComponent(lblSucursal)
-                    .addComponent(jLabel7))
+                    .addComponent(lblEstado))
                 .addGap(45, 45, 45))
             .addComponent(pnlPrecios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -178,7 +185,7 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lvlFolio)
                     .addComponent(lblFolio))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -191,7 +198,7 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(lblEstado))
                 .addGap(33, 33, 33)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
@@ -205,18 +212,18 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFolio;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblSucursal;
+    private javax.swing.JLabel lvlFolio;
     private javax.swing.JPanel pnlPrecios;
     // End of variables declaration//GEN-END:variables
 }

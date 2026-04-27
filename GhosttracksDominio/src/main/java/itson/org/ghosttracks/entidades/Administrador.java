@@ -20,9 +20,8 @@ public class Administrador extends Usuario{
         this.idEmpleado = idEmpleado;
     }
 
-    public Administrador(Long idEmpleado, String nombres, String apellidoPaterno, String apellidoMaterno, String correo, String contraseña) {
+    public Administrador(String nombres, String apellidoPaterno, String apellidoMaterno, String correo, String contraseña) {
         super(nombres, apellidoPaterno, apellidoMaterno, correo, contraseña);
-        this.idEmpleado = idEmpleado;
     }
 
     public Long getIdEmpleado() {

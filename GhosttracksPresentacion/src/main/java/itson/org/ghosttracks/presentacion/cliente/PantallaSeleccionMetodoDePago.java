@@ -23,8 +23,7 @@ public class PantallaSeleccionMetodoDePago extends javax.swing.JPanel {
         this.control = ctrl;
         
         initComponents();
-        
-        this.panelResumen = new pnlResumenPedido();
+        this.panelResumen = pnlResumenPedido1;
         
         cardLayout = new CardLayout();
         panelContenido.setLayout(cardLayout);
@@ -37,7 +36,8 @@ public class PantallaSeleccionMetodoDePago extends javax.swing.JPanel {
         panelContenido.add(debito, "PAGO_TARJETA");
         
         cardLayout.show(panelContenido, "PAGO_SELECCION");
-        control.llenarResumenPedido(panelResumen);
+        control.llenarResumenPedido(this.panelResumen);
+        
         
     }
     

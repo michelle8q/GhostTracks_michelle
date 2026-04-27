@@ -6,7 +6,7 @@ package itson.org.ghosttracks.entidades;
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public class ProductoPedido {
     private int cantidadProducto;

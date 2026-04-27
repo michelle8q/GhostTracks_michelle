@@ -2,7 +2,7 @@ package itson.org.ghosttracks.dtos;
 
 /**
  *
- * @author emyla
+ * @author cinca
  */
 public class DireccionClienteDTO {
     
@@ -17,15 +17,7 @@ public class DireccionClienteDTO {
     public DireccionClienteDTO() {
     }
 
-    public DireccionClienteDTO(
-            Long idDireccion, 
-            String calle, 
-            String numero, 
-            String colonia, 
-            String codigoPostal, 
-            String ciudad, 
-            String estado
-    ) {
+    public DireccionClienteDTO(Long idDireccion, String calle, String numero, String colonia, String codigoPostal, String ciudad, String estado) {
         this.idDireccion = idDireccion;
         this.calle = calle;
         this.numero = numero;
@@ -34,6 +26,16 @@ public class DireccionClienteDTO {
         this.ciudad = ciudad;
         this.estado = estado;
     }
+    
+     public DireccionClienteDTO(String calle, String numero, String colonia, String codigoPostal, String ciudad, String estado) {
+        this.calle = calle;
+        this.numero = numero;
+        this.colonia = colonia;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
+        this.estado = estado;
+    }
+    
 
     public Long getIdDireccion() {
         return idDireccion;

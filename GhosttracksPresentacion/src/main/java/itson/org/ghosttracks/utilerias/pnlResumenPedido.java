@@ -9,6 +9,7 @@ import itson.org.ghosttracks.dtos.CarritoDTO;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -20,10 +21,15 @@ public class pnlResumenPedido extends javax.swing.JPanel {
     /**
      * Creates new form pnlResumenPedido
      */
+    public pnlResumenPedido(ControlVentaEnLinea ctrl) {
+        this();
+        this.control = control;
+    }
+    
     public pnlResumenPedido() {
         initComponents();
-       
         pnlContenedorProd.setLayout(new BoxLayout(pnlContenedorProd, BoxLayout.Y_AXIS));
+        
     }
 
     /**
@@ -45,10 +51,10 @@ public class pnlResumenPedido extends javax.swing.JPanel {
         lblTotal = new javax.swing.JLabel();
         btnEliminarCarrito = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlContenedorProd = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(237, 229, 222));
         setPreferredSize(new java.awt.Dimension(348, 680));
@@ -127,7 +133,7 @@ public class pnlResumenPedido extends javax.swing.JPanel {
                     .addGroup(pnlTotalesLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblTotal)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         btnEliminarCarrito.setBackground(new java.awt.Color(181, 181, 181));
@@ -141,6 +147,21 @@ public class pnlResumenPedido extends javax.swing.JPanel {
         });
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\cinca\\Documents\\carro 1.png")); // NOI18N
+
+        pnlContenedorProd.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout pnlContenedorProdLayout = new javax.swing.GroupLayout(pnlContenedorProd);
+        pnlContenedorProd.setLayout(pnlContenedorProdLayout);
+        pnlContenedorProdLayout.setHorizontalGroup(
+            pnlContenedorProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+        pnlContenedorProdLayout.setVerticalGroup(
+            pnlContenedorProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 424, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(pnlContenedorProd);
 
         jPanel1.setBackground(new java.awt.Color(181, 181, 181));
 
@@ -162,23 +183,8 @@ public class pnlResumenPedido extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(570, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
-
-        pnlContenedorProd.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pnlContenedorProdLayout = new javax.swing.GroupLayout(pnlContenedorProd);
-        pnlContenedorProd.setLayout(pnlContenedorProdLayout);
-        pnlContenedorProdLayout.setHorizontalGroup(
-            pnlContenedorProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
-        );
-        pnlContenedorProdLayout.setVerticalGroup(
-            pnlContenedorProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(pnlContenedorProd);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -189,7 +195,7 @@ public class pnlResumenPedido extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                         .addComponent(btnEliminarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -216,12 +222,12 @@ public class pnlResumenPedido extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(61, Short.MAX_VALUE)))
+                    .addContainerGap(226, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -2,7 +2,7 @@ package itson.org.ghosttracks.dtos;
 
 /**
  *
- * @author emyla
+ * @author cinca
  */
 public class AdministradorDTO extends UsuarioDTO{
     
@@ -12,18 +12,14 @@ public class AdministradorDTO extends UsuarioDTO{
         super();
     }
 
-    public AdministradorDTO(
-            String numeroEmpleado, 
-            Long idUsuario, 
-            String nombres, 
-            String apellidoPaterno, 
-            String apellidoMaterno, 
-            String correo, 
-            String contraseña
-    ) {
+    public AdministradorDTO(Long idUsuario, String numeroEmpleado, String nombres, String apellidoPaterno, 
+            String apellidoMaterno, String correo, String contraseña) {
+        
         super(idUsuario, nombres, apellidoPaterno, apellidoMaterno, correo, contraseña);
-        this.numeroEmpleado = numeroEmpleado;
+            this.numeroEmpleado = numeroEmpleado;
     }
+    
+    
 
     public String getNumeroEmpleado() {
         return numeroEmpleado;

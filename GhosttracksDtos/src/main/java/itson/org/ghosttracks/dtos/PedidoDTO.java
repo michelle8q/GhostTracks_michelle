@@ -1,6 +1,7 @@
 package itson.org.ghosttracks.dtos;
 
 import itson.org.ghosttracks.enums.EstadoPedidoDTO;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class PedidoDTO {
     private EstadoPedidoDTO estado;
     private DireccionEntregaDTO direccionEntrega;
     private DatosPagoDTO datosPago;
+    private LocalDateTime fechaPedido;
 
     public PedidoDTO() {
     }
@@ -52,7 +54,8 @@ public class PedidoDTO {
             Double total, 
             EstadoPedidoDTO estado, 
             DireccionEntregaDTO direccionEntrega, 
-            DatosPagoDTO datosPago
+            DatosPagoDTO datosPago,
+            LocalDateTime fechaPedido
     ) {
         this.idPedido = idPedido;
         this.idCliente = idCliente;
@@ -64,6 +67,7 @@ public class PedidoDTO {
         this.estado = estado;
         this.direccionEntrega = direccionEntrega;
         this.datosPago = datosPago;
+        this.fechaPedido = fechaPedido;
     }
     
     public Long getIdCliente() {
@@ -145,5 +149,15 @@ public class PedidoDTO {
     public void setContacto(ContactoDTO contacto) {
         this.contacto = contacto;
     }
+
+    public LocalDateTime getFechaPedido() {
+        return fechaPedido;
+    }
+
+    public void setFechaPedido(LocalDateTime fechaPedido) {
+        this.fechaPedido = fechaPedido;
+    }
+    
+    
 
 }

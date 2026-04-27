@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class CarritoDTO {
     
-    private Long idCliente;
     private List<ItemCarritoDTO> productos = new ArrayList<>();
     private Double total;
     private Double subtotal;
@@ -26,17 +25,8 @@ public class CarritoDTO {
     }
 
 
-    public CarritoDTO(Long idCliente, Double total) {
-        this.idCliente = idCliente;
+    public CarritoDTO(Double total) {
         this.total = total;
-    }
-
-    public Long getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
     }
 
     public List<ItemCarritoDTO> getProductos() {
