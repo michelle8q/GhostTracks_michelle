@@ -8,8 +8,12 @@ import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.entidades.ProductoPedido;
 
 /**
- *
+ * Se utilizo Adapter para convertir objetos de dominio en DTO y viceversa
+ * para adaptar la informacion.
+ * *
  * @author cinca
+ * 
+ * 
  */
 class ProductoPedidoAdapter {
 

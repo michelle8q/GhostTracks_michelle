@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author emyla
+ * @author cinca
  */
 public class PedidoDTO {
     
@@ -27,12 +27,13 @@ public class PedidoDTO {
     }
     
 
-    public PedidoDTO(Long idPedido, Long idCliente, EstadoPedidoDTO estado, Double total, String folio) {
+    public PedidoDTO(Long idPedido, Long idCliente, EstadoPedidoDTO estado, Double total, String folio, DatosPagoDTO datosPago) {
         this.idPedido = idPedido;
         this.idCliente = idCliente;
         this.estado = estado;
         this.total = total;
         this.folio = folio;
+        this.datosPago = datosPago;
     }
 
     public PedidoDTO(

@@ -2,7 +2,7 @@ package itson.org.ghosttracks.dtos;
 
 /**
  *
- * @author emy
+ * @author cinca
  */
 public class ItemCarritoDTO {
     

@@ -4,10 +4,9 @@ C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\j
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\ControlVentaEnLinea.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\Navegador.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\administrador\PantallaVentas.java
-C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\administrador\PantallaVentasProcesarAdmin.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelMercadoPago.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelMetodoPagoTarjetaDebito.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelSeleccionMetodoPago.java
-C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelStripe.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\PantallaCarrito.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\PantallaFormularioContacto.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\PantallaFormularioEntrega.java
@@ -26,7 +25,6 @@ C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\j
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\utilerias\pnlMenuLateral.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\utilerias\pnlMenuLateralAdmin.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\utilerias\pnlProductoCatalogo.java
-C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\utilerias\pnlProductoLCarrito.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\utilerias\pnlResumenPedido.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\utilerias\pnlResumenProducto.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\utilerias\TextFieldRedondeado.java

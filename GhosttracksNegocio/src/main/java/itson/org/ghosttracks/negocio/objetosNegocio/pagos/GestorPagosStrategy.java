@@ -5,7 +5,8 @@
 package itson.org.ghosttracks.negocio.objetosNegocio.pagos;
 
 /**
- *
+ * Patron Strategy para manejar los metodos de pago.
+ * 
  * @author cinca
  */
 public class GestorPagosStrategy {

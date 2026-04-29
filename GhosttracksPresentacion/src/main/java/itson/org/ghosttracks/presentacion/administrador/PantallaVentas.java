@@ -14,11 +14,13 @@ public class PantallaVentas extends javax.swing.JPanel {
     
     private final ControladorVentasAdmin control;
     private final pnlDetallesPedido panelDetalles;
+    private PedidoDTO pedido;
     
     public PantallaVentas(ControladorVentasAdmin ctrl) {
         this.control = ctrl;
         initComponents();
         this.panelDetalles = pnlDetallesPedido1;
+        this.pedido = pedido;
         control.llenarTablaPedidos(this);
         
         
@@ -39,7 +41,6 @@ public class PantallaVentas extends javax.swing.JPanel {
         pnlPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPedidos = new javax.swing.JTable();
-        btnContinuar = new javax.swing.JButton();
         pnlDetallesPedido1 = new itson.org.ghosttracks.utilerias.pnlDetallesPedido();
 
         setPreferredSize(new java.awt.Dimension(1100, 675));
@@ -65,10 +66,6 @@ public class PantallaVentas extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPedidos);
 
-        btnContinuar.setBackground(new java.awt.Color(204, 0, 0));
-        btnContinuar.setText("Continuar");
-        btnContinuar.addActionListener(this::btnContinuarActionPerformed);
-
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
@@ -76,22 +73,18 @@ public class PantallaVentas extends javax.swing.JPanel {
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnContinuar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlDetallesPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(722, 722, 722)
+                        .addComponent(pnlDetallesPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1066, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnContinuar)
-                .addContainerGap(347, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(359, 359, 359)
                 .addComponent(pnlDetallesPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -108,13 +101,8 @@ public class PantallaVentas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        control.procesarPedido();
-    }//GEN-LAST:event_btnContinuarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnContinuar;
     private javax.swing.JScrollPane jScrollPane1;
     private itson.org.ghosttracks.utilerias.pnlDetallesPedido pnlDetallesPedido1;
     private javax.swing.JPanel pnlPrincipal;

@@ -10,6 +10,10 @@ import itson.org.ghosttracks.entidades.Administrador;
 /**
  *
  * @author cinca
+ * 
+ * Se utilizo Adapter para convertir objetos de dominio en DTO y viceversa
+ * para adaptar la informacion.
+ * 
  */
 public class AdministradorAdapter {
     public static Administrador toEntity(AdministradorDTO admin) {

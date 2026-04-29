@@ -31,10 +31,6 @@ public class ControladorVentasAdmin {
     }
     
     
-    public void procesarPedido() {
-        // logica de obtener pedido
-        navegador.irProcesarPedidoAdmin();
-    }
     
     public void volverAVentas() {
         navegador.irVentasAdmin();

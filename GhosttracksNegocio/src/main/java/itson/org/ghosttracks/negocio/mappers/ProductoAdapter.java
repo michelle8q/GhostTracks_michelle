@@ -10,6 +10,10 @@ import itson.org.ghosttracks.entidades.Producto;
 /**
  *
  * @author cinca
+ * 
+ * Se utilizo Adapter para convertir objetos de dominio en DTO y viceversa
+ * para adaptar la informacion.
+ * 
  */
 public class ProductoAdapter {
     public static Producto toEntity(ProductoDTO producto){

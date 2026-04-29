@@ -2,7 +2,7 @@ package itson.org.ghosttracks.dtos;
 
 /**
  *
- * @author emyla
+ * @author cinca
  */
 public class SucursalDTO {
     

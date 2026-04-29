@@ -5,6 +5,7 @@
 package itson.org.ghosttracks.presentacion.cliente.metodosDePago;
 
 import itson.org.ghosttracks.dtos.DatosPagoDTO;
+import itson.org.ghosttracks.enums.TipoPago;
 import itson.org.ghosttracks.presentacion.cliente.PantallaSeleccionMetodoDePago;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -14,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author cinca
  */
-public class PanelStripe extends javax.swing.JPanel {
+public class PanelMercadoPago extends javax.swing.JPanel {
     private PantallaSeleccionMetodoDePago principal;
     
     private final String PH_NUMERO = "Número de tarjeta";
@@ -25,7 +26,7 @@ public class PanelStripe extends javax.swing.JPanel {
     /**
      * Creates new form PanelMercadoPago
      */
-    public PanelStripe(PantallaSeleccionMetodoDePago principal) {
+    public PanelMercadoPago(PantallaSeleccionMetodoDePago principal) {
         this.principal = principal;
         initComponents();
         configurarPlaceholders();
@@ -118,7 +119,8 @@ public class PanelStripe extends javax.swing.JPanel {
     
     private void enviarDatos(String num, String fec, String cvv, String tit) {
         DatosPagoDTO datos = new DatosPagoDTO();
-        datos.setNumeroTrajeta(num);
+        datos.setTipoPago(TipoPago.MERCADO_PAGO);
+        ;
         // datos.setFechaExpiracion(fec);
         datos.setCvv(cvv);
         datos.setTitularTarjeta(tit);
@@ -153,7 +155,7 @@ public class PanelStripe extends javax.swing.JPanel {
         lblSeleccionMetodoPago.setText("Método de Pago");
 
         lblMetodoDePago.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
-        lblMetodoDePago.setText("STRIPE");
+        lblMetodoDePago.setText("MERCADO PAGO");
 
         txtNumeroTarjeta.setText("Numero de tarjeta");
         txtNumeroTarjeta.addActionListener(new java.awt.event.ActionListener() {

@@ -100,7 +100,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Corbel" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="STRIPE"/>
+        <Property name="text" type="java.lang.String" value="MERCADO PAGO"/>
       </Properties>
     </Component>
     <Component class="itson.org.ghosttracks.utilerias.TextFieldRedondeado" name="txtNumeroTarjeta">

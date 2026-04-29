@@ -12,6 +12,10 @@ import itson.org.ghosttracks.entidades.Direccion;
 /**
  *
  * @author cinca
+ * 
+ * Se utilizo Adapter para convertir objetos de dominio en DTO y viceversa
+ * para adaptar la informacion.
+ * 
  */
 public class ClienteAdapter {
     

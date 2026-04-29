@@ -1,10 +1,8 @@
 package itson.org.ghosttracks.negocio.objetosNegocio;
 
 import itson.org.ghosttracks.daos.IPedidosDAO;
-import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.entidades.Pedido;
-import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.entidades.ProductoPedido;
 import itson.org.ghosttracks.enums.EstadoPedidoDTO;
 import itson.org.ghosttracks.enums.EstadoPedido;

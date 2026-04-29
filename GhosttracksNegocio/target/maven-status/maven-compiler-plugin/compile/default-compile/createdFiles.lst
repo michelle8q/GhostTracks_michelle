@@ -3,6 +3,7 @@ itson\org\ghosttracks\negocio\objetosNegocio\ProductosBO.class
 itson\org\ghosttracks\negocio\objetosNegocio\pagos\GestorPagosStrategy.class
 itson\org\ghosttracks\negocio\objetosNegocio\AdministradoresBO.class
 itson\org\ghosttracks\negocio\objetosNegocio\Excepciones\NegocioException.class
+itson\org\ghosttracks\negocio\directores\DirectorPedidos.class
 itson\org\ghosttracks\negocio\mappers\PedidoAdapter.class
 itson\org\ghosttracks\negocio\interfaces\IClientesBO.class
 itson\org\ghosttracks\negocio\interfaces\IProductosBO.class

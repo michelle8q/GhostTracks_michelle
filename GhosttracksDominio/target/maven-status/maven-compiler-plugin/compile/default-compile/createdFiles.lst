@@ -2,13 +2,16 @@ itson\org\ghosttracks\entidades\Pedido.class
 itson\org\ghosttracks\enums\EstadoPedido.class
 itson\org\ghosttracks\entidades\DatosPago.class
 itson\org\ghosttracks\enums\TipoProducto.class
+itson\org\ghosttracks\builders\PedidoBuilder.class
 itson\org\ghosttracks\entidades\Cliente.class
 itson\org\ghosttracks\entidades\Administrador.class
 itson\org\ghosttracks\entidades\Direccion.class
+itson\org\ghosttracks\builders\IPedidoBuilder.class
 itson\org\ghosttracks\entidades\ProductoPedido.class
 itson\org\ghosttracks\entidades\Paquete.class
 itson\org\ghosttracks\entidades\Producto.class
 itson\org\ghosttracks\entidades\Sucursal.class
 itson\org\ghosttracks\entidades\Usuario.class
 itson\org\ghosttracks\enums\EstadoProducto.class
+itson\org\ghosttracks\enums\TipoPago.class
 itson\org\ghosttracks\enums\EstadoPaquete.class

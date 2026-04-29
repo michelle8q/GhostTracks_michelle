@@ -4,23 +4,26 @@
  */
 package itson.org.ghosttracks.mocks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import itson.org.ghosttracks.daos.IPedidosDAO;
 import itson.org.ghosttracks.entidades.Pedido;
 import itson.org.ghosttracks.enums.EstadoPedido;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author cinca
  */
 public class PedidosMockDAO implements IPedidosDAO{
-    private List<Pedido> baseDatosPedidos = new ArrayList<>();
+    private static final List<Pedido> baseDatosPedidos = new ArrayList<>();
     private Long idAutoincrementable = 1L;
 
     public PedidosMockDAO() {
-        precargarPedidos();
+        if(baseDatosPedidos.isEmpty()) { 
+            precargarPedidos(); 
+        }
     }
 
     
@@ -31,6 +34,7 @@ public class PedidosMockDAO implements IPedidosDAO{
         p1.setTotal(1500.50);
         p1.setEstado(EstadoPedido.PAGADO);
         p1.setFolio("1YHU");
+        p1.setProductosPedido(new ArrayList<>()); 
         baseDatosPedidos.add(p1);
 
         Pedido p2 = new Pedido();
@@ -39,6 +43,7 @@ public class PedidosMockDAO implements IPedidosDAO{
         p2.setTotal(340.00);
         p2.setEstado(EstadoPedido.PAGADO);
         p2.setFolio("2RTY");
+        p2.setProductosPedido(new ArrayList<>()); 
         baseDatosPedidos.add(p2);
 
         Pedido p3 = new Pedido();
@@ -47,6 +52,7 @@ public class PedidosMockDAO implements IPedidosDAO{
         p3.setTotal(899.99);
         p3.setEstado(EstadoPedido.PAGADO);
         p3.setFolio("3WRT");
+        p3.setProductosPedido(new ArrayList<>()); 
         baseDatosPedidos.add(p3);
         
         Pedido p4 = new Pedido();
@@ -55,7 +61,10 @@ public class PedidosMockDAO implements IPedidosDAO{
         p4.setTotal(250.00);
         p4.setEstado(EstadoPedido.PAGADO);
         p4.setFolio("4CFG");
+        p4.setProductosPedido(new ArrayList<>()); 
         baseDatosPedidos.add(p4);
+        
+        
     }
     
     

@@ -2,19 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+
 package itson.org.ghosttracks.presentacion.cliente;
 
 import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
-import itson.org.ghosttracks.dtos.DatosPagoDTO;
+import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 
 /**
  *
  * @author cinca
  */
-public class PantallaSeguimientoPedido extends javax.swing.JPanel {
+    public class PantallaSeguimientoPedido extends javax.swing.JPanel {
     private final ControlVentaEnLinea control;
     private final PedidoDTO pedido;
+    
     /**
      * Creates new form PantallaSeguimientoPedido
      */
@@ -24,23 +26,38 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
         initComponents();
         
         
-        lblMetodoPago.setText("" + pedido.getDatosPago().getTipoPago());
+        //lblMetodoPago.setText("");
         
-        //lblTotalProductos
+        
         lblSubtotal.setText(String.format("$%.2f", pedido.getSubtotal()));
-        
         lblEnvio.setText(String.format("$%.2f", pedido.getCostoEnvio()));
-        
         lblTodoTotal.setText(String.format("$%.2f", pedido.getTotal()));
         
-        lblNombre.setText(pedido.getContacto().getNombre());
-        lblDireccion.setText(pedido.getDireccionEntrega().getCalle());
-        lblCiudad.setText(pedido.getDireccionEntrega().getCiudad());
-        lblCodPostal.setText(pedido.getDireccionEntrega().getCodigoPostal());
-        lblNumero.setText(pedido.getDireccionEntrega().getNumero());
-        lblColonia.setText(pedido.getDireccionEntrega().getColonia());
-    }
+        if (pedido.getContacto() != null) {
+            lblNombre.setText(pedido.getContacto().getNombre());
+        }
+        
+        if (pedido.getDireccionEntrega() != null) {
+            lblDireccion.setText(pedido.getDireccionEntrega().getCalle());
+            lblCiudad.setText(pedido.getDireccionEntrega().getCiudad());
+            lblCodPostal.setText(pedido.getDireccionEntrega().getCodigoPostal());
+            lblNumero.setText(pedido.getDireccionEntrega().getNumero());
+            lblColonia.setText(pedido.getDireccionEntrega().getColonia());    
+        }
+        
+        int piezasTotales = 0; 
+        String texto = "";
+        for (ItemCarritoDTO item : pedido.getProductos()) { 
+            piezasTotales += item.getCantidad();
+            
+            item.getProductoSeleccionado().getNombre();
+        }
+        
+        lblProductos.setText(texto);
+        lblTotalProductos.setText(String.valueOf(piezasTotales)); 
 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,12 +79,12 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
         label2 = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
         lblMetodoPago = new java.awt.Label();
-        btnEditarPago = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         lblTodoTotal = new java.awt.Label();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
+        lblProductos = new javax.swing.JLabel();
         panelRedondeado2 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
         jLabel2 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
@@ -78,7 +95,6 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
         lblColonia = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
-        botonRedondeado1 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         lblEstadoEnv = new java.awt.Label();
@@ -97,7 +113,7 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
         lblSubtotal.setText("$0.0");
 
         lblTotalProductos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblTotalProductos.setText("$0.0");
+        lblTotalProductos.setText("cantidad");
 
         label5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         label5.setText("Total:");
@@ -121,17 +137,12 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
         lblMetodoPago.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblMetodoPago.setText("Tipo de pago");
 
-        btnEditarPago.setBackground(new java.awt.Color(255, 102, 0));
-        btnEditarPago.setForeground(new java.awt.Color(0, 0, 0));
-        btnEditarPago.setText("Editar");
-        btnEditarPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPagoActionPerformed(evt);
-            }
-        });
-
         lblTodoTotal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblTodoTotal.setText("$0.0");
+
+        lblProductos.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        lblProductos.setForeground(new java.awt.Color(0, 0, 0));
+        lblProductos.setText("producto1");
 
         javax.swing.GroupLayout pnlResumenLayout = new javax.swing.GroupLayout(pnlResumen);
         pnlResumen.setLayout(pnlResumenLayout);
@@ -146,9 +157,7 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
                 .addGroup(pnlResumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlResumenLayout.createSequentialGroup()
                         .addComponent(lblMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(btnEditarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
+                        .addGap(29, 229, Short.MAX_VALUE))
                     .addGroup(pnlResumenLayout.createSequentialGroup()
                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -173,7 +182,8 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
                     .addGroup(pnlResumenLayout.createSequentialGroup()
                         .addGroup(pnlResumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlResumenLayout.setVerticalGroup(
@@ -183,17 +193,16 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlResumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlResumenLayout.createSequentialGroup()
-                        .addGroup(pnlResumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlResumenLayout.createSequentialGroup()
-                                .addComponent(lblMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnEditarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblTotalProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,7 +224,7 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblTodoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelRedondeado2.setBackground(new java.awt.Color(204, 204, 204));
@@ -255,12 +264,6 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
         lblNumero.setForeground(new java.awt.Color(0, 0, 0));
         lblNumero.setText("numero");
 
-        botonRedondeado1.setBackground(new java.awt.Color(255, 102, 0));
-        botonRedondeado1.setForeground(new java.awt.Color(0, 0, 0));
-        botonRedondeado1.setText("Editar");
-        botonRedondeado1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonRedondeado1.setHoverColor(new java.awt.Color(0, 0, 0));
-
         javax.swing.GroupLayout panelRedondeado2Layout = new javax.swing.GroupLayout(panelRedondeado2);
         panelRedondeado2.setLayout(panelRedondeado2Layout);
         panelRedondeado2Layout.setHorizontalGroup(
@@ -279,8 +282,7 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
                             .addComponent(lblColonia)
                             .addComponent(lblCiudad)
                             .addComponent(lblNumero)
-                            .addComponent(jLabel3)
-                            .addComponent(botonRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))
                         .addGap(0, 252, Short.MAX_VALUE))
                     .addComponent(jSeparator7))
                 .addContainerGap())
@@ -310,9 +312,7 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addComponent(lblCiudad)
-                .addGap(68, 68, 68)
-                .addComponent(botonRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         lblEstadoEnv.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
@@ -333,38 +333,34 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(418, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
                         .addComponent(pnlResumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)
-                        .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(93, 93, 93))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(445, 445, 445))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblEstadoEnv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(488, 488, 488))))
+                        .addGap(76, 76, 76)
+                        .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(531, 531, 531)
+                        .addComponent(lblEstadoEnv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(491, 491, 491)
+                        .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 202, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(lblEstadoEnv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlResumen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelRedondeado2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(44, 44, 44)
+                    .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(244, 244, 244))
+                .addGap(135, 135, 135))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEditarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPagoActionPerformed
-       control.irEditarPago(pedido);
-    }//GEN-LAST:event_btnEditarPagoActionPerformed
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
       control.volverACatalogo();
@@ -372,9 +368,7 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado1;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnComprar;
-    private itson.org.ghosttracks.utilerias.BotonRedondeado btnEditarPago;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -399,6 +393,7 @@ public class PantallaSeguimientoPedido extends javax.swing.JPanel {
     private java.awt.Label lblMetodoPago;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumero;
+    private javax.swing.JLabel lblProductos;
     private java.awt.Label lblSubtotal;
     private java.awt.Label lblTodoTotal;
     private java.awt.Label lblTotalProductos;

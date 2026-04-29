@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public class Pedido {
     private Long idPedido;
@@ -22,6 +22,7 @@ public class Pedido {
     private Long idCliente;
     private List<Producto> productos;
     private String folio;
+    private DatosPago datosPago;
     
     private List<ProductoPedido> productosPedido; 
     // private Envio envio; 
@@ -100,6 +101,22 @@ public class Pedido {
 
     public void setFolio(String folio) {
         this.folio = folio;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public DatosPago getDatosPago() {
+        return datosPago;
+    }
+
+    public void setDatosPago(DatosPago datosPago) {
+        this.datosPago = datosPago;
     }
     
     

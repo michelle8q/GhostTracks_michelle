@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author emyla
+ * @author cinca
+ * 
  */
 public class Paquete {
    

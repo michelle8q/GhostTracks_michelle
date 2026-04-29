@@ -3,7 +3,7 @@ package itson.org.ghosttracks.presentacion.cliente;
 
 import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
 import itson.org.ghosttracks.dtos.DatosPagoDTO;
-import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelStripe;
+import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelMercadoPago;
 import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelMetodoPagoTarjetaDebito;
 import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelSeleccionMetodoPago;
 import itson.org.ghosttracks.utilerias.pnlResumenPedido;
@@ -32,7 +32,7 @@ public class PantallaSeleccionMetodoDePago extends javax.swing.JPanel {
         // Pasamos 'this' para que los paneles puedan avisar cuando cambiar
         PanelSeleccionMetodoPago seleccion = new PanelSeleccionMetodoPago(this);
         PanelMetodoPagoTarjetaDebito debito = new PanelMetodoPagoTarjetaDebito(this);
-        PanelStripe mercado = new PanelStripe(this);
+        PanelMercadoPago mercado = new PanelMercadoPago(this);
         
         panelContenido.add(seleccion, "PAGO_SELECCION");
         panelContenido.add(debito, "PAGO_TARJETA");

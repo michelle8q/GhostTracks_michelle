@@ -5,6 +5,7 @@
 package itson.org.ghosttracks.negocio.mappers;
 
 
+import itson.org.ghosttracks.builders.PedidoBuilder;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.entidades.Pedido;
@@ -34,6 +35,7 @@ public class PedidoAdapter {
         dto.setEstado(EstadoPedidoDTO.valueOf(pedido.getEstado().name()));
         dto.setFolio(pedido.getFolio());
         
+        
         List<ItemCarritoDTO> items = new ArrayList<>();
         
         for(ProductoPedido productoPedido: pedido.getProductosPedido()) {
@@ -46,17 +48,7 @@ public class PedidoAdapter {
     }
     
     public static Pedido toEntity(PedidoDTO dto) {
-        Pedido entidadPedido = new Pedido();
-        
-        entidadPedido.setIdPedido(dto.getIdPedido());
-        entidadPedido.setCostoEnvio(dto.getCostoEnvio());
-        entidadPedido.setFechaPedido(dto.getFechaPedido());
-        entidadPedido.setSubtotal(dto.getSubtotal());
-        entidadPedido.setTotal(dto.getTotal());
-        entidadPedido.setIdCliente(dto.getIdCliente());
-        entidadPedido.setEstado(EstadoPedido.valueOf(dto.getEstado().name()));
-        entidadPedido.setFolio(dto.getFolio());
-        
+
         List<ProductoPedido> productos = new ArrayList<>();
         
         for(ItemCarritoDTO item: dto.getProductos()) {
@@ -64,10 +56,17 @@ public class PedidoAdapter {
             
         }
         
-        entidadPedido.setProductosPedido(productos);
-        return entidadPedido;
+        return new PedidoBuilder()
+            .idCliente(dto.getIdCliente())
+            .productos(productos)
+            .subtotal(dto.getSubtotal())
+            .total(dto.getTotal())
+            .costoEnvio(dto.getCostoEnvio())
+            .folio(dto.getFolio())
+            
+            .build();
     }
     
-   
+    
 }
 

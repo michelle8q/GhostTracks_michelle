@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author cinca
+ * @author oliro
  */
 public class PantallaCarrito extends javax.swing.JPanel {
 

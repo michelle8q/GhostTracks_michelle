@@ -6,7 +6,8 @@ package itson.org.ghosttracks.entidades;
 
 /**
  *
- * @author nafbr
+ * @author cinca
+ * 
  */
 public class Usuario {
     private Long idUsuario;
