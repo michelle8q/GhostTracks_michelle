@@ -8,6 +8,8 @@ package itson.org.ghosttracks.presentacion.cliente;
 import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
+import itson.org.ghosttracks.enums.TipoPago;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -26,7 +28,8 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
         initComponents();
         
         
-        //lblMetodoPago.setText("");
+        TipoPago tipo = pedido.getDatosPago().getTipoPago();
+        lblMetodoPago.setText("" + tipo);
         
         
         lblSubtotal.setText(String.format("$%.2f", pedido.getSubtotal()));
@@ -46,14 +49,17 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
         }
         
         int piezasTotales = 0; 
-        String texto = "";
+        DefaultListModel<String> lista = new DefaultListModel<>();
+        
         for (ItemCarritoDTO item : pedido.getProductos()) { 
             piezasTotales += item.getCantidad();
             
-            item.getProductoSeleccionado().getNombre();
+            String producto = item.getProductoSeleccionado().getNombre();
+            lista.addElement(producto + "(" + item.getCantidad() + ")");
+            listProductos.setModel(lista);
         }
         
-        lblProductos.setText(texto);
+     
         lblTotalProductos.setText(String.valueOf(piezasTotales)); 
 
     }
@@ -84,7 +90,8 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        lblProductos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listProductos = new javax.swing.JList<>();
         panelRedondeado2 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
         jLabel2 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
@@ -105,6 +112,7 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
         setPreferredSize(new java.awt.Dimension(1400, 800));
 
         pnlResumen.setBackground(new java.awt.Color(204, 204, 204));
+        pnlResumen.setMaximumSize(new java.awt.Dimension(387, 508));
 
         lblEnvio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblEnvio.setText("$0.0");
@@ -140,9 +148,12 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
         lblTodoTotal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblTodoTotal.setText("$0.0");
 
-        lblProductos.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
-        lblProductos.setForeground(new java.awt.Color(0, 0, 0));
-        lblProductos.setText("producto1");
+        listProductos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listProductos);
 
         javax.swing.GroupLayout pnlResumenLayout = new javax.swing.GroupLayout(pnlResumen);
         pnlResumen.setLayout(pnlResumenLayout);
@@ -157,7 +168,7 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
                 .addGroup(pnlResumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlResumenLayout.createSequentialGroup()
                         .addComponent(lblMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 229, Short.MAX_VALUE))
+                        .addGap(29, 237, Short.MAX_VALUE))
                     .addGroup(pnlResumenLayout.createSequentialGroup()
                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -183,7 +194,7 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
                         .addGroup(pnlResumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlResumenLayout.setVerticalGroup(
@@ -194,10 +205,10 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addGroup(pnlResumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlResumenLayout.createSequentialGroup()
                         .addComponent(lblMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,7 +356,7 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(491, 491, 491)
                         .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 202, Short.MAX_VALUE))
+                .addGap(0, 332, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,6 +383,7 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -393,10 +405,10 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
     private java.awt.Label lblMetodoPago;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumero;
-    private javax.swing.JLabel lblProductos;
     private java.awt.Label lblSubtotal;
     private java.awt.Label lblTodoTotal;
     private java.awt.Label lblTotalProductos;
+    private javax.swing.JList<String> listProductos;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado2;
     private itson.org.ghosttracks.utilerias.PanelRedondeado pnlResumen;
     private itson.org.ghosttracks.presentacion.VentanaPrincipal ventanaPrincipal1;

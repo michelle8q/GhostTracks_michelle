@@ -18,6 +18,7 @@ itson\org\ghosttracks\utilerias\pnlResumenProducto.class
 itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelMercadoPago$3.class
 itson\org\ghosttracks\presentacion\panelLogin.class
 itson\org\ghosttracks\presentacion\cliente\PantallaFormularioEntrega.class
+itson\org\ghosttracks\presentacion\cliente\PantallaSeguimientoPedido$2.class
 itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelMercadoPago.class
 itson\org\ghosttracks\presentacion\administrador\PantallaVentas.class
 itson\org\ghosttracks\utilerias\PanelHeader.class

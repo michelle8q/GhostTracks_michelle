@@ -424,6 +424,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
 
         btnRestarCantidad.setText("-");
         btnRestarCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRestarCantidad.addActionListener(this::btnRestarCantidadActionPerformed);
 
         btnAumentarCantidad.setText("+");
         btnAumentarCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -578,6 +579,10 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
     private void btnAumentarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAumentarCantidadActionPerformed
+
+    private void btnRestarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestarCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRestarCantidadActionPerformed
 
     private void cargarDatosProducto() {
 
