@@ -29,33 +29,33 @@ public class PedidosMockDAO implements IPedidosDAO{
         p1.setIdPedido(idAutoincrementable++);
         p1.setIdCliente(101L);
         p1.setTotal(1500.50);
-        p1.setEstado(EstadoPedido.PAGADO); 
-        baseDatosPedidos.add(p1);
+        p1.setEstado(EstadoPedido.PAGADO);
         p1.setFolio("1YHU");
+        baseDatosPedidos.add(p1);
 
         Pedido p2 = new Pedido();
         p2.setIdPedido(idAutoincrementable++);
         p2.setIdCliente(102L);
         p2.setTotal(340.00);
-        p2.setEstado(EstadoPedido.PAGADO); 
+        p2.setEstado(EstadoPedido.PAGADO);
+        p2.setFolio("2RTY");
         baseDatosPedidos.add(p2);
-        p1.setFolio("2RTY");
 
         Pedido p3 = new Pedido();
         p3.setIdPedido(idAutoincrementable++);
         p3.setIdCliente(103L);
         p3.setTotal(899.99);
-        p3.setEstado(EstadoPedido.PAGADO); 
+        p3.setEstado(EstadoPedido.PAGADO);
+        p3.setFolio("3WRT");
         baseDatosPedidos.add(p3);
-        p1.setFolio("3WRT");
         
         Pedido p4 = new Pedido();
         p4.setIdPedido(idAutoincrementable++);
         p4.setIdCliente(104L);
         p4.setTotal(250.00);
-        p4.setEstado(EstadoPedido.PAGADO); 
+        p4.setEstado(EstadoPedido.PAGADO);
+        p4.setFolio("4CFG");
         baseDatosPedidos.add(p4);
-        p1.setFolio("4CFG");
     }
     
     

@@ -10,6 +10,7 @@ import itson.org.ghosttracks.entidades.Administrador;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
 import itson.org.ghosttracks.mocks.AdministradoresMockDAO;
 import itson.org.ghosttracks.negocio.interfaces.IAdministradoresBO;
+import itson.org.ghosttracks.negocio.mappers.AdministradorAdapter;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 
 /**
@@ -27,18 +28,9 @@ public class AdministradoresBO implements IAdministradoresBO{
     @Override
     public AdministradorDTO obtenerAdministradorPorId(Long idEmpleado) throws NegocioException {
         try {
-            Administrador entidad = administradoresDAO.buscarPorId(idEmpleado);
-            AdministradorDTO dto = new AdministradorDTO();
+            Administrador adminDominio = administradoresDAO.buscarPorId(idEmpleado);
+            return AdministradorAdapter.toDTO(adminDominio);
             
-            dto.setIdUsuario(entidad.getIdUsuario());
-            dto.setNombres(entidad.getNombres());
-            dto.setApellidoPaterno(entidad.getApellidoPaterno());
-            dto.setApellidoMaterno(entidad.getApellidoMaterno());
-            dto.setCorreo(entidad.getCorreo());
-            dto.setContraseña(entidad.getContraseña()); 
-
-            return dto;
-
         } catch (PersistenciaException e) {
             throw new NegocioException("Error al obtener administrador: " + e.getMessage());
         }
@@ -47,17 +39,8 @@ public class AdministradoresBO implements IAdministradoresBO{
     @Override
     public AdministradorDTO buscarPorNombre(String nombre) throws NegocioException {
         try {
-            Administrador entidad = administradoresDAO.buscarPorNombre(nombre);
-            AdministradorDTO dto = new AdministradorDTO();
-            
-            dto.setIdUsuario(entidad.getIdUsuario());
-            dto.setNombres(entidad.getNombres());
-            dto.setApellidoPaterno(entidad.getApellidoPaterno());
-            dto.setApellidoMaterno(entidad.getApellidoMaterno());
-            dto.setCorreo(entidad.getCorreo());
-            dto.setContraseña(entidad.getContraseña()); 
-
-            return dto;
+            Administrador adminNombreDominio = administradoresDAO.buscarPorNombre(nombre);
+            return AdministradorAdapter.toDTO(adminNombreDominio);
 
         } catch (PersistenciaException e) {
             throw new NegocioException("Error al obtener administrador: " + e.getMessage());

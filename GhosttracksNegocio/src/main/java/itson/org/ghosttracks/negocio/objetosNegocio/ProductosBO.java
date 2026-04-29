@@ -10,13 +10,14 @@ import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
 import itson.org.ghosttracks.mocks.ProductosMockDAO;
 import itson.org.ghosttracks.negocio.interfaces.IProductosBO;
+import itson.org.ghosttracks.negocio.mappers.ProductoAdapter;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author nafbr
+ * @author Cinca
  */
 public class ProductosBO implements IProductosBO {
 
@@ -30,26 +31,15 @@ public class ProductosBO implements IProductosBO {
     public List<ProductoDTO> obtenerTodos() throws NegocioException {
         try {
             List<Producto> productosEntidad = productosDAO.obtenerTodos();
-            List<ProductoDTO> productosDisponibles = new ArrayList<>();
+            List<ProductoDTO> productosDTO = new ArrayList<>();
 
             for (Producto p : productosEntidad) {
-                if (p.getStock() != null && p.getStock() > 0) {
-                    ProductoDTO dto = new ProductoDTO();
-                    dto.setIdProducto(p.getIdProducto());
-                    dto.setNombre(p.getNombre());
-                    dto.setImgProducto(p.getImgProducto());
-                    dto.setTipoProducto(p.getTipo());
-                    dto.setArtista(p.getArtista());
-                    dto.setGenero(p.getGenero());
-                    dto.setSetlist(p.getSetlist());
-                    dto.setPrecio(p.getPrecio());
-                    dto.setStock(p.getStock());
-                    dto.setEstado(p.getEstado());
-                    
-                    productosDisponibles.add(dto);
-                }
+               ProductoDTO dto = ProductoAdapter.toDTO(p);
+               productosDTO.add(dto);
             }
-            return productosDisponibles;
+            
+            return productosDTO;
+            
         } catch (PersistenciaException e) {
             throw new NegocioException("Error al consultar el catálogo de productos: " + e.getMessage());
         }
@@ -59,21 +49,8 @@ public class ProductosBO implements IProductosBO {
     public ProductoDTO obtenerProductoPorId(Long id) throws NegocioException {
 
         try {
-            Producto entidad = productosDAO.buscarPorId(id);
-            ProductoDTO dto = new ProductoDTO();
-            
-            dto.setIdProducto(entidad.getIdProducto());
-            dto.setNombre(entidad.getNombre());
-            dto.setImgProducto(entidad.getImgProducto());
-            dto.setTipoProducto(entidad.getTipo());
-            dto.setArtista(entidad.getArtista());
-            dto.setGenero(entidad.getGenero());
-            dto.setSetlist(entidad.getSetlist());
-            dto.setPrecio(entidad.getPrecio());
-            dto.setStock(entidad.getStock());
-            dto.setEstado(entidad.getEstado());
-
-            return dto;
+            Producto productoDominio = productosDAO.buscarPorId(id);
+            return ProductoAdapter.toDTO(productoDominio);
 
         } catch (PersistenciaException e) {
             throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());
@@ -84,21 +61,8 @@ public class ProductosBO implements IProductosBO {
     public ProductoDTO buscarProductoPorNombre(String nombre) throws NegocioException {
 
         try {
-            Producto entidad = productosDAO.buscarPorNombre(nombre);
-            ProductoDTO dto = new ProductoDTO();
-            
-            dto.setIdProducto(entidad.getIdProducto());
-            dto.setNombre(entidad.getNombre());
-            dto.setImgProducto(entidad.getImgProducto());
-            dto.setTipoProducto(entidad.getTipo());
-            dto.setArtista(entidad.getArtista());
-            dto.setGenero(entidad.getGenero());
-            dto.setSetlist(entidad.getSetlist());
-            dto.setPrecio(entidad.getPrecio());
-            dto.setStock(entidad.getStock());
-            dto.setEstado(entidad.getEstado());
-
-            return dto;
+            Producto productoDominio = productosDAO.buscarPorNombre(nombre);
+            return ProductoAdapter.toDTO(productoDominio);
 
         } catch (PersistenciaException e) {
             throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());

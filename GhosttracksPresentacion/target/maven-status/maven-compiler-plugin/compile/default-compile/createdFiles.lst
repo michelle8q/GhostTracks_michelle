@@ -23,6 +23,7 @@ itson\org\ghosttracks\presentacion\cliente\PantallaSeguimientoPedido$2.class
 itson\org\ghosttracks\presentacion\administrador\PantallaVentasProcesarAdmin.class
 itson\org\ghosttracks\presentacion\administrador\PantallaVentas.class
 itson\org\ghosttracks\utilerias\PanelHeader.class
+itson\org\ghosttracks\presentacion\cliente\PantallaPedidosProceso.class
 itson\org\ghosttracks\utilerias\pnlMenuLateralAdmin.class
 itson\org\ghosttracks\utilerias\pnlProductoLCarrito$2.class
 itson\org\ghosttracks\presentacion\cliente\metodosDePago\PanelStripe.class

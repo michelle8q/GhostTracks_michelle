@@ -225,7 +225,7 @@ public class PantallaCarrito extends javax.swing.JPanel {
     class ButtonRenderer extends javax.swing.JButton implements javax.swing.table.TableCellRenderer {
         public ButtonRenderer() { 
             setOpaque(true);
-            // Agregamos un margen para que el botón no toque los bordes de la celda
+           
             setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         }
 

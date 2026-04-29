@@ -6,13 +6,12 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.entidades.Pedido;
 import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.entidades.ProductoPedido;
-
 import itson.org.ghosttracks.enums.EstadoPedidoDTO;
 import itson.org.ghosttracks.enums.EstadoPedido;
-
 import itson.org.ghosttracks.exceptions.PersistenciaException;
 import itson.org.ghosttracks.mocks.PedidosMockDAO;
 import itson.org.ghosttracks.negocio.interfaces.IPedidosBO;
+import itson.org.ghosttracks.negocio.mappers.PedidoAdapter;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,64 +23,33 @@ public class PedidosBO implements IPedidosBO {
     public PedidosBO() {
         this.pedidosDAO = new PedidosMockDAO();
     }
-
     @Override
     public PedidoDTO generarPedido(PedidoDTO pedidoDto) throws NegocioException {
 
         try {
 
-            Pedido entidadPedido = new Pedido();
+            Pedido entidadPedido = PedidoAdapter.toEntity(pedidoDto);
             entidadPedido.setFechaPedido(LocalDateTime.now());
-            
             entidadPedido.setEstado(EstadoPedido.PAGADO);
-            
-            entidadPedido.setSubtotal(pedidoDto.getSubtotal());
-            entidadPedido.setCostoEnvio(pedidoDto.getCostoEnvio());
-            entidadPedido.setTotal(pedidoDto.getTotal());
-            
-            List<ProductoPedido> detalles = new ArrayList<>();
-            for (ItemCarritoDTO item : pedidoDto.getProductos()) {
-                ProductoPedido detalle = new ProductoPedido();
-                detalle.setCantidadProducto(item.getCantidad());
-                detalle.setPrecioVendido(item.getProductoSeleccionado().getPrecio());
-                detalle.setImporteTotal(item.getSubtotal());
-                
-                Producto prodEntidad = new Producto();
-                prodEntidad.setIdProducto(item.getProductoSeleccionado().getIdProducto());
-                detalle.setProducto(prodEntidad);
-                detalle.setPedido(entidadPedido);
-                
-                detalles.add(detalle);
+            if (entidadPedido.getProductosPedido() != null) {
+                for (ProductoPedido detalle : entidadPedido.getProductosPedido()) {
+                    detalle.setPedido(entidadPedido);
+                }
             }
-            entidadPedido.setProductosPedido(detalles); 
-            
+
             Pedido pedidoGuardado = pedidosDAO.guardarPedido(entidadPedido);
-            pedidoDto.setIdPedido(pedidoGuardado.getIdPedido());
-            pedidoDto.setEstado(EstadoPedidoDTO.PAGADO); 
-            
-            return pedidoDto;
-            
+            return PedidoAdapter.toDTO(pedidoGuardado);
         } catch (PersistenciaException e) {
-            throw new NegocioException("Ocurrió un error al intentar registrar su pedido: " + e.getMessage());
+            throw new NegocioException("OcurriÃ³ un error al intentar registrar su pedido: " + e.getMessage());
         }
     }
     
     @Override
     public PedidoDTO actualizarEstadoPedido(Long idPedido, EstadoPedidoDTO nuevoEstadoDTO) throws NegocioException {
-
         try {
             EstadoPedido estadoDominio = EstadoPedido.valueOf(nuevoEstadoDTO.name());
             Pedido pedidoActualizado = pedidosDAO.actualizarEstado(idPedido, estadoDominio);
-
-            PedidoDTO dto = new PedidoDTO();
-            dto.setIdPedido(pedidoActualizado.getIdPedido());
-            dto.setTotal(pedidoActualizado.getTotal());
-            dto.setSubtotal(pedidoActualizado.getSubtotal());
-            dto.setCostoEnvio(pedidoActualizado.getCostoEnvio());
-            EstadoPedidoDTO estadoRegresoDTO = EstadoPedidoDTO.valueOf(pedidoActualizado.getEstado().name());
-            dto.setEstado(estadoRegresoDTO);
-            
-            return dto;
+            return PedidoAdapter.toDTO(pedidoActualizado);
 
         } catch (PersistenciaException e) {
             throw new NegocioException("No se pudo actualizar el estado del pedido: " + e.getMessage());
@@ -95,16 +63,7 @@ public class PedidosBO implements IPedidosBO {
             List<PedidoDTO> pedidosDTO = new ArrayList<>();
 
             for (Pedido p : pedidosEntidad) {
-                Long id = p.getIdPedido();
-                Long cliente = p.getIdCliente();
-                Double total = p.getTotal();
-                String folio = p.getFolio();
-                
-                EstadoPedidoDTO estadoDTO = null;
-                if (p.getEstado() != null) {
-                    estadoDTO = EstadoPedidoDTO.valueOf(p.getEstado().name());
-                }
-                PedidoDTO dto = new PedidoDTO(id, cliente, estadoDTO, total, folio);
+                PedidoDTO dto = PedidoAdapter.toDTO(p);
                 pedidosDTO.add(dto);
             }
 
@@ -114,7 +73,5 @@ public class PedidosBO implements IPedidosBO {
             throw new NegocioException("Error al obtener la lista de pedidos: " + e.getMessage());
         }
     }
-    
-    
     
 }
