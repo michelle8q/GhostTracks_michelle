@@ -43,4 +43,24 @@ public class AdministradoresBO implements IAdministradoresBO{
             throw new NegocioException("Error al obtener administrador: " + e.getMessage());
         }
     }
+    
+    @Override
+    public AdministradorDTO buscarPorNombre(String nombre) throws NegocioException {
+        try {
+            Administrador entidad = administradoresDAO.buscarPorNombre(nombre);
+            AdministradorDTO dto = new AdministradorDTO();
+            
+            dto.setIdUsuario(entidad.getIdUsuario());
+            dto.setNombres(entidad.getNombres());
+            dto.setApellidoPaterno(entidad.getApellidoPaterno());
+            dto.setApellidoMaterno(entidad.getApellidoMaterno());
+            dto.setCorreo(entidad.getCorreo());
+            dto.setContraseña(entidad.getContraseña()); 
+
+            return dto;
+
+        } catch (PersistenciaException e) {
+            throw new NegocioException("Error al obtener administrador: " + e.getMessage());
+        }
+    }
 }

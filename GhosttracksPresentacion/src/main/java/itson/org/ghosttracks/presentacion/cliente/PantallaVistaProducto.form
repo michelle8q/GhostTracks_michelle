@@ -649,10 +649,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="btnAniadirAlCarrito" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
@@ -669,20 +666,25 @@
                                   <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="botonRedondeado2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="textFieldRedondeado1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="botonRedondeado3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                          <Component id="lblUnidad" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="btnRestarCantidad" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="textFieldRedondeado1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnAumentarCantidad" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblUnidad" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="285" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnAniadirAlCarrito" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -700,8 +702,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="textFieldRedondeado1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonRedondeado2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonRedondeado3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnRestarCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAumentarCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblUnidad" min="-2" max="-2" attributes="0"/>
@@ -762,8 +764,11 @@
                       <Dimension value="[100, 35]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldRedondeado1ActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="itson.org.ghosttracks.utilerias.BotonRedondeado" name="botonRedondeado2">
+                <Component class="itson.org.ghosttracks.utilerias.BotonRedondeado" name="btnRestarCantidad">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="-"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -771,13 +776,16 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="itson.org.ghosttracks.utilerias.BotonRedondeado" name="botonRedondeado3">
+                <Component class="itson.org.ghosttracks.utilerias.BotonRedondeado" name="btnAumentarCantidad">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="+"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAumentarCantidadActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblUnidad">
                   <Properties>

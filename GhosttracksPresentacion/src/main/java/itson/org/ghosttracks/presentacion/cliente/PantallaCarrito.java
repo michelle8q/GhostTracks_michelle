@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author oliro
+ * @author cinca
  */
 public class PantallaCarrito extends javax.swing.JPanel {
 
@@ -233,7 +233,7 @@ public class PantallaCarrito extends javax.swing.JPanel {
         public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
                 boolean isSelected, boolean hasFocus, int row, int column) {
             setText("Eliminar");
-            setBackground(new java.awt.Color(204, 51, 0)); // Color rojizo como tu botón "Continuar"
+            setBackground(new java.awt.Color(204, 51, 0)); 
             setForeground(java.awt.Color.WHITE);
             setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
             return this;

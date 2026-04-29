@@ -2,6 +2,8 @@
 
 package itson.org.ghosttracks.controladores;
 
+import java.util.List;
+
 import itson.org.ghosttracks.dtos.CarritoDTO;
 import itson.org.ghosttracks.dtos.ContactoDTO;
 import itson.org.ghosttracks.dtos.DatosPagoDTO;
@@ -9,16 +11,16 @@ import itson.org.ghosttracks.dtos.DireccionEntregaDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.enums.EstadoPedidoDTO;
+import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
 import itson.org.ghosttracks.utilerias.pnlResumenPedido;
 import itson.org.ghosttracksventaenlinea.fachada.VentaEnLineaFachada;
 import itson.org.ghosttracksventaenlinea.interfaces.IVentaEnLinea;
-import java.util.List;
 
 /**
  *
- * @author oliro
+ * @author Cinca
  */
 public class ControlVentaEnLinea {
     
@@ -37,6 +39,12 @@ public class ControlVentaEnLinea {
     // Salto pantallas
     
     public void comenzarProcesoPedido() {
+        CarritoDTO carrito = this.carrito;
+        this.pedidoDTO = new PedidoDTO();
+        this.pedidoDTO.setProductos(carrito.getProductos());
+        
+        System.out.println("Productos en pedido: " + pedidoDTO.getProductos().size());
+        
         navegador.irFormularioContacto();
     }
     
@@ -53,9 +61,12 @@ public class ControlVentaEnLinea {
     }
     
     public void mostrarSeguimientoPedido() {
-        navegador.irSeguimientoPedido();
+        navegador.irSeguimientoPedido(pedidoDTO);
     }
     
+    public void irEditarPago(PedidoDTO pedido) {
+        navegador.irSeleccionMetodoPago();
+    }
     
     // Pantallas
     
@@ -119,6 +130,16 @@ public class ControlVentaEnLinea {
     
     public void llenarResumenPedido(pnlResumenPedido panel) {
         panel.cargarProductos(this.carrito);
+    }
+    
+    public ProductoDTO consultarProducto(String nombre) throws NegocioException {
+        ProductoDTO prod = ventaFachada.consultarProducto(nombre);
+            if (prod != null) {
+                navegador.irVistaProducto(prod);
+            } else {
+        }
+            
+        return null;
     }
     
     // Extras

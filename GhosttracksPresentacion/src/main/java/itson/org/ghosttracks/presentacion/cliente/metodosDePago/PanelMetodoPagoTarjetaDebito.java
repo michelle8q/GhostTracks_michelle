@@ -2,6 +2,7 @@
 package itson.org.ghosttracks.presentacion.cliente.metodosDePago;
 
 import itson.org.ghosttracks.dtos.DatosPagoDTO;
+import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.presentacion.cliente.PantallaSeleccionMetodoDePago;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -71,6 +72,7 @@ public class PanelMetodoPagoTarjetaDebito extends javax.swing.JPanel {
 
         if (validarDatos(numero, fecha, cvv, titular)) {
             enviarDatos(numero, fecha, cvv, titular);
+            
             
             principal.cambiarPantalla("SEGUIMIENTO_PEDIDO");
         }
@@ -158,6 +160,7 @@ public class PanelMetodoPagoTarjetaDebito extends javax.swing.JPanel {
 
         txtNumeroTarjeta.setText("Número de tarjeta");
         txtNumeroTarjeta.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        txtNumeroTarjeta.addActionListener(this::txtNumeroTarjetaActionPerformed);
 
         txtNumeroSeguridad.setText("CVV");
         txtNumeroSeguridad.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -258,6 +261,10 @@ public class PanelMetodoPagoTarjetaDebito extends javax.swing.JPanel {
     private void txtNumeroSeguridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroSeguridadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroSeguridadActionPerformed
+
+    private void txtNumeroTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroTarjetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroTarjetaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,6 +6,8 @@ package itson.org.ghosttracks.utilerias;
 
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,6 +25,22 @@ public class pnlResumenProducto extends javax.swing.JPanel {
         lblArtista.setText(producto.getArtista());
         lblPrecio.setText(String.format("$%.2f", producto.getPrecio()));
         
+        try {
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/img/" + producto.getImgProducto()));
+         
+            Image img = imagen.getImage().getScaledInstance(101,88, Image.SCALE_SMOOTH);
+                  
+            lblImg.setIcon(new ImageIcon(img));
+            
+            lblImg.setIcon(new javax.swing.ImageIcon(img));
+            lblImg.setText(""); 
+            
+        } catch (Exception e) {
+            System.out.println("Error cargando imagen principal de: " + producto.getNombre());
+            lblImg.setIcon(null);
+            lblImg.setText("Imagen no disp.");
+        }
+        
     }
 
     /**
@@ -36,6 +54,7 @@ public class pnlResumenProducto extends javax.swing.JPanel {
 
         panelRedondeado1 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
         pnlImg = new javax.swing.JPanel();
+        lblImg = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblArtista = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
@@ -57,11 +76,13 @@ public class pnlResumenProducto extends javax.swing.JPanel {
         pnlImg.setLayout(pnlImgLayout);
         pnlImgLayout.setHorizontalGroup(
             pnlImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addComponent(lblImg, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
         );
         pnlImgLayout.setVerticalGroup(
             pnlImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
+            .addGroup(pnlImgLayout.createSequentialGroup()
+                .addComponent(lblImg, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
@@ -111,7 +132,7 @@ public class pnlResumenProducto extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblNombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                                 .addComponent(lblPrecio))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblArtista)
@@ -150,6 +171,7 @@ public class pnlResumenProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblArtista;
     private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado1;

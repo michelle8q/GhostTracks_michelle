@@ -13,4 +13,6 @@ import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException
  */
 public interface IAdministradoresBO {
     AdministradorDTO obtenerAdministradorPorId(Long idEmpleado) throws NegocioException;
+    
+    AdministradorDTO buscarPorNombre(String nombre) throws NegocioException;
 }

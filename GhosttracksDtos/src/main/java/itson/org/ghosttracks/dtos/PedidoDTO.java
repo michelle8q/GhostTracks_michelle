@@ -21,27 +21,18 @@ public class PedidoDTO {
     private DireccionEntregaDTO direccionEntrega;
     private DatosPagoDTO datosPago;
     private LocalDateTime fechaPedido;
+    private String folio;
 
     public PedidoDTO() {
     }
     
-    public void calcularTotales(Double tarifaEnvio) {
-        this.subtotal = 0.0;
-        if (productos != null) {
-            for (ItemCarritoDTO item : productos) {
-                item.calcularSubtotal();
-                this.subtotal += item.getSubtotal();
-            }
-        }
-        this.costoEnvio = tarifaEnvio;
-        this.total = this.subtotal + this.costoEnvio;
-    }
 
-    public PedidoDTO(Long idPedido, Long idCliente, EstadoPedidoDTO estado, Double total) {
+    public PedidoDTO(Long idPedido, Long idCliente, EstadoPedidoDTO estado, Double total, String folio) {
         this.idPedido = idPedido;
         this.idCliente = idCliente;
         this.estado = estado;
         this.total = total;
+        this.folio = folio;
     }
 
     public PedidoDTO(
@@ -55,7 +46,8 @@ public class PedidoDTO {
             EstadoPedidoDTO estado, 
             DireccionEntregaDTO direccionEntrega, 
             DatosPagoDTO datosPago,
-            LocalDateTime fechaPedido
+            LocalDateTime fechaPedido,
+            String folio
     ) {
         this.idPedido = idPedido;
         this.idCliente = idCliente;
@@ -68,6 +60,7 @@ public class PedidoDTO {
         this.direccionEntrega = direccionEntrega;
         this.datosPago = datosPago;
         this.fechaPedido = fechaPedido;
+        this.folio = folio;
     }
     
     public Long getIdCliente() {
@@ -156,6 +149,14 @@ public class PedidoDTO {
 
     public void setFechaPedido(LocalDateTime fechaPedido) {
         this.fechaPedido = fechaPedido;
+    }
+
+    public String getFolio() {
+        return folio;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
     }
     
     

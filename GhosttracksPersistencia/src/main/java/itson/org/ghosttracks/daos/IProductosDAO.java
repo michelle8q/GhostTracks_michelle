@@ -17,4 +17,6 @@ public interface IProductosDAO {
     
     public abstract Producto agregar(ProductoDTO producto) throws PersistenciaException;
     
+    public abstract Producto buscarPorNombre(String nombre) throws PersistenciaException;
+    
 }

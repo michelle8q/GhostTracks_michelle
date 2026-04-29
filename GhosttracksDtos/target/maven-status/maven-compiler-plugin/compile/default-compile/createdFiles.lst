@@ -14,5 +14,6 @@ itson\org\ghosttracks\dtos\DireccionClienteDTO.class
 itson\org\ghosttracks\dtos\PedidoDTO.class
 itson\org\ghosttracks\dtos\CarritoDTO.class
 itson\org\ghosttracks\enums\EstadoProducto.class
+itson\org\ghosttracks\enums\TipoPago.class
 itson\org\ghosttracks\dtos\DatosPagoDTO.class
 itson\org\ghosttracks\enums\EstadoPaquete.class

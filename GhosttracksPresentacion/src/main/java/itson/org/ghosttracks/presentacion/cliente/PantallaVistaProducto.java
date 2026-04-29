@@ -3,6 +3,8 @@ package itson.org.ghosttracks.presentacion.cliente;
 
 import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -62,8 +64,8 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         lblArtista = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
         textFieldRedondeado1 = new itson.org.ghosttracks.utilerias.TextFieldRedondeado();
-        botonRedondeado2 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
-        botonRedondeado3 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
+        btnRestarCantidad = new itson.org.ghosttracks.utilerias.BotonRedondeado();
+        btnAumentarCantidad = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         lblUnidad = new javax.swing.JLabel();
         btnAniadirAlCarrito = new javax.swing.JButton();
         lblSetlist = new javax.swing.JLabel();
@@ -418,12 +420,14 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         textFieldRedondeado1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textFieldRedondeado1.setText("Cantidad");
         textFieldRedondeado1.setPreferredSize(new java.awt.Dimension(100, 35));
+        textFieldRedondeado1.addActionListener(this::textFieldRedondeado1ActionPerformed);
 
-        botonRedondeado2.setText("-");
-        botonRedondeado2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRestarCantidad.setText("-");
+        btnRestarCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        botonRedondeado3.setText("+");
-        botonRedondeado3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAumentarCantidad.setText("+");
+        btnAumentarCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAumentarCantidad.addActionListener(this::btnAumentarCantidadActionPerformed);
 
         lblUnidad.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         lblUnidad.setForeground(new java.awt.Color(102, 102, 102));
@@ -445,9 +449,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
                 .addGroup(panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRedondeado5Layout.createSequentialGroup()
                         .addGap(211, 211, 211)
-                        .addGroup(panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAniadirAlCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRedondeado5Layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addComponent(lblArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -459,17 +461,21 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
                         .addComponent(lblNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado5Layout.createSequentialGroup()
-                        .addGroup(panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRedondeado5Layout.createSequentialGroup()
-                                .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonRedondeado3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelRedondeado5Layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(lblUnidad)))
+                        .addComponent(btnRestarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAumentarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(225, 225, 225))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado5Layout.createSequentialGroup()
+                        .addComponent(lblUnidad)
+                        .addGap(285, 285, 285))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado5Layout.createSequentialGroup()
+                        .addComponent(btnAniadirAlCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(203, 203, 203))))
         );
         panelRedondeado5Layout.setVerticalGroup(
             panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -483,8 +489,8 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFieldRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonRedondeado3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRestarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAumentarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUnidad)
                 .addGap(18, 18, 18)
@@ -565,13 +571,21 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         control.mostrarMensaje("Producto agregado con exito", false);
     }//GEN-LAST:event_btnAniadirAlCarritoActionPerformed
 
+    private void textFieldRedondeado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRedondeado1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldRedondeado1ActionPerformed
+
+    private void btnAumentarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAumentarCantidadActionPerformed
+
     private void cargarDatosProducto() {
-        // 1. Llenamos los datos básicos
+
         lblNombreProducto.setText(producto.getNombre());
         lblArtista.setText(producto.getArtista());
         lblPrecio.setText(String.format("$%.2f", producto.getPrecio()));
         
-        // 2. Acomodamos el setlist (usamos HTML básico para que el JLabel acepte saltos de línea)
+        
         if (producto.getSetlist() != null && !producto.getSetlist().isEmpty()) {
             String canciones = String.join("<br>", producto.getSetlist());
             lblSetlist.setText("<html><div style='text-align:center;'>" + canciones + "</div></html>");
@@ -579,16 +593,14 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
             lblSetlist.setText("Setlist no disponible");
         }
 
-        // 3. Magia para descargar y escalar la imagen grande
         try {
-            java.net.URL url = new java.net.URL(producto.getImgProducto());
-            java.awt.Image imagenOriginal = javax.imageio.ImageIO.read(url);
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/img/" + producto.getImgProducto()));
+         
+            Image img = imagen.getImage().getScaledInstance(400,400, Image.SCALE_SMOOTH);
+                  
+            lblImgProducto.setIcon(new ImageIcon(img));
             
-            // OJO: Aquí le puse 400x400 porque en esta pantalla la imagen es más grande.
-            // Ajusta estos números dependiendo de qué tan grande sea tu lblImgProducto
-            java.awt.Image imagenEscalada = imagenOriginal.getScaledInstance(450, 450, java.awt.Image.SCALE_SMOOTH);
-            
-            lblImgProducto.setIcon(new javax.swing.ImageIcon(imagenEscalada));
+            lblImgProducto.setIcon(new javax.swing.ImageIcon(img));
             lblImgProducto.setText(""); 
             
         } catch (Exception e) {
@@ -600,9 +612,9 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado1;
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado2;
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado3;
     private javax.swing.JButton btnAniadirAlCarrito;
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnAumentarCantidad;
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnRestarCantidad;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblArtistSug01;
     private javax.swing.JLabel lblArtistSug02;

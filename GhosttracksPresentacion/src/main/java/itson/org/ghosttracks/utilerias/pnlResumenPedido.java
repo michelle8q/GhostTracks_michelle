@@ -9,7 +9,6 @@ import itson.org.ghosttracks.dtos.CarritoDTO;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import javax.swing.BoxLayout;
-import javax.swing.JPanel;
 
 /**
  *
@@ -23,7 +22,7 @@ public class pnlResumenPedido extends javax.swing.JPanel {
      */
     public pnlResumenPedido(ControlVentaEnLinea ctrl) {
         this();
-        this.control = control;
+        this.control = ctrl;
     }
     
     public pnlResumenPedido() {
@@ -49,7 +48,6 @@ public class pnlResumenPedido extends javax.swing.JPanel {
         lblSubtotal = new javax.swing.JLabel();
         lblTax = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
-        btnEliminarCarrito = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlContenedorProd = new javax.swing.JPanel();
@@ -136,16 +134,6 @@ public class pnlResumenPedido extends javax.swing.JPanel {
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        btnEliminarCarrito.setBackground(new java.awt.Color(181, 181, 181));
-        btnEliminarCarrito.setForeground(new java.awt.Color(204, 0, 0));
-        btnEliminarCarrito.setText("Eliminar carrito");
-        btnEliminarCarrito.setBorder(null);
-        btnEliminarCarrito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarCarritoActionPerformed(evt);
-            }
-        });
-
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\cinca\\Documents\\carro 1.png")); // NOI18N
 
         pnlContenedorProd.setBackground(new java.awt.Color(204, 204, 204));
@@ -195,9 +183,7 @@ public class pnlResumenPedido extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
-                        .addComponent(btnEliminarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9))
+                        .addGap(9, 302, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(pnlTotales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -215,9 +201,7 @@ public class pnlResumenPedido extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEliminarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,37 +215,27 @@ public class pnlResumenPedido extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEliminarCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCarritoActionPerformed
-        limpiarCarrito();
-    }//GEN-LAST:event_btnEliminarCarritoActionPerformed
-    
-    public void limpiarCarrito() {
-        pnlContenedorProd.removeAll();
-        lblSubtotal.setText("$0");
-        lblTax.setText("$0");
-        lblTotal.setText("$0");
-        
-        pnlContenedorProd.revalidate();
-        pnlContenedorProd.repaint();
-    }
     
     public void cargarProductos(CarritoDTO carrito) {
         pnlContenedorProd.removeAll();
         
         if(carrito != null && carrito.getProductos() != null) {
+            Double subtotalCalculado = 0.0;
             
             for(ItemCarritoDTO item: carrito.getProductos()){
                 
                 ProductoDTO producto = item.getProductoSeleccionado();
-                item.getSubtotal();
+                item.calcularSubtotal();
+                subtotalCalculado += item.getSubtotal();
                 pnlResumenProducto pnl = new pnlResumenProducto(producto);
                 pnlContenedorProd.add(pnl);
                 
                 }
             
-            lblSubtotal.setText("$");
-            lblTax.setText("$");
-            lblTotal.setText("$" + carrito.getTotal());
+            Double tax = subtotalCalculado * 0.16;
+            lblSubtotal.setText(String.format("$%.2f", subtotalCalculado));
+            lblTax.setText(String.format("$%.2f", tax));
+            lblTotal.setText(String.format("$%.2f", carrito.getTotal() + tax));
         }
         pnlContenedorProd.revalidate();
         pnlContenedorProd.repaint();
@@ -269,7 +243,6 @@ public class pnlResumenPedido extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminarCarrito;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

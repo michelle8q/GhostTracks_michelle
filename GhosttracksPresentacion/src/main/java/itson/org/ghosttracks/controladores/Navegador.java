@@ -3,7 +3,9 @@ package itson.org.ghosttracks.controladores;
 
 import itson.org.ghosttracks.dtos.AdministradorDTO;
 import itson.org.ghosttracks.dtos.ClienteDTO;
+import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import itson.org.ghosttracks.presentacion.VentanaPrincipal;
 import itson.org.ghosttracks.presentacion.administrador.PantallaVentasProcesarAdmin;
 import itson.org.ghosttracks.presentacion.administrador.PantallaVentas;
@@ -86,9 +88,18 @@ public class Navegador {
         ventana.cambiarPantalla(vista);
     }
     
-    public void irSeguimientoPedido() {
-        PantallaSeguimientoPedido vista = new PantallaSeguimientoPedido(ctrlVentaLinea);
+   
+    public void irSeguimientoPedido(PedidoDTO pedido) {
+        PantallaSeguimientoPedido vista = new PantallaSeguimientoPedido(ctrlVentaLinea, pedido);
         ventana.cambiarPantalla(vista);
+    }
+    
+    public void irSeguimientoPedido() {
+        ctrlVentaLinea.mostrarSeguimientoPedido();
+    }
+    
+    public void buscarProductoCatalogo(String buscar) throws NegocioException {
+        ctrlVentaLinea.consultarProducto(buscar);
     }
     
     // Paneles admin

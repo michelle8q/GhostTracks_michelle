@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public class PedidosMockDAO implements IPedidosDAO{
     private List<Pedido> baseDatosPedidos = new ArrayList<>();
@@ -31,6 +31,7 @@ public class PedidosMockDAO implements IPedidosDAO{
         p1.setTotal(1500.50);
         p1.setEstado(EstadoPedido.PAGADO); 
         baseDatosPedidos.add(p1);
+        p1.setFolio("1YHU");
 
         Pedido p2 = new Pedido();
         p2.setIdPedido(idAutoincrementable++);
@@ -38,6 +39,7 @@ public class PedidosMockDAO implements IPedidosDAO{
         p2.setTotal(340.00);
         p2.setEstado(EstadoPedido.PAGADO); 
         baseDatosPedidos.add(p2);
+        p1.setFolio("2RTY");
 
         Pedido p3 = new Pedido();
         p3.setIdPedido(idAutoincrementable++);
@@ -45,6 +47,7 @@ public class PedidosMockDAO implements IPedidosDAO{
         p3.setTotal(899.99);
         p3.setEstado(EstadoPedido.PAGADO); 
         baseDatosPedidos.add(p3);
+        p1.setFolio("3WRT");
         
         Pedido p4 = new Pedido();
         p4.setIdPedido(idAutoincrementable++);
@@ -52,6 +55,7 @@ public class PedidosMockDAO implements IPedidosDAO{
         p4.setTotal(250.00);
         p4.setEstado(EstadoPedido.PAGADO); 
         baseDatosPedidos.add(p4);
+        p1.setFolio("4CFG");
     }
     
     

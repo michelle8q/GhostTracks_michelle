@@ -4,12 +4,14 @@ package itson.org.ghosttracks.utilerias;
 import itson.org.ghosttracks.mocks.ProductosMockDAO;
 import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
- * @author emyla
+ * @author cinca
  */
 public class pnlProductoCatalogo extends javax.swing.JPanel {
 
@@ -31,21 +33,15 @@ public class pnlProductoCatalogo extends javax.swing.JPanel {
         
         
         try {
-            // 1. Convertimos el String a una URL real de Java
-            java.net.URL url = new java.net.URL(producto.getImgProducto());
-
-            // 2. Descargamos la imagen de internet
-            java.awt.Image imagenOriginal = javax.imageio.ImageIO.read(url);
-
-            // 3. Escala la imagen. Ajusta los números (150, 150) al ancho y alto de tu pnlImgProduct
-            java.awt.Image imagenEscalada = imagenOriginal.getScaledInstance(180, 150, java.awt.Image.SCALE_SMOOTH);
-
-            // 4. Metemos la imagen en el Label y quitamos cualquier texto de fondo
-            lblImg.setIcon(new javax.swing.ImageIcon(imagenEscalada));
-            lblImg.setText(""); 
+            
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/img/" + producto.getImgProducto()));
+         
+            Image img = imagen.getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH);
+                  
+            lblImg.setIcon(new ImageIcon(img)); 
 
         } catch (Exception e) {
-            // Si no hay internet o el link se cae, mostramos un plan B
+            
             System.out.println("Error cargando imagen de: " + producto.getNombre());
             lblImg.setIcon(null);
             lblImg.setText("Imagen no disp.");
@@ -54,7 +50,6 @@ public class pnlProductoCatalogo extends javax.swing.JPanel {
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 control.mostrarDetalleProducto(producto);
-                // control.mostrarPantallaVistaProducto(null, producto, pantallaPadre);
             }
         });
     }

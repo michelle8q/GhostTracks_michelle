@@ -97,13 +97,14 @@ public class PedidosBO implements IPedidosBO {
             for (Pedido p : pedidosEntidad) {
                 Long id = p.getIdPedido();
                 Long cliente = p.getIdCliente();
-                Double total = p.getTotal(); 
+                Double total = p.getTotal();
+                String folio = p.getFolio();
                 
                 EstadoPedidoDTO estadoDTO = null;
                 if (p.getEstado() != null) {
                     estadoDTO = EstadoPedidoDTO.valueOf(p.getEstado().name());
                 }
-                PedidoDTO dto = new PedidoDTO(id, cliente, estadoDTO, total);
+                PedidoDTO dto = new PedidoDTO(id, cliente, estadoDTO, total, folio);
                 pedidosDTO.add(dto);
             }
 

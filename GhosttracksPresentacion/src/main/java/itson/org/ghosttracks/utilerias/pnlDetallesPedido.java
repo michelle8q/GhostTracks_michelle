@@ -11,18 +11,43 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
  * @author cinca
  */
 public class pnlDetallesPedido extends javax.swing.JPanel {
-
+    private PedidoDTO pedido;
+    
     /**
      * Creates new form pnlDetallesPedido
      */
-    public pnlDetallesPedido() {
+    public pnlDetallesPedido(PedidoDTO pedido) {
         initComponents();
         
-        lblFolio.setText(TOOL_TIP_TEXT_KEY);
-        lblNombre.setText(TOOL_TIP_TEXT_KEY);
-        lblSucursal.setText(TOOL_TIP_TEXT_KEY);
-        lblEstado.setText(TOOL_TIP_TEXT_KEY);
+        this.pedido = pedido;
+        
+        mostrarDetallesPedido(pedido);
     }
+    
+    public pnlDetallesPedido() {
+        
+    }
+    
+    public void mostrarDetallesPedido(PedidoDTO pedido) {
+     
+      pnlCont.removeAll();
+
+        if (pedido != null) {
+        
+            lblFolio.setText(pedido.getFolio());
+            //lblNombre.setText(pedido.);
+            lblEstado.setText(pedido.getEstado().name());
+
+            lblSubtotal.setText(String.format("$%.2f", pedido.getSubtotal()));
+            lblTax.setText(String.format("$%.2f", pedido.getSubtotal() * 0.16));
+            lblTotal.setText(String.format("$%.2f", pedido.getTotal()));
+    }
+
+    
+    pnlCont.revalidate();
+    pnlCont.repaint();
+
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,28 +58,29 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlCont = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lvlFolio = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lblFolio = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lblSucursal = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
         pnlPrecios = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         lblSubtotal = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblTax = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(342, 598));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        pnlCont.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Detalles del pedido");
 
@@ -65,10 +91,6 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cliente");
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Sucursal");
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -85,10 +107,6 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
         lblNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setText("Nombre");
-
-        lblSucursal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblSucursal.setForeground(new java.awt.Color(0, 0, 0));
-        lblSucursal.setText("Sucursal");
 
         lblEstado.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblEstado.setForeground(new java.awt.Color(0, 0, 0));
@@ -109,17 +127,17 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Tax(16%)");
 
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("$0.0");
+        lblTax.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblTax.setForeground(new java.awt.Color(0, 0, 0));
+        lblTax.setText("$0.0");
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Total");
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("$0.0");
+        lblTotal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotal.setText("$0.0");
 
         javax.swing.GroupLayout pnlPreciosLayout = new javax.swing.GroupLayout(pnlPrecios);
         pnlPrecios.setLayout(pnlPreciosLayout);
@@ -134,8 +152,8 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlPreciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSubtotal)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12))
+                    .addComponent(lblTax)
+                    .addComponent(lblTotal))
                 .addGap(51, 51, 51))
         );
         pnlPreciosLayout.setVerticalGroup(
@@ -148,72 +166,85 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(pnlPreciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addComponent(lblTax))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(pnlPreciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addGap(15, 15, 15))
+                    .addComponent(lblTotal))
+                .addGap(45, 45, 45))
+        );
+
+        javax.swing.GroupLayout pnlContLayout = new javax.swing.GroupLayout(pnlCont);
+        pnlCont.setLayout(pnlContLayout);
+        pnlContLayout.setHorizontalGroup(
+            pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContLayout.createSequentialGroup()
+                .addGroup(pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlContLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFolio)
+                            .addComponent(lblNombre)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlContLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlContLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblEstado))
+                            .addGroup(pnlContLayout.createSequentialGroup()
+                                .addGroup(pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3)
+                                    .addComponent(lvlFolio)
+                                    .addComponent(jLabel1))
+                                .addGap(0, 92, Short.MAX_VALUE)))))
+                .addGap(33, 33, 33))
+            .addComponent(pnlPrecios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlContLayout.setVerticalGroup(
+            pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addGroup(pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lvlFolio)
+                    .addComponent(lblFolio))
+                .addGap(32, 32, 32)
+                .addGroup(pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblNombre))
+                .addGap(45, 45, 45)
+                .addGroup(pnlContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblEstado))
+                .addGap(67, 67, 67)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addComponent(pnlPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lvlFolio)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFolio)
-                    .addComponent(lblNombre)
-                    .addComponent(lblSucursal)
-                    .addComponent(lblEstado))
-                .addGap(45, 45, 45))
-            .addComponent(pnlPrecios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlCont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lvlFolio)
-                    .addComponent(lblFolio))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lblNombre))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(lblSucursal))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(lblEstado))
-                .addGap(33, 33, 33)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                .addComponent(pnlPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -222,8 +253,10 @@ public class pnlDetallesPedido extends javax.swing.JPanel {
     private javax.swing.JLabel lblFolio;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblSubtotal;
-    private javax.swing.JLabel lblSucursal;
+    private javax.swing.JLabel lblTax;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lvlFolio;
+    private javax.swing.JPanel pnlCont;
     private javax.swing.JPanel pnlPrecios;
     // End of variables declaration//GEN-END:variables
 }

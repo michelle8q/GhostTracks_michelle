@@ -113,6 +113,8 @@ public class ProductosMockDAO implements IProductosDAO {
             throw new PersistenciaException("Error inesperado al intentar buscar el producto.", e);
         }
     }
+    
+    
 
     @Override
     public Producto agregar(ProductoDTO productoDTO) throws PersistenciaException {
@@ -143,6 +145,29 @@ public class ProductosMockDAO implements IProductosDAO {
         } catch (Exception e) {
             LOGGER.severe("Error crítico e inesperado al intentar agregar un nuevo producto" + e.getMessage());
             throw new PersistenciaException("No se pudo guardar el producto debido a un error interno.", e);
+        }
+    }
+    
+    @Override
+    public Producto buscarPorNombre(String nombre) throws PersistenciaException {
+        if (nombre == null) {
+            throw new PersistenciaException("El nombre del producto a buscar no puede ser nulo");
+        }
+
+        try {
+            for (Producto producto : productosDB) {
+                if (producto.getNombre().equals(nombre)) {
+                    return producto;
+                }
+            }
+            throw new PersistenciaException("Producto no encontrado con el nombre: " + nombre);
+
+        } catch (PersistenciaException e) {
+            throw e;
+
+        } catch (Exception e) {
+            LOGGER.severe("Error crítico e inesperado al buscar el producto por nombre: " + e.getMessage());
+            throw new PersistenciaException("Error inesperado al intentar buscar el producto.", e);
         }
     }
     

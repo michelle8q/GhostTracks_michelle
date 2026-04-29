@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public class ClientesMockDAO implements IClientesDAO{
     private List<Cliente> clientesDB;
@@ -22,12 +22,12 @@ public class ClientesMockDAO implements IClientesDAO{
         this.clientesDB = new ArrayList<>();
         Cliente c = new Cliente();
         c.setIdUsuario(1L);
-        c.setNombres("Emy");
-        c.setApellidoPaterno("Ghost");
-        c.setApellidoMaterno("Tracks");
-        c.setCorreo("emy@ghosttracks.com");
+        c.setNombres("Michelle");
+        c.setApellidoPaterno("Castillo");
+        c.setApellidoMaterno("Vizcarra");
+        c.setCorreo("michelle@ghosttracks.com");
         c.setContraseña("secreta123");
-        c.setTelefono("6441234567");
+        c.setTelefono("6444206316");
         
         
         Direccion dir = new Direccion();
@@ -47,5 +47,15 @@ public class ClientesMockDAO implements IClientesDAO{
             }
         }
         throw new PersistenciaException("Cliente no encontrado con el ID: " + idCliente);
+    }
+    
+    @Override
+    public Cliente buscarPorNombre(String nombre) throws PersistenciaException {
+        for (Cliente cliente : clientesDB) {
+            if (cliente.getNombres().equals(nombre)) {
+                return cliente;
+            }
+        }
+        throw new PersistenciaException("Cliente no encontrado con el ID: " + nombre);
     }
 }

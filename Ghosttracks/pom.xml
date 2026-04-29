@@ -12,6 +12,7 @@
         <module>../GhosttracksPersistencia</module>
         <module>../GhosttracksPresentacion</module>
         <module>GhosttracksVentaEnLinea</module>
+        <module>GhosttracksInfrastructura</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

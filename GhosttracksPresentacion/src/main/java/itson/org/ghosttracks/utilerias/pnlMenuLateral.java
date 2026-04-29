@@ -1,13 +1,12 @@
 
 package itson.org.ghosttracks.utilerias;
 
-import itson.org.ghosttracks.controladores.Controlador;
+
 import itson.org.ghosttracks.controladores.Navegador;
-import javax.swing.JFrame;
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public class pnlMenuLateral extends javax.swing.JPanel {
 
@@ -47,7 +46,7 @@ public class pnlMenuLateral extends javax.swing.JPanel {
         lblMenu1.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         lblMenu1.setText("Menú principal");
 
-        btnCompraENLinea.setBackground(new java.awt.Color(237, 229, 222));
+        btnCompraENLinea.setBackground(new java.awt.Color(230, 94, 7));
         btnCompraENLinea.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
         btnCompraENLinea.setText("Compra en línea");
         btnCompraENLinea.setBorder(null);
@@ -134,7 +133,7 @@ public class pnlMenuLateral extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        
+        navegador.irInicioCliente();
     }//GEN-LAST:event_btnInicioActionPerformed
 
 

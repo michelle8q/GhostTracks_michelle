@@ -13,4 +13,6 @@ import itson.org.ghosttracks.exceptions.PersistenciaException;
  */
 public interface IClientesDAO {
     Cliente buscarPorId(Long idCliente) throws PersistenciaException;
+    
+    Cliente buscarPorNombre(String nombre) throws PersistenciaException;
 }

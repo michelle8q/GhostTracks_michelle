@@ -22,7 +22,7 @@ public class PanelSeleccionMetodoPago extends javax.swing.JPanel {
             if (rbtnTarjetaDebito2.isSelected()) {
                 principal.cambiarPantalla("PAGO_TARJETA");
             } else if (rbtnMercadoPago2.isSelected()) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Método no implementado aún.");
+                principal.cambiarPantalla("PAGO_MERCADO");
             } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Por favor seleccione un método.");
             }

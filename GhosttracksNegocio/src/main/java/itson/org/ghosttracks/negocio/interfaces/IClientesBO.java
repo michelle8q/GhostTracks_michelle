@@ -9,8 +9,10 @@ import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public interface IClientesBO {
     ClienteDTO obtenerClientePorId(Long idCliente) throws NegocioException;
+    
+    ClienteDTO buscarPorNombre(String nombre) throws NegocioException;
 }

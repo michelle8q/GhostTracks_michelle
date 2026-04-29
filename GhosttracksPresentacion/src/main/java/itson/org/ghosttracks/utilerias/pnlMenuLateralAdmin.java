@@ -32,7 +32,6 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
         lblLogo = new javax.swing.JLabel();
         btnCerrarSesion = new javax.swing.JButton();
         lblAdminnistracion = new javax.swing.JLabel();
-        btnInventario = new java.awt.Label();
 
         setBackground(new java.awt.Color(230, 94, 7));
 
@@ -51,6 +50,7 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
         btnInicio.setText("Inicio");
         btnInicio.setBorder(null);
         btnInicio.setPreferredSize(new java.awt.Dimension(250, 40));
+        btnInicio.addActionListener(this::btnInicioActionPerformed);
 
         btnArticulos.setBackground(new java.awt.Color(230, 94, 7));
         btnArticulos.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
@@ -70,10 +70,6 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
 
         lblAdminnistracion.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         lblAdminnistracion.setText("Administracion");
-
-        btnInventario.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        btnInventario.setForeground(new java.awt.Color(204, 204, 204));
-        btnInventario.setText("Inventario");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -100,9 +96,7 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
                         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAdminnistracion))))
+                        .addComponent(lblAdminnistracion)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,9 +112,7 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
                 .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(btnArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(82, 82, 82)
                 .addComponent(lblAdminnistracion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,12 +128,15 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
         navegador.cerrarSesion();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        navegador.irVentasAdmin();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArticulos;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnInicio;
-    private java.awt.Label btnInventario;
     private javax.swing.JButton btnVentas;
     private javax.swing.JLabel lblAdminnistracion;
     private javax.swing.JLabel lblLogo;

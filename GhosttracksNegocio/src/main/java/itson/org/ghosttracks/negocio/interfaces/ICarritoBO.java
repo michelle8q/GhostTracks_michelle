@@ -17,4 +17,6 @@ public interface ICarritoBO {
     CarritoDTO agregarProducto(CarritoDTO carritoActual, ProductoDTO producto, Integer cantidad) throws NegocioException;
     
     CarritoDTO eliminarProducto(CarritoDTO carritoActual, Long idProducto) throws NegocioException;
+    
+    CarritoDTO limpiarCarrito(CarritoDTO carrito) throws NegocioException;
 }

@@ -3,6 +3,7 @@ package itson.org.ghosttracksventaenlinea.fachada;
 import itson.org.ghosttracks.dtos.AdministradorDTO;
 import itson.org.ghosttracks.dtos.CarritoDTO;
 import itson.org.ghosttracks.dtos.ClienteDTO;
+import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.enums.EstadoPedidoDTO;
@@ -24,7 +25,7 @@ import java.util.List;
  *
  * @author nafbr
  */
-public class VentaEnLineaFachada implements IVentaEnLinea{
+    public class VentaEnLineaFachada implements IVentaEnLinea{
     private final IPedidosBO pedidosBO;
     private final IProductosBO productosBO;
     private final IClientesBO clientesBO;
@@ -53,17 +54,25 @@ public class VentaEnLineaFachada implements IVentaEnLinea{
     }
     
     @Override
-    public ClienteDTO consultarPerfilCliente(Long idCliente) throws Exception {
+    public ClienteDTO consultarPerfilCliente(Long idCliente, String nombre) throws Exception {
         if (idCliente == null) {
             throw new NegocioException("Administrador no encontrado");
+        
+        }
+        if (nombre == null) {
+            throw new NegocioException("Cliente no encontrado");
         
         }
         return clientesBO.obtenerClientePorId(idCliente);
     }
     
     @Override
-    public AdministradorDTO consultarPerfilAdministrador(Long idEmpleado) throws Exception {
+    public AdministradorDTO consultarPerfilAdministrador(Long idEmpleado, String nombre) throws Exception {
         if (idEmpleado == null) {
+            throw new NegocioException("Administrador no encontrado");
+        
+        }
+        if (nombre == null) {
             throw new NegocioException("Administrador no encontrado");
         
         }
@@ -97,14 +106,29 @@ public class VentaEnLineaFachada implements IVentaEnLinea{
     }
     
     @Override
+    public void calcularTotalesPedido(PedidoDTO pedidoDto) {
+        double subtotal = 0.0;
+
+        for (ItemCarritoDTO item : pedidoDto.getProductos()) {
+            double subtot = item.getCantidad() *item.getProductoSeleccionado().getPrecio();
+            item.setSubtotal(subtot);
+            subtotal += subtot;
+        }
+
+        double envio = 150.0;
+        double total = subtotal + envio;
+        pedidoDto.setSubtotal(subtotal);
+        pedidoDto.setCostoEnvio(envio);
+        pedidoDto.setTotal(total);
+    }
+  
+    @Override
     public PedidoDTO confirmarCompra(PedidoDTO pedidoDto) throws Exception {
         if (pedidoDto == null || pedidoDto.getProductos() == null || pedidoDto.getProductos().isEmpty()) {
             throw new NegocioException("No se puede procesar un pedido vacío.");
         }
         
-        if (pedidoDto.getTotal() == null || pedidoDto.getTotal() == 0) {
-                pedidoDto.calcularTotales(150.0); 
-        }
+        calcularTotalesPedido(pedidoDto);
         
         return pedidosBO.generarPedido(pedidoDto);
     }
@@ -126,4 +150,15 @@ public class VentaEnLineaFachada implements IVentaEnLinea{
     public List<PedidoDTO> obtenerTodosLosPedidos() throws Exception {
         return pedidosBO.obtenerTodosLosPedidos();
     }
+    
+    @Override
+    public ProductoDTO consultarProducto(String nombre) throws NegocioException {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            return null;
+        }
+        
+        return productosBO.buscarProductoPorNombre(nombre.trim());
+    }
+
+    
 }

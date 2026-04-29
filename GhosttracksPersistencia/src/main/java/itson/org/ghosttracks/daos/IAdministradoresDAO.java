@@ -16,4 +16,6 @@ public interface IAdministradoresDAO {
     public abstract Administrador buscarPorId(Long idUsuario) throws PersistenciaException;
     
     public abstract Administrador buscarPorIdEmpleado(Long idEmpleado) throws PersistenciaException;
+    
+    public abstract Administrador buscarPorNombre(String nombre) throws PersistenciaException;
 }

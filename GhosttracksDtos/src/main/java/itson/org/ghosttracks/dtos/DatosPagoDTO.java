@@ -1,5 +1,6 @@
 package itson.org.ghosttracks.dtos;
 
+import itson.org.ghosttracks.enums.TipoPago;
 import java.time.LocalDateTime;
 
 /**
@@ -13,6 +14,7 @@ public class DatosPagoDTO {
     private String numeroTrajeta;
     private LocalDateTime fechaExpiracion;
     private String cvv;
+    private TipoPago tipoPago;
 
     public DatosPagoDTO() {
     }
@@ -29,12 +31,13 @@ public class DatosPagoDTO {
         this.cvv = cvv;
     }
 
-    public DatosPagoDTO(Long idTarjeta, String titularTarjeta, String numeroTrajeta, LocalDateTime fechaExpiracion, String cvv) {
+    public DatosPagoDTO(Long idTarjeta, String titularTarjeta, String numeroTrajeta, LocalDateTime fechaExpiracion, String cvv, TipoPago tipoPago) {
         this.idTarjeta = idTarjeta;
         this.titularTarjeta = titularTarjeta;
         this.numeroTrajeta = numeroTrajeta;
         this.fechaExpiracion = fechaExpiracion;
         this.cvv = cvv;
+        this.tipoPago = tipoPago;
     }
 
     public Long getIdTarjeta() {
@@ -75,6 +78,14 @@ public class DatosPagoDTO {
 
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public TipoPago getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(TipoPago tipoPago) {
+        this.tipoPago = tipoPago;
     }
     
     

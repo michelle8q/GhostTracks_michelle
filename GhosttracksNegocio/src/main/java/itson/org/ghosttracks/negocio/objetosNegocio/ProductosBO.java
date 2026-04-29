@@ -79,4 +79,30 @@ public class ProductosBO implements IProductosBO {
             throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());
         }
     }
+    
+    @Override
+    public ProductoDTO buscarProductoPorNombre(String nombre) throws NegocioException {
+
+        try {
+            Producto entidad = productosDAO.buscarPorNombre(nombre);
+            ProductoDTO dto = new ProductoDTO();
+            
+            dto.setIdProducto(entidad.getIdProducto());
+            dto.setNombre(entidad.getNombre());
+            dto.setImgProducto(entidad.getImgProducto());
+            dto.setTipoProducto(entidad.getTipo());
+            dto.setArtista(entidad.getArtista());
+            dto.setGenero(entidad.getGenero());
+            dto.setSetlist(entidad.getSetlist());
+            dto.setPrecio(entidad.getPrecio());
+            dto.setStock(entidad.getStock());
+            dto.setEstado(entidad.getEstado());
+
+            return dto;
+
+        } catch (PersistenciaException e) {
+            throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());
+        }
+    }
+    
 }

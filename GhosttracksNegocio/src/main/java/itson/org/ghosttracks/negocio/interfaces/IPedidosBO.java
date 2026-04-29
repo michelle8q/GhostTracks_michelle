@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public interface IPedidosBO {
     PedidoDTO generarPedido(PedidoDTO pedidoDto) throws NegocioException;

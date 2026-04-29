@@ -10,6 +10,7 @@ import itson.org.ghosttracks.dtos.ClienteDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.enums.EstadoPedidoDTO;
+import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import java.util.List;
 
 /**
@@ -22,9 +23,9 @@ public interface IVentaEnLinea {
 
     ProductoDTO consultarDetalleProducto(Long id) throws Exception;
 
-    ClienteDTO consultarPerfilCliente(Long idCliente) throws Exception;
+    ClienteDTO consultarPerfilCliente(Long idCliente, String nombre) throws Exception;
     
-    AdministradorDTO consultarPerfilAdministrador(Long idEmpleado) throws Exception;
+    AdministradorDTO consultarPerfilAdministrador(Long idEmpleado, String nombre) throws Exception;
     
     CarritoDTO agregarAlCarrito(CarritoDTO carritoActual, ProductoDTO producto, Integer cantidad) throws Exception;
     
@@ -35,4 +36,9 @@ public interface IVentaEnLinea {
     CarritoDTO eliminarDelCarrito(CarritoDTO carrito, Long idProducto) throws Exception;
     
     List<PedidoDTO> obtenerTodosLosPedidos() throws Exception;
+    
+    void calcularTotalesPedido(PedidoDTO pedidoDto);
+    
+    ProductoDTO consultarProducto(String nombre) throws NegocioException;
+    
 }

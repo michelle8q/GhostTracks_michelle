@@ -1,5 +1,6 @@
 itson\org\ghosttracks\negocio\interfaces\IAdministradoresBO.class
 itson\org\ghosttracks\negocio\objetosNegocio\ProductosBO.class
+itson\org\ghosttracks\negocio\objetosNegocio\pagos\GestorPagosStrategy.class
 itson\org\ghosttracks\negocio\objetosNegocio\AdministradoresBO.class
 itson\org\ghosttracks\negocio\objetosNegocio\Excepciones\NegocioException.class
 itson\org\ghosttracks\negocio\mappers\PedidoAdapter.class
@@ -13,5 +14,6 @@ itson\org\ghosttracks\negocio\mappers\SucursalAdapter.class
 itson\org\ghosttracks\negocio\mappers\ProductoPedidoAdapter.class
 itson\org\ghosttracks\negocio\mappers\AdministradorAdapter.class
 itson\org\ghosttracks\negocio\mappers\ProductoAdapter.class
+itson\org\ghosttracks\negocio\objetosNegocio\pagos\IPagoStrategy.class
 itson\org\ghosttracks\negocio\objetosNegocio\PedidosBO.class
 itson\org\ghosttracks\negocio\interfaces\IPedidosBO.class

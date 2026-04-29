@@ -12,9 +12,10 @@ import java.util.List;
 
 /**
  *
- * @author nafbr
+ * @author cinca
  */
 public interface IProductosBO {
     public abstract List<ProductoDTO> obtenerTodos() throws NegocioException;
     public abstract ProductoDTO obtenerProductoPorId(Long id) throws NegocioException;
+    public abstract ProductoDTO buscarProductoPorNombre(String nombre) throws NegocioException;
 }

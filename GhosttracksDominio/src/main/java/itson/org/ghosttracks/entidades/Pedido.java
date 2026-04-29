@@ -21,6 +21,7 @@ public class Pedido {
     private Double costoEnvio;
     private Long idCliente;
     private List<Producto> productos;
+    private String folio;
     
     private List<ProductoPedido> productosPedido; 
     // private Envio envio; 
@@ -92,5 +93,14 @@ public class Pedido {
     public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }  
+
+    public String getFolio() {
+        return folio;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
+    }
+    
     
 }

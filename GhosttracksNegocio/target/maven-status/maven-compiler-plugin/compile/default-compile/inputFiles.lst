@@ -13,5 +13,7 @@ C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\i
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\CarritoBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\ClientesBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\Excepciones\NegocioException.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\pagos\GestorPagosStrategy.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\pagos\IPagoStrategy.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\PedidosBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\objetosNegocio\ProductosBO.java

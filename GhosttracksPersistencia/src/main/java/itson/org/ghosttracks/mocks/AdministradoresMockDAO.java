@@ -12,11 +12,11 @@ import java.util.List;
 
 /**
  *
- * @author emyla
+ * @author cinca
  */
 public class AdministradoresMockDAO implements IAdministradoresDAO {
     
-    private List<Administrador> administradoresDB;
+    private static List<Administrador> administradoresDB;
 
     public AdministradoresMockDAO() {
         this.administradoresDB = new ArrayList<>();
@@ -24,9 +24,9 @@ public class AdministradoresMockDAO implements IAdministradoresDAO {
         Administrador admin = new Administrador();
         admin.setIdUsuario(2L);
         admin.setIdEmpleado(1001L); 
-        admin.setNombres("Nafi");
-        admin.setApellidoPaterno("Master");
-        admin.setApellidoMaterno("Ghost");
+        admin.setNombres("Michelle");
+        admin.setApellidoPaterno("Castillo");
+        admin.setApellidoMaterno("Vizcarra");
         admin.setCorreo("admin@ghosttracks.com");
         admin.setContraseña("adminSeguro123");
         
@@ -51,6 +51,16 @@ public class AdministradoresMockDAO implements IAdministradoresDAO {
             }
         }
         throw new PersistenciaException("Administrador no encontrado con el número de empleado: " + idEmpleado);
+    }
+    
+    @Override
+    public Administrador buscarPorNombre(String nombre) throws PersistenciaException {
+        for (Administrador admin : administradoresDB) {
+            if (admin.getNombres().equals(nombre)) {
+                return admin;
+            }
+        }
+        throw new PersistenciaException("Administrador no encontrado con el nombre de empleado: " + nombre);
     }
     
 }

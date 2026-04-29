@@ -32,6 +32,7 @@ public class PedidoAdapter {
         dto.setTotal(pedido.getTotal());
         dto.setIdCliente(pedido.getIdCliente());
         dto.setEstado(EstadoPedidoDTO.valueOf(pedido.getEstado().name()));
+        dto.setFolio(pedido.getFolio());
         
         List<ItemCarritoDTO> items = new ArrayList<>();
         
@@ -54,6 +55,7 @@ public class PedidoAdapter {
         entidadPedido.setTotal(dto.getTotal());
         entidadPedido.setIdCliente(dto.getIdCliente());
         entidadPedido.setEstado(EstadoPedido.valueOf(dto.getEstado().name()));
+        entidadPedido.setFolio(dto.getFolio());
         
         List<ProductoPedido> productos = new ArrayList<>();
         
