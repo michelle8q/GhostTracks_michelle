@@ -7,12 +7,12 @@ import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import itson.org.ghosttracks.presentacion.VentanaPrincipal;
-import itson.org.ghosttracks.presentacion.administrador.PantallaVentasProcesarAdmin;
 import itson.org.ghosttracks.presentacion.administrador.PantallaVentas;
 import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaFormularioContacto;
 import itson.org.ghosttracks.presentacion.cliente.PantallaFormularioEntrega;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
+import itson.org.ghosttracks.presentacion.cliente.PantallaPedidosProceso;
 import itson.org.ghosttracks.presentacion.cliente.PantallaSeguimientoPedido;
 import itson.org.ghosttracks.presentacion.cliente.PantallaSeleccionMetodoDePago;
 import itson.org.ghosttracks.presentacion.cliente.PantallaVistaProducto;
@@ -102,6 +102,11 @@ public class Navegador {
         ctrlVentaLinea.consultarProducto(buscar);
     }
     
+    public void irPedidosRealizados() {
+        PantallaPedidosProceso vista = new PantallaPedidosProceso(ctrlVentaLinea);
+        ventana.cambiarPantalla(vista);
+    }
+    
     // Paneles admin
     
     public void iniciarSesionAdminExitoso(AdministradorDTO admin) {
@@ -118,11 +123,6 @@ public class Navegador {
         ventana.cambiarPantalla(vista);
     }
     
-    public void irProcesarPedidoAdmin() {
-        ControladorVentasAdmin ctrl = new ControladorVentasAdmin(this);
-        PantallaVentasProcesarAdmin vista = new PantallaVentasProcesarAdmin(ctrl);
-        ventana.cambiarPantalla(vista);
-    }
     
     public void cerrarSesion() {
         irLogin();
@@ -131,5 +131,7 @@ public class Navegador {
     public void mostrarMensaje(String mensaje, boolean esError) {
         ventana.mostrarMensaje(mensaje, esError);
     }
+    
+    
     
 }

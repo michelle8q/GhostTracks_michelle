@@ -55,7 +55,9 @@ public class CarritoBO implements ICarritoBO{
     
    @Override
     public CarritoDTO limpiarCarrito(CarritoDTO carrito) throws NegocioException {
+ 
         carrito.getProductos().clear();
+
         return carrito;
     }
 }

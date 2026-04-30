@@ -2,6 +2,7 @@
 
 package itson.org.ghosttracks.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import itson.org.ghosttracks.dtos.CarritoDTO;
@@ -10,13 +11,18 @@ import itson.org.ghosttracks.dtos.DatosPagoDTO;
 import itson.org.ghosttracks.dtos.DireccionEntregaDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
-import itson.org.ghosttracks.enums.EstadoPedidoDTO;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
+import itson.org.ghosttracks.presentacion.cliente.PantallaPedidosProceso;
 import itson.org.ghosttracks.utilerias.pnlResumenPedido;
 import itson.org.ghosttracksventaenlinea.fachada.VentaEnLineaFachada;
 import itson.org.ghosttracksventaenlinea.interfaces.IVentaEnLinea;
+
+import itson.org.ghosttracks.negocio.objetosNegocio.pagos.GestorPagosStrategy;
+import itson.org.ghosttracks.enums.TipoPago;
+import itson.org.ghosttracks.infrastructura.pagos.MercadoPagoStrategy;
+import itson.org.ghosttracks.infrastructura.pagos.TarjetaDebitoStrategy;
 
 /**
  *
@@ -26,6 +32,7 @@ public class ControlVentaEnLinea {
     
     private final Navegador navegador;
     private final IVentaEnLinea ventaFachada = new VentaEnLineaFachada();
+    private GestorPagosStrategy gestorPagos = new GestorPagosStrategy();
     
     private CarritoDTO carrito;
     private PedidoDTO pedidoDTO;
@@ -34,6 +41,7 @@ public class ControlVentaEnLinea {
         this.navegador = nav;
         this.pedidoDTO = new PedidoDTO();
         this.carrito = new CarritoDTO();
+      
     }
     
     // Salto pantallas
@@ -103,8 +111,28 @@ public class ControlVentaEnLinea {
     
     public void procesarPedido() {
         try {
+            
+            
+            DireccionEntregaDTO direccionOriginal = pedidoDTO.getDireccionEntrega();
+            ContactoDTO contactoOriginal = pedidoDTO.getContacto();
+            DatosPagoDTO datosPagoOriginal = pedidoDTO.getDatosPago();
+            
+            
+             if (datosPagoOriginal != null && datosPagoOriginal.getTipoPago()== TipoPago.STRIPE) {
+                gestorPagos.setEstrategia(new TarjetaDebitoStrategy());
+            } else {
+                gestorPagos.setEstrategia(new MercadoPagoStrategy());
+            }
+            
+            gestorPagos.ejecutarCobro(pedidoDTO.getTotal());
+            
             this.pedidoDTO = ventaFachada.confirmarCompra(pedidoDTO);
-            ventaFachada.actualizarEstadoPedido(pedidoDTO.getIdPedido(), EstadoPedidoDTO.PAGADO);
+            pedidoDTO.setDireccionEntrega(direccionOriginal);
+            pedidoDTO.setContacto(contactoOriginal);
+            pedidoDTO.setDatosPago(datosPagoOriginal);
+            
+           
+            
             mostrarMensaje("Pedido registrado exitosamente.", false);
         } catch (Exception ex) {
             mostrarMensaje("No ha sido posible realizar el pedido.", true);
@@ -128,18 +156,47 @@ public class ControlVentaEnLinea {
         }
     }
     
-    public void llenarResumenPedido(pnlResumenPedido panel) {
-        panel.cargarProductos(this.carrito);
+    public void limpiarCarrito(CarritoDTO carrito) {
+        try {
+            carrito.getProductos();
+            ventaFachada.limpiarProductosCarrito(carrito);
+            
+        } catch (Exception ex) {
+            navegador.mostrarMensaje("Error al eliminar el carrito.", true);
+        }
     }
+    
+    public void llenarResumenPedido(pnlResumenPedido panel) {
+            panel.cargarProductos(this.carrito);
+        
+    }
+    
     
     public ProductoDTO consultarProducto(String nombre) throws NegocioException {
         ProductoDTO prod = ventaFachada.consultarProducto(nombre);
-            if (prod != null) {
-                navegador.irVistaProducto(prod);
-            } else {
+        if (prod != null) {
+            navegador.irVistaProducto(prod);
+        } else {
+            navegador.mostrarMensaje("Producto no encontrado: " + nombre, true);
         }
+        return prod;
+    }
+    
+    public void obtenerPedidosCliente(PantallaPedidosProceso vista) {
+        try {
+            List<PedidoDTO> pedidos = ventaFachada.obtenerTodosLosPedidos();
             
-        return null;
+            if (pedidos != null && !pedidos.isEmpty()) {
+                vista.llenarTablaPedidos(pedidos);
+            } else {
+                vista.llenarTablaPedidos(new ArrayList<>());
+            }
+            
+        } catch (NullPointerException ex) {
+            navegador.mostrarMensaje("No hay pedidos disponibles (datos incompletos).", true);
+        } catch (Exception ex) {
+            navegador.mostrarMensaje("Error al cargar los pedidos: " + ex.getMessage(), true);
+        }
     }
     
     // Extras

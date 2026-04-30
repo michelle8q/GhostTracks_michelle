@@ -668,7 +668,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btnRestarCantidad" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="textFieldRedondeado1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cantidad" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnAumentarCantidad" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
@@ -701,7 +701,7 @@
                           <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textFieldRedondeado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnRestarCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAumentarCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -756,7 +756,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="itson.org.ghosttracks.utilerias.TextFieldRedondeado" name="textFieldRedondeado1">
+                <Component class="itson.org.ghosttracks.utilerias.TextFieldRedondeado" name="cantidad">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Cantidad"/>
@@ -765,7 +765,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldRedondeado1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidadActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="itson.org.ghosttracks.utilerias.BotonRedondeado" name="btnRestarCantidad">

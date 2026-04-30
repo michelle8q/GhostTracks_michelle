@@ -63,7 +63,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         lblNombreProducto = new javax.swing.JLabel();
         lblArtista = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
-        textFieldRedondeado1 = new itson.org.ghosttracks.utilerias.TextFieldRedondeado();
+        cantidad = new itson.org.ghosttracks.utilerias.TextFieldRedondeado();
         btnRestarCantidad = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         btnAumentarCantidad = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         lblUnidad = new javax.swing.JLabel();
@@ -417,10 +417,10 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         lblPrecio.setToolTipText("");
         lblPrecio.setPreferredSize(new java.awt.Dimension(200, 35));
 
-        textFieldRedondeado1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldRedondeado1.setText("Cantidad");
-        textFieldRedondeado1.setPreferredSize(new java.awt.Dimension(100, 35));
-        textFieldRedondeado1.addActionListener(this::textFieldRedondeado1ActionPerformed);
+        cantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cantidad.setText("Cantidad");
+        cantidad.setPreferredSize(new java.awt.Dimension(100, 35));
+        cantidad.addActionListener(this::cantidadActionPerformed);
 
         btnRestarCantidad.setText("-");
         btnRestarCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -464,7 +464,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado5Layout.createSequentialGroup()
                         .addComponent(btnRestarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAumentarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(225, 225, 225))))
@@ -489,7 +489,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
                 .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRestarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAumentarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -568,13 +568,13 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
 
     private void btnAniadirAlCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAniadirAlCarritoActionPerformed
         // TODO
-        control.agregarProductoCarrito(producto, 1);
+        control.agregarProductoCarrito(producto, Integer.parseInt(cantidad.getText()));
         control.mostrarMensaje("Producto agregado con exito", false);
     }//GEN-LAST:event_btnAniadirAlCarritoActionPerformed
 
-    private void textFieldRedondeado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRedondeado1ActionPerformed
+    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldRedondeado1ActionPerformed
+    }//GEN-LAST:event_cantidadActionPerformed
 
     private void btnAumentarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarCantidadActionPerformed
         // TODO add your handling code here:
@@ -620,6 +620,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
     private javax.swing.JButton btnAniadirAlCarrito;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnAumentarCantidad;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnRestarCantidad;
+    private itson.org.ghosttracks.utilerias.TextFieldRedondeado cantidad;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblArtistSug01;
     private javax.swing.JLabel lblArtistSug02;
@@ -653,6 +654,5 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
     private itson.org.ghosttracks.utilerias.PanelRedondeado pnlSugerencia02;
     private itson.org.ghosttracks.utilerias.PanelRedondeado pnlSugerencia03;
     private itson.org.ghosttracks.utilerias.PanelRedondeado pnlSugerencia04;
-    private itson.org.ghosttracks.utilerias.TextFieldRedondeado textFieldRedondeado1;
     // End of variables declaration//GEN-END:variables
 }

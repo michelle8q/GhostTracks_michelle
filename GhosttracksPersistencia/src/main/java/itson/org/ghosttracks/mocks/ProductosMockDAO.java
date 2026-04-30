@@ -156,7 +156,7 @@ public class ProductosMockDAO implements IProductosDAO {
 
         try {
             for (Producto producto : productosDB) {
-                if (producto.getNombre().equals(nombre)) {
+                if (producto.getNombre().equalsIgnoreCase(nombre)) {
                     return producto;
                 }
             }

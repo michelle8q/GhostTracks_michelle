@@ -14,9 +14,11 @@ import javax.swing.table.DefaultTableModel;
 public class PantallaCarrito extends javax.swing.JPanel {
 
     private final ControlVentaEnLinea control;
+    private  CarritoDTO carrito;
     
     public PantallaCarrito(ControlVentaEnLinea ctrl) {
         this.control = ctrl;
+       
         initComponents();
         control.llenarTablaCarrito(this);
         
@@ -186,13 +188,18 @@ public class PantallaCarrito extends javax.swing.JPanel {
 
     private void botonRedondeado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRedondeado1ActionPerformed
         control.comenzarProcesoPedido();
+        
     }//GEN-LAST:event_botonRedondeado1ActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        control.limpiarCarrito(carrito);
+        control.llenarTablaCarrito(this);
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     public void llenarTabla(CarritoDTO carrito) {
+ 
         List<ItemCarritoDTO> productos = carrito.getProductos();
         DefaultTableModel modelo = (DefaultTableModel) tblCarrito.getModel();
         modelo.setRowCount(0);

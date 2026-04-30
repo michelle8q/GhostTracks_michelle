@@ -41,4 +41,6 @@ public interface IVentaEnLinea {
     
     ProductoDTO consultarProducto(String nombre) throws NegocioException;
     
+    CarritoDTO limpiarProductosCarrito(CarritoDTO carrito) throws NegocioException;
+ 
 }

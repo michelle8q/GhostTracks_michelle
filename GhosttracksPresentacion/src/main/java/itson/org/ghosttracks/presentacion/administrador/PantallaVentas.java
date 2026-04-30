@@ -2,9 +2,11 @@
 package itson.org.ghosttracks.presentacion.administrador;
 
 import itson.org.ghosttracks.controladores.ControladorVentasAdmin;
+import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.utilerias.pnlDetallesPedido;
 import java.util.List;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -115,14 +117,20 @@ public class PantallaVentas extends javax.swing.JPanel {
 
         for (PedidoDTO pedido : pedidos) {
             Object[] fila = new Object[5]; 
+            
+            int piezasTotales = 0; 
+        
+            for (ItemCarritoDTO item : pedido.getProductos()) { 
+                piezasTotales += item.getCantidad();
 
             fila[0] = pedido.getIdPedido(); 
             fila[1] = pedido.getIdCliente(); 
-            fila[2] = "-";
+            fila[2] = piezasTotales;
             fila[3] = String.format("$%.2f", pedido.getTotal());
             fila[4] = pedido.getEstado() != null ? pedido.getEstado().name() : "Sin estado";
 
             modelo.addRow(fila);
         }
+    }
     }
 }

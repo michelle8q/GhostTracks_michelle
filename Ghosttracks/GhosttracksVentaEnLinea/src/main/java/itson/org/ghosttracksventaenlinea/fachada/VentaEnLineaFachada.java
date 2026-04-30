@@ -106,6 +106,17 @@ import java.util.List;
     }
     
     @Override
+    public CarritoDTO limpiarProductosCarrito(CarritoDTO carrito) throws NegocioException {
+         if (carrito == null || carrito.getProductos().isEmpty()) {
+            throw new NegocioException("No hay productos en el carrito para eliminar.");
+        }
+         
+         
+        return carritoBO.limpiarCarrito(carrito);
+        
+        }
+    
+    @Override
     public void calcularTotalesPedido(PedidoDTO pedidoDto) {
         double subtotal = 0.0;
 
