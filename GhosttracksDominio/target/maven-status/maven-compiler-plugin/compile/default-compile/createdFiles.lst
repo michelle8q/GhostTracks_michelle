@@ -12,6 +12,9 @@ itson\org\ghosttracks\entidades\Paquete.class
 itson\org\ghosttracks\entidades\Producto.class
 itson\org\ghosttracks\entidades\Sucursal.class
 itson\org\ghosttracks\entidades\Usuario.class
+itson\org\ghosttracks\entidades\Genero.class
+itson\org\ghosttracks\entidades\ImagenProducto.class
+itson\org\ghosttracks\entidades\TipoProducto.class
 itson\org\ghosttracks\enums\EstadoProducto.class
 itson\org\ghosttracks\enums\TipoPago.class
 itson\org\ghosttracks\enums\EstadoPaquete.class
