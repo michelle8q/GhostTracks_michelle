@@ -1,5 +1,6 @@
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\Controlador.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\ControladorVentasAdmin.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\ControlGestionProductos.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\ControlLogin.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\ControlVentaEnLinea.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\controladores\Navegador.java
@@ -15,6 +16,9 @@ C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\j
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\PantallaSeguimientoPedido.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\PantallaSeleccionMetodoDePago.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\cliente\PantallaVistaProducto.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\gestionProductos\PantallaCatalogo.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\gestionProductos\PantallaDetallesProducto.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\gestionProductos\PantallaFormularioAgregarProducto.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\Main.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\panelLogin.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksPresentacion\src\main\java\itson\org\ghosttracks\presentacion\VentanaPrincipal.java

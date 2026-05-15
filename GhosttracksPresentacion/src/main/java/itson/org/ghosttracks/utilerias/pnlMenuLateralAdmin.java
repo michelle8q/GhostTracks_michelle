@@ -1,6 +1,7 @@
 
 package itson.org.ghosttracks.utilerias;
 
+import itson.org.ghosttracks.controladores.ControlGestionProductos;
 import itson.org.ghosttracks.controladores.Navegador;
 
 /**
@@ -10,10 +11,11 @@ import itson.org.ghosttracks.controladores.Navegador;
 public class pnlMenuLateralAdmin extends javax.swing.JPanel {
 
     private final Navegador navegador;
-    
+   
     public pnlMenuLateralAdmin(Navegador nav) {
         this.navegador = nav;
         initComponents();
+        
     }
 
     /**
@@ -57,6 +59,7 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
         btnArticulos.setText("Articulos");
         btnArticulos.setBorder(null);
         btnArticulos.setPreferredSize(new java.awt.Dimension(250, 40));
+        btnArticulos.addActionListener(this::btnArticulosActionPerformed);
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ghostracksLogo.png"))); // NOI18N
 
@@ -131,6 +134,11 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         navegador.irVentasAdmin();
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticulosActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btnArticulosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

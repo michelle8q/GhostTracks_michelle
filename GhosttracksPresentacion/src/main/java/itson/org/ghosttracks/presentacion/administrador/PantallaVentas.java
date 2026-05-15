@@ -6,8 +6,6 @@ import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.utilerias.pnlDetallesPedido;
 import java.util.List;
-import javax.swing.DefaultListModel;
-
 /**
  *
  * @author oliro

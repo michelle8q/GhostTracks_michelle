@@ -16,7 +16,7 @@ import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
 import itson.org.ghosttracks.presentacion.cliente.PantallaPedidosProceso;
 import itson.org.ghosttracks.utilerias.pnlResumenPedido;
-import itson.org.ghosttracksventaenlinea.fachada.VentaEnLineaFachada;
+import itson.org.ghosttracksventaenlinea.fachada.VentaEnLinea;
 import itson.org.ghosttracksventaenlinea.interfaces.IVentaEnLinea;
 
 import itson.org.ghosttracks.negocio.objetosNegocio.pagos.GestorPagosStrategy;
@@ -31,7 +31,7 @@ import itson.org.ghosttracks.infrastructura.pagos.TarjetaDebitoStrategy;
 public class ControlVentaEnLinea {
     
     private final Navegador navegador;
-    private final IVentaEnLinea ventaFachada = new VentaEnLineaFachada();
+    private final IVentaEnLinea ventaFachada = new VentaEnLinea();
     private GestorPagosStrategy gestorPagos = new GestorPagosStrategy();
     
     private CarritoDTO carrito;

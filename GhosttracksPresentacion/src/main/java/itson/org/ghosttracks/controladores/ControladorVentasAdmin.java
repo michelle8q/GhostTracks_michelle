@@ -3,7 +3,7 @@ package itson.org.ghosttracks.controladores;
 
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.presentacion.administrador.PantallaVentas;
-import itson.org.ghosttracksventaenlinea.fachada.VentaEnLineaFachada;
+import itson.org.ghosttracksventaenlinea.fachada.VentaEnLinea;
 import itson.org.ghosttracksventaenlinea.interfaces.IVentaEnLinea;
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class ControladorVentasAdmin {
     
     private final Navegador navegador;
-    private final IVentaEnLinea ventaFachada = new VentaEnLineaFachada();
+    private final IVentaEnLinea ventaFachada = new VentaEnLinea();
     
     public ControladorVentasAdmin(Navegador nav) {
         this.navegador = nav;
