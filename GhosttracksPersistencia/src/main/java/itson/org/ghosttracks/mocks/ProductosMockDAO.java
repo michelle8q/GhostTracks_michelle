@@ -1,7 +1,6 @@
 package itson.org.ghosttracks.mocks;
 
 import itson.org.ghosttracks.daos.IProductosDAO;
-import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.enums.EstadoProducto;
 import itson.org.ghosttracks.enums.TipoProducto;
@@ -32,7 +31,6 @@ public class ProductosMockDAO implements IProductosDAO {
      */
     private void cargarDatosDummy() {
         
-        //PRODUCTO 1 
         Producto producto1 = new Producto(
                 1L,                       
                 "Abbey Road",             
@@ -48,7 +46,6 @@ public class ProductosMockDAO implements IProductosDAO {
         this.productosDB.add(producto1);
         contadorId++;
 
-        // PRODUCTO 2
         Producto producto2 = new Producto(
                 2L, 
                 "Thriller", 
@@ -64,7 +61,6 @@ public class ProductosMockDAO implements IProductosDAO {
         this.productosDB.add(producto2);
         contadorId++;
 
-        //PRODUCTO 3
         Producto producto3 = new Producto(
                 3L, 
                 "The Dark Side of the Moon", 
@@ -82,7 +78,7 @@ public class ProductosMockDAO implements IProductosDAO {
     }
     
     @Override
-    public List<Producto> obtenerTodos() throws PersistenciaException {
+    public List<Producto> obtenerProductos() throws PersistenciaException {
         try {
             return new ArrayList<>(this.productosDB);
         } catch (Exception e) {
@@ -92,7 +88,7 @@ public class ProductosMockDAO implements IProductosDAO {
     }
     
     @Override
-    public Producto buscarPorId(Long idProducto) throws PersistenciaException {
+    public Producto obtenerProductoPorId(Long idProducto) throws PersistenciaException {
         if (idProducto == null) {
             throw new PersistenciaException("El ID del producto a buscar no puede ser nulo");
         }
@@ -117,26 +113,34 @@ public class ProductosMockDAO implements IProductosDAO {
     
 
     @Override
-    public Producto agregar(ProductoDTO productoDTO) throws PersistenciaException {
-        if (productoDTO == null) {
+    public Producto agregarProducto(Producto nuevoProducto) throws PersistenciaException {
+        if (nuevoProducto == null) {
             throw new PersistenciaException("No se puede agregar un producto nulo.");
         }
-        if (productoDTO.getNombre() == null || productoDTO.getNombre().trim().isEmpty()) {
+        if (nuevoProducto.getNombre() == null || nuevoProducto.getNombre().trim().isEmpty()) {
             throw new PersistenciaException("El producto debe tener un nombre válido.");
+        }
+        
+        if (nuevoProducto.getArtista() == null || nuevoProducto.getArtista().trim().isEmpty()) {
+            throw new PersistenciaException("El producto debe tener un artista válido.");
+        }
+        
+        if (nuevoProducto.getPrecio() <= 0) {
+           throw new PersistenciaException("El producto debe tener un precio válido.");
         }
 
         try {
             Producto nuevaEntidad = new Producto(
             contadorId++, 
-            productoDTO.getNombre(),
-            productoDTO.getImgProducto(),
-            productoDTO.getTipoProducto(),
-            productoDTO.getArtista(),
-            productoDTO.getGenero(),
-            productoDTO.getSetlist(),
-            productoDTO.getPrecio(),
-            productoDTO.getStock(),
-            productoDTO.getEstado()
+            nuevoProducto.getNombre(),
+            nuevoProducto.getImgProducto(),
+            nuevoProducto.getTipo(),
+            nuevoProducto.getArtista(),
+            nuevoProducto.getGenero(),
+            nuevoProducto.getSetlist(),
+            nuevoProducto.getPrecio(),
+            nuevoProducto.getStock(),
+            nuevoProducto.getEstado()
         );
 
         this.productosDB.add(nuevaEntidad);
@@ -149,7 +153,7 @@ public class ProductosMockDAO implements IProductosDAO {
     }
     
     @Override
-    public Producto buscarPorNombre(String nombre) throws PersistenciaException {
+    public Producto buscarProductoPorNombre(String nombre) throws PersistenciaException {
         if (nombre == null) {
             throw new PersistenciaException("El nombre del producto a buscar no puede ser nulo");
         }
@@ -168,7 +172,71 @@ public class ProductosMockDAO implements IProductosDAO {
         } catch (Exception e) {
             LOGGER.severe("Error crítico e inesperado al buscar el producto por nombre: " + e.getMessage());
             throw new PersistenciaException("Error inesperado al intentar buscar el producto.", e);
-        }
+        }     
+    
     }
     
+    @Override
+    public Producto actualizarProducto(Producto producto) throws PersistenciaException {
+         if (producto == null) {
+            throw new PersistenciaException("No se puede agregar un producto nulo.");
+        }
+         
+        if (producto.getNombre() == null || producto.getNombre().trim().isEmpty()) {
+            throw new PersistenciaException("El producto debe tener un nombre valido.");
+        }
+        
+        if (producto.getArtista() == null || producto.getArtista().trim().isEmpty()) {
+            throw new PersistenciaException("El producto debe tener un artista valido.");
+        }
+        
+        if (producto.getPrecio() <= 0) {
+           throw new PersistenciaException("El producto debe tener un precio valido.");
+        }
+        
+        try {
+            for(int i = 0; i  < productosDB.size(); i++) {
+                Producto productoActual = productosDB.get(i);
+                
+                if(productoActual.getIdProducto().equals(producto.getIdProducto())) 
+                
+                productosDB.set(i, producto);
+                
+                return producto;
+            }
+            
+            throw new PersistenciaException("No se encontr el producto con id: " + producto.getIdProducto());
+
+        } catch (PersistenciaException e) {
+            throw e;
+            
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al actualizar: " + e.getMessage());
+        }
+    }
+        
+    
+    @Override
+    public Producto eliminarProducto(Producto producto) throws PersistenciaException {
+         if (producto == null) {
+            throw new PersistenciaException("No se puede eliminar un producto nulo.");
+        }
+         try {
+            for(int i = 0; i  < productosDB.size(); i++) {
+                Producto productoActual = productosDB.get(i);
+                
+                if(productoActual.getIdProducto().equals(producto.getIdProducto()));
+                Producto eliminado = productosDB.remove(i);
+                return eliminado;
+                
+            }
+            throw new PersistenciaException("No se puedo eliminar el producto");
+
+        } catch (PersistenciaException e) {
+            throw e;
+            
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al eliminar: " + e.getMessage());
+        }
+    }
 }

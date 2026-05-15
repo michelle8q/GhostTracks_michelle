@@ -29,6 +29,7 @@ public class Navegador {
 
     private final VentanaPrincipal ventana;
     private final ControlVentaEnLinea ctrlVentaLinea;
+    private final ControlGestionProductos ctrlGestionProductos;
     private ClienteDTO cliente;
     private AdministradorDTO admin;
     private String rol;
@@ -36,6 +37,7 @@ public class Navegador {
 
     public Navegador(VentanaPrincipal ventana) {
         this.ctrlVentaLinea = new ControlVentaEnLinea(this);
+        this.ctrlGestionProductos = new ControlGestionProductos(this);
         this.ventana = ventana;
         cliente = null;
     }
@@ -123,6 +125,18 @@ public class Navegador {
         ventana.cambiarPantalla(vista);
     }
     
+    //Paneles gestion productos
+    public void irPantallaCatalogoProductos() {
+        ctrlGestionProductos.mostrarPantallaCatalogoProductos();
+    }
+    
+    public void irPantallaDetallesProductos() {
+        ctrlGestionProductos.mostrarPantallaDetallesProducto();
+    }
+    
+    public void irPantallaFormularioAgregarProducto() {
+        ctrlGestionProductos.mostrarPantallaFormularioProducto();
+    }
     
     public void cerrarSesion() {
         irLogin();

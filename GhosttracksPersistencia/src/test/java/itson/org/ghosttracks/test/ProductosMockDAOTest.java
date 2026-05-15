@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.enums.EstadoProducto;
 import itson.org.ghosttracks.enums.TipoProducto;
@@ -27,7 +26,6 @@ public class ProductosMockDAOTest {
 
     @BeforeEach
     public void init() {
-        // Setup general
         this.dao = new ProductosMockDAO();
     }
 
@@ -38,7 +36,7 @@ public class ProductosMockDAOTest {
     public void testObtenerTodosHappyPath() {
         // Ejecución
         assertDoesNotThrow(() -> {
-            List<Producto> listaProductos = dao.obtenerTodos();
+            List<Producto> listaProductos = dao.obtenerProductos();
             
             // Verificación
             assertNotNull(listaProductos);
@@ -53,7 +51,7 @@ public class ProductosMockDAOTest {
         
         // Ejecución 
         assertDoesNotThrow(() -> {
-            Producto producto = dao.buscarPorId(idProductoBuscado);
+            Producto producto = dao.obtenerProductoPorId(idProductoBuscado);
             
             // Verificación
             assertNotNull(producto);
@@ -69,7 +67,7 @@ public class ProductosMockDAOTest {
         
         // Ejecución y Verificación
         assertThrows(PersistenciaException.class, () -> {
-            dao.buscarPorId(idProductoFake);
+            dao.obtenerProductoPorId(idProductoFake);
         });
     }
 
@@ -80,14 +78,14 @@ public class ProductosMockDAOTest {
         
         // Ejecución y Verificación
         assertThrows(PersistenciaException.class, () -> {
-            dao.buscarPorId(idNulo);
+            dao.obtenerProductoPorId(idNulo);
         });
     }
 
     @Test
     public void testAgregarHappyPath() {
         // Setup
-        ProductoDTO nuevoProductoDTO = new ProductoDTO(
+        Producto nuevoProducto = new Producto(
                 null, 
                 "Random Access Memories", 
                 "ram.jpg", 
@@ -102,26 +100,26 @@ public class ProductosMockDAOTest {
         
         // Ejecución
         assertDoesNotThrow(() -> {
-            Producto productoGuardado = dao.agregar(nuevoProductoDTO);
+            Producto productoGuardado = dao.agregarProducto(nuevoProducto);
             
             // Verificación
             assertNotNull(productoGuardado.getIdProducto());
             assertEquals(4L, productoGuardado.getIdProducto()); 
-            assertEquals(nuevoProductoDTO.getNombre(), productoGuardado.getNombre());
+            assertEquals(nuevoProducto.getNombre(), productoGuardado.getNombre());
             
             // Verificamos que se añadió a la lista general
-            assertEquals(4, dao.obtenerTodos().size());
+            assertEquals(4, dao.obtenerProductos().size());
         });
     }
 
     @Test
     public void testAgregarProductoNulo() {
         // Setup
-        ProductoDTO productoNulo = null; // El input ahora es DTO
+        Producto productoNulo = null; // El input ahora es DTO
         
         // Ejecución y Verificación
         assertThrows(PersistenciaException.class, () -> {
-            dao.agregar(productoNulo);
+            dao.agregarProducto(productoNulo);
         });
     }
 
@@ -129,7 +127,7 @@ public class ProductosMockDAOTest {
     public void testAgregarProductoNombreVacio() {
         // Setup
         // Creamos un DTO inválido para probar la validación de negocio
-        ProductoDTO productoInvalidoDTO = new ProductoDTO(
+        Producto productoInvalido = new Producto(
                 null, 
                 "", // Nombre vacío intencionalmente
                 "img.jpg", 
@@ -144,7 +142,7 @@ public class ProductosMockDAOTest {
         
         // Ejecución y Verificación
         assertThrows(PersistenciaException.class, () -> {
-            dao.agregar(productoInvalidoDTO);
+            dao.agregarProducto(productoInvalido);
         });
     }
 }
