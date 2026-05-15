@@ -25,14 +25,14 @@ import java.util.List;
  *
  * @author nafbr
  */
-    public class VentaEnLineaFachada implements IVentaEnLinea{
+    public class VentaEnLinea implements IVentaEnLinea{
     private final IPedidosBO pedidosBO;
     private final IProductosBO productosBO;
     private final IClientesBO clientesBO;
     private final ICarritoBO carritoBO;
     private final IAdministradoresBO administradorBO;
 
-    public VentaEnLineaFachada() {
+    public VentaEnLinea() {
         this.productosBO = new ProductosBO();
         this.clientesBO = new ClientesBO();
         this.carritoBO = new CarritoBO();

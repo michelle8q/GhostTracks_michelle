@@ -4,11 +4,11 @@
  */
 package itson.org.ghosttracks.negocio.objetosNegocio;
 
-import itson.org.ghosttracks.daos.IClientesDAO;
+import itson.ghosttracks.interfaces.IPersistencia;
 import itson.org.ghosttracks.dtos.ClienteDTO;
 import itson.org.ghosttracks.entidades.Cliente;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
-import itson.org.ghosttracks.mocks.ClientesMockDAO;
+import itson.org.ghosttracks.fachadas.PersistenciaFachada;
 import itson.org.ghosttracks.negocio.interfaces.IClientesBO;
 import itson.org.ghosttracks.negocio.mappers.ClienteAdapter;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
@@ -18,16 +18,16 @@ import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException
  * @author Cinca
  */
 public class ClientesBO implements IClientesBO{
-    private final IClientesDAO clientesDAO;
+   IPersistencia persistencia;
 
     public ClientesBO() {
-        this.clientesDAO = new ClientesMockDAO();
+        persistencia = PersistenciaFachada.getInstance();
     }
 
     @Override
     public ClienteDTO obtenerClientePorId(Long idCliente) throws NegocioException {
         try {
-            Cliente entidad = clientesDAO.buscarPorId(idCliente);
+            Cliente entidad = persistencia.buscarClientePorId(idCliente);
             return ClienteAdapter.toDTO(entidad);
 
         } catch (PersistenciaException e) {
@@ -38,7 +38,7 @@ public class ClientesBO implements IClientesBO{
         @Override
         public ClienteDTO buscarPorNombre(String nombre) throws NegocioException {
             try {
-                Cliente clienteDominio = clientesDAO.buscarPorNombre(nombre);
+                Cliente clienteDominio = persistencia.buscarClientePorNombre(nombre);
                 return ClienteAdapter.toDTO(clienteDominio);               
 
         } catch (PersistenciaException e) {

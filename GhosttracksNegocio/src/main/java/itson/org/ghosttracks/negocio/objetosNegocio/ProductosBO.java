@@ -4,11 +4,11 @@
  */
 package itson.org.ghosttracks.negocio.objetosNegocio;
 
-import itson.org.ghosttracks.daos.IProductosDAO;
+import itson.ghosttracks.interfaces.IPersistencia;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
-import itson.org.ghosttracks.mocks.ProductosMockDAO;
+import itson.org.ghosttracks.fachadas.PersistenciaFachada;
 import itson.org.ghosttracks.negocio.interfaces.IProductosBO;
 import itson.org.ghosttracks.negocio.mappers.ProductoAdapter;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
@@ -21,16 +21,18 @@ import java.util.List;
  */
 public class ProductosBO implements IProductosBO {
 
-    private final IProductosDAO productosDAO;
+    //private final IProductosDAO productosDAO;
+    IPersistencia persistencia;
 
     public ProductosBO() {
-        this.productosDAO = new ProductosMockDAO();
+        //this.productosDAO = new ProductosMockDAO();
+        persistencia = PersistenciaFachada.getInstance();
     }
 
     @Override
     public List<ProductoDTO> obtenerTodos() throws NegocioException {
         try {
-            List<Producto> productosEntidad = productosDAO.obtenerTodos();
+            List<Producto> productosEntidad = persistencia.obtenerProductos();
             List<ProductoDTO> productosDTO = new ArrayList<>();
 
             for (Producto p : productosEntidad) {
@@ -49,7 +51,7 @@ public class ProductosBO implements IProductosBO {
     public ProductoDTO obtenerProductoPorId(Long id) throws NegocioException {
 
         try {
-            Producto productoDominio = productosDAO.buscarPorId(id);
+            Producto productoDominio = persistencia.obtenerProductoPorId(id);
             return ProductoAdapter.toDTO(productoDominio);
 
         } catch (PersistenciaException e) {
@@ -61,8 +63,44 @@ public class ProductosBO implements IProductosBO {
     public ProductoDTO buscarProductoPorNombre(String nombre) throws NegocioException {
 
         try {
-            Producto productoDominio = productosDAO.buscarPorNombre(nombre);
+            Producto productoDominio = persistencia.buscarProductoPorNombre(nombre);
             return ProductoAdapter.toDTO(productoDominio);
+
+        } catch (PersistenciaException e) {
+            throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());
+        }
+    }
+    
+    @Override
+    public ProductoDTO eliminarProducto(ProductoDTO producto) throws NegocioException {
+        try {
+            Producto productoDominio = ProductoAdapter.toEntity(producto);
+            Producto productoEliminado = persistencia.eliminarProducto(productoDominio);
+            return ProductoAdapter.toDTO(productoEliminado);
+
+        } catch (PersistenciaException e) {
+            throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());
+        }
+    }
+    
+    @Override
+    public ProductoDTO crearProducto(ProductoDTO producto) throws NegocioException {
+     try {
+            Producto productoDominio = ProductoAdapter.toEntity(producto);
+            Producto productoCreado = persistencia.agregarProducto(productoDominio);
+            return ProductoAdapter.toDTO(productoCreado);
+
+        } catch (PersistenciaException e) {
+            throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());
+        }
+    }
+    
+    @Override
+    public ProductoDTO actualizarProducto(ProductoDTO producto) throws NegocioException {
+     try {
+            Producto productoDominio = ProductoAdapter.toEntity(producto);
+            Producto productoActualizado = persistencia.actualizarProducto(productoDominio);
+            return ProductoAdapter.toDTO(productoActualizado);
 
         } catch (PersistenciaException e) {
             throw new NegocioException("No pudimos recuperar la información del producto: " + e.getMessage());

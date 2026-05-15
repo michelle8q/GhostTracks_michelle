@@ -11,9 +11,12 @@
         <module>../GhosttracksNegocio</module>
         <module>../GhosttracksPersistencia</module>
         <module>../GhosttracksPresentacion</module>
-        <module>GhosttracksVentaEnLinea</module>
         <module>GhosttracksInfrastructura</module>
+        <module>GhosttracksVentaEnLinea</module>
+        <module>GhosttracksGestionProductos</module>
     </modules>
+    <dependencies>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>

@@ -31,15 +31,15 @@ public class SucursalAdapter {
                 direccion.getEstado());
     }
     
-    public static Sucursal toDTO(Sucursal sucursal) {
-        return new Sucursal (
+    public static SucursalDTO toDTO(Sucursal sucursal) {
+        return new SucursalDTO (
                 toDTODireccion(sucursal.getDireccion()),
                 sucursal.getTelefono(),
                 sucursal.getNombre());
     }
     
-    public static Direccion toDTODireccion(Direccion direccion) {  
-        return new Direccion(
+    public static DireccionSucursalDTO toDTODireccion(Direccion direccion) {  
+        return new DireccionSucursalDTO(
                 direccion.getCalle(), 
                 direccion.getColonia(),
                 direccion.getNumero(),
