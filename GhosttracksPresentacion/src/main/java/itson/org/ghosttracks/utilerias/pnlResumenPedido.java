@@ -4,7 +4,7 @@
  */
 package itson.org.ghosttracks.utilerias;
 
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.CarritoDTO;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
@@ -15,12 +15,12 @@ import javax.swing.BoxLayout;
  * @author cinca
  */
 public class pnlResumenPedido extends javax.swing.JPanel {
-    private ControlVentaEnLinea control;
+    private Control control;
     
     /**
      * Creates new form pnlResumenPedido
      */
-    public pnlResumenPedido(ControlVentaEnLinea ctrl) {
+    public pnlResumenPedido(Control ctrl) {
         this();
         this.control = ctrl;
     }

@@ -8,7 +8,7 @@ package itson.org.ghosttracks.dtos;
  *
  * @author cinca
  */
-public class catalogoProductosDTO {
+public class CatalogoProductosDTO {
     private Long idProducto;
     private String nombre;
     private String artista;
@@ -16,11 +16,11 @@ public class catalogoProductosDTO {
     private TipoDTO tipo;
     private int stock;
     
-    public catalogoProductosDTO() {
+    public CatalogoProductosDTO() {
         
     }
 
-    public catalogoProductosDTO(Long idProducto, String nombre, String artista, GeneroDTO genero, TipoDTO tipo, int stock) {
+    public CatalogoProductosDTO(Long idProducto, String nombre, String artista, GeneroDTO genero, TipoDTO tipo, int stock) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.artista = artista;

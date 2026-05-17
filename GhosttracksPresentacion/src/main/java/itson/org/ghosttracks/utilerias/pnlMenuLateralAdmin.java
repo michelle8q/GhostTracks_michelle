@@ -1,8 +1,8 @@
 
 package itson.org.ghosttracks.utilerias;
 
-import itson.org.ghosttracks.controladores.ControlGestionProductos;
-import itson.org.ghosttracks.controladores.Navegador;
+import itson.org.ghosttracks.controladores.Control;
+
 
 /**
  *
@@ -10,10 +10,10 @@ import itson.org.ghosttracks.controladores.Navegador;
  */
 public class pnlMenuLateralAdmin extends javax.swing.JPanel {
 
-    private final Navegador navegador;
+    private final Control controlador;
    
-    public pnlMenuLateralAdmin(Navegador nav) {
-        this.navegador = nav;
+    public pnlMenuLateralAdmin(Control ctrl) {
+        this.controlador = ctrl;
         initComponents();
         
     }
@@ -65,7 +65,7 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
 
         btnCerrarSesion.setBackground(new java.awt.Color(230, 94, 7));
         btnCerrarSesion.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        btnCerrarSesion.setText("Cerrar sesón");
+        btnCerrarSesion.setText("Cerrar sesión");
         btnCerrarSesion.setActionCommand("Cerrar sesión");
         btnCerrarSesion.setBorder(null);
         btnCerrarSesion.setPreferredSize(new java.awt.Dimension(200, 30));
@@ -124,19 +124,19 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
-        navegador.irVentasAdmin();
+        controlador.irVentasAdmin();
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        navegador.cerrarSesion();
+        controlador.cerrarSesion();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        navegador.irVentasAdmin();
+        controlador.irVentasAdmin();
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btnArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticulosActionPerformed
-        // TODO add your handling code here:
+        controlador.mostrarPantallaCatalogoProductos();
        
     }//GEN-LAST:event_btnArticulosActionPerformed
 

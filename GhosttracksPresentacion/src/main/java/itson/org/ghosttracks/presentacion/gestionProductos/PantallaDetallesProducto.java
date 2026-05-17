@@ -4,17 +4,25 @@
  */
 package itson.org.ghosttracks.presentacion.gestionProductos;
 
+import itson.org.ghosttracks.controladores.Control;
+import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.dtos.TipoDTO;
+
 /**
  *
  * @author cinca
  */
 public class PantallaDetallesProducto extends javax.swing.JPanel {
-
+    private final Control controlador;
+    private ProductoDTO producto;
     /**
      * Creates new form PantallaDetallesProducto
      */
-    public PantallaDetallesProducto() {
+    public PantallaDetallesProducto(Control ctrl, ProductoDTO producto) {
         initComponents();
+        this.controlador = ctrl;
+        this.producto = producto;
+        mostrarInformacionProducto();
     }
 
     /**
@@ -26,9 +34,9 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         panelRedondeado1 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
         pnlImg = new javax.swing.JPanel();
@@ -40,30 +48,29 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
+        lblArtista = new javax.swing.JLabel();
         lblTipo = new javax.swing.JLabel();
         lblGenero = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        botonRedondeado1 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
+        btnVolver = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         botonRedondeado2 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
-        botonRedondeado3 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
+        btnEliminar = new itson.org.ghosttracks.utilerias.BotonRedondeado();
 
         setBackground(new java.awt.Color(237, 229, 222));
         setPreferredSize(new java.awt.Dimension(1100, 675));
 
-        jLabel1.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Nombre");
+        lblNombre.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombre.setText("Nombre");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Codigo:");
 
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Codigo");
+        lblId.setBackground(new java.awt.Color(0, 0, 0));
+        lblId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblId.setForeground(new java.awt.Color(0, 0, 0));
+        lblId.setText("Codigo");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -113,9 +120,9 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Precio");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Nombre artista");
+        lblArtista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblArtista.setForeground(new java.awt.Color(0, 0, 0));
+        lblArtista.setText("Nombre artista");
 
         lblTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblTipo.setForeground(new java.awt.Color(0, 0, 0));
@@ -128,10 +135,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
         lblPrecio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPrecio.setForeground(new java.awt.Color(0, 0, 0));
         lblPrecio.setText("Precio");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("$");
+        lblPrecio.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,13 +155,10 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                                 .addComponent(jSeparator2)
                                 .addComponent(jLabel7)
                                 .addComponent(jSeparator4))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTipo)
                             .addComponent(lblGenero)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3)
-                                .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -170,7 +171,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lblArtista)
                         .addGap(4, 4, 4)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,22 +189,20 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPrecio)
-                            .addComponent(jLabel9))
+                        .addComponent(lblPrecio)
                         .addGap(1, 1, 1)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(171, Short.MAX_VALUE))
         );
 
-        botonRedondeado1.setBackground(new java.awt.Color(204, 51, 0));
-        botonRedondeado1.setForeground(new java.awt.Color(255, 255, 255));
-        botonRedondeado1.setText("Volver");
-        botonRedondeado1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonRedondeado1.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(204, 51, 0));
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRedondeado1ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -212,10 +211,15 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
         botonRedondeado2.setText("Actualizar");
         botonRedondeado2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        botonRedondeado3.setBackground(new java.awt.Color(204, 51, 0));
-        botonRedondeado3.setForeground(new java.awt.Color(255, 255, 255));
-        botonRedondeado3.setText("Eliminar");
-        botonRedondeado3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEliminar.setBackground(new java.awt.Color(204, 51, 0));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -225,66 +229,94 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(botonRedondeado3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4))
+                                .addComponent(lblId))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(14, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lblId))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonRedondeado3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonRedondeado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRedondeado1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonRedondeado1ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        controlador.mostrarPantallaCatalogoProductos();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try {
+            controlador.eliminarProducto(producto);
+        } catch (Exception ex) {
+            controlador.mostrarMensaje("Error al eliminar el producto", false);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+ 
+    private void mostrarInformacionProducto() {
+        if (producto == null) {
+        return;
+        }
+        lblNombre.setText(producto.getNombre());
+        lblArtista.setText(producto.getArtista());
+        lblId.setText(String.valueOf(producto.getIdProducto()));
+        //lblStock.setText(String.valueOf(producto.getStock()));
+        lblPrecio.setText("$" + String.valueOf(producto.getPrecio()));
+
+        if (producto.getGenero() != null) {
+            lblGenero.setText(producto.getGenero().getNombreGenero());
+        }
+        if (producto.getTipoProducto() != null) {
+            //TipoDTO tipo= new TipoDTO();
+            lblTipo.setText(producto.getTipoProducto().getNombreTipo());
+        }
+        if (producto.getImgProducto() != null && !producto.getImgProducto().isEmpty()) {
+            //pnlImg.setIcon(new javax.swing.ImageIcon(getClass().getResource(producto.getImgProducto())));
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado1;
     private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado2;
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado3;
-    private javax.swing.JLabel jLabel1;
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnEliminar;
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnVolver;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel lblArtista;
     private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTipo;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado1;

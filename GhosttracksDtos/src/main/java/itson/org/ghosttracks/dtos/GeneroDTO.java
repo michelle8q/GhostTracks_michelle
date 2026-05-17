@@ -20,6 +20,12 @@ public class GeneroDTO {
         this.nombreGenero = nombreGenero;
     }
 
+    public GeneroDTO(String nombreGenero) {
+        this.nombreGenero = nombreGenero;
+    }
+    
+    
+
     public Long getIdGenero() {
         return idGenero;
     }
@@ -29,12 +35,15 @@ public class GeneroDTO {
     }
 
     public String getNombreGenero() {
-        return nombreGenero;
+        return nombreGenero.toString();
     }
 
     public void setNombreGenero(String nombreGenero) {
-        this.nombreGenero = nombreGenero;
+        this.nombreGenero = nombreGenero.toString();
     }
     
-    
+    @Override
+    public String toString() {
+        return nombreGenero;
+    }
 }

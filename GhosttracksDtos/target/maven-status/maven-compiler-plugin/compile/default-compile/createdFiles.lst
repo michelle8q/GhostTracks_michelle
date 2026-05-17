@@ -12,10 +12,10 @@ itson\org\ghosttracks\enums\EstadoPedidoDTO.class
 itson\org\ghosttracks\dtos\FiltroProductoDTO.class
 itson\org\ghosttracks\dtos\ClienteDTO.class
 itson\org\ghosttracks\dtos\UsuarioDTO.class
+itson\org\ghosttracks\dtos\CatalogoProductosDTO.class
 itson\org\ghosttracks\dtos\DireccionClienteDTO.class
 itson\org\ghosttracks\dtos\PedidoDTO.class
 itson\org\ghosttracks\dtos\ImagenDTO.class
-itson\org\ghosttracks\dtos\catalogoProductosDTO.class
 itson\org\ghosttracks\dtos\CarritoDTO.class
 itson\org\ghosttracks\enums\EstadoProducto.class
 itson\org\ghosttracks\dtos\GeneroDTO.class

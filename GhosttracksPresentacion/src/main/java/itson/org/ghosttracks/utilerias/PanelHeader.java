@@ -1,12 +1,13 @@
 
 package itson.org.ghosttracks.utilerias;
 
-import itson.org.ghosttracks.controladores.Navegador;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.AdministradorDTO;
 import itson.org.ghosttracks.dtos.ClienteDTO;
-import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,14 +15,14 @@ import java.awt.event.ActionEvent;
  */
 public class PanelHeader extends javax.swing.JPanel {
 
-    private final Navegador navegador;
+    private final Control controlador;
     private final ClienteDTO cliente;
     private final AdministradorDTO admin;
     private final String rol;
  
     
-    public PanelHeader(Navegador nav, ClienteDTO cliente, AdministradorDTO admin, String rol) {
-        this.navegador = nav;
+    public PanelHeader(Control ctrl, ClienteDTO cliente, AdministradorDTO admin, String rol) {
+        this.controlador = ctrl;
         this.cliente = cliente;
         this.admin = admin;
         this.rol = rol;
@@ -172,7 +173,7 @@ public class PanelHeader extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarritoActionPerformed
-        navegador.irCarrito();
+        controlador.mostrarPantallaCarrito();
     }//GEN-LAST:event_btnCarritoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -192,18 +193,17 @@ public class PanelHeader extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void btnBusquedaActionPerformed(ActionEvent e) {
-       try {
-           String buscar = txtBuscar.getText().trim();
-           if(buscar.isEmpty()) {
-               navegador.mostrarMensaje("Ingrese el nombre de un producto", true);
-               return;
-           }
-           navegador.buscarProductoCatalogo(buscar);
-           txtBuscar.setText("");
-           
-       } catch (NegocioException ec) {
-           navegador.mostrarMensaje(ec.getMessage(), true);
-       }
+        String buscar = txtBuscar.getText().trim();
+        if(buscar.isEmpty()) {
+            controlador.mostrarMensaje("Ingrese el nombre de un producto", true);
+            return;
+        }
+        try {
+            controlador.buscarProductoCatalogo(buscar);
+        } catch (NegocioException ex) {
+            Logger.getLogger(PanelHeader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txtBuscar.setText("");
      
     }
 }

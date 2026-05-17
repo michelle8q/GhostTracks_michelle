@@ -1,6 +1,7 @@
 package itson.org.ghosttracks.mocks;
 
 import itson.org.ghosttracks.daos.IProductosDAO;
+import itson.org.ghosttracks.entidades.Genero;
 import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.enums.EstadoProducto;
 import itson.org.ghosttracks.enums.TipoProducto;
@@ -18,12 +19,14 @@ public class ProductosMockDAO implements IProductosDAO {
 
     private static final Logger LOGGER = Logger.getLogger(ProductosMockDAO.class.getName());
     
-    private List<Producto> productosDB;
+    private static List<Producto> productosDB;
     private Long contadorId = 1L;
 
     public ProductosMockDAO() {
+       
         this.productosDB = new ArrayList<>();
         cargarDatosDummy();
+ 
     }
 
     /**
@@ -37,7 +40,7 @@ public class ProductosMockDAO implements IProductosDAO {
                 "abbey_road.jpg",         
                 TipoProducto.VINILO,       
                 "The Beatles",            
-                "Rock",                   
+                new Genero("Rock"),                   
                 Arrays.asList("Come Together", "Something", "Maxwell's Silver Hammer", "Oh! Darling", "Octopus's Garden", "I Want You", "Here Comes the Sun"), // setlist
                 650.00,                  
                 15,                       
@@ -52,7 +55,7 @@ public class ProductosMockDAO implements IProductosDAO {
                 "thriller.jpg", 
                 TipoProducto.CD,         
                 "Michael Jackson", 
-                "Pop", 
+                new Genero("Pop"), 
                 Arrays.asList("Wanna Be Startin' Somethin'", "Baby Be Mine", "The Girl Is Mine", "Thriller", "Beat It", "Billie Jean", "Human Nature"),
                 350.00, 
                 20, 
@@ -67,7 +70,7 @@ public class ProductosMockDAO implements IProductosDAO {
                 "dark_side.jpg", 
                 TipoProducto.CASSETTE,    
                 "Pink Floyd", 
-                "Rock Progresivo", 
+                new Genero("Rock Progresivo"), 
                 Arrays.asList("Speak to Me", "Breathe (In the Air)", "On the Run", "Time", "The Great Gig in the Sky", "Money", "Us and Them"), 
                 200.00, 
                 5, 

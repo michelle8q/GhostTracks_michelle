@@ -15,7 +15,7 @@ public class Producto {
     private String imgProducto;
     private TipoProducto tipoProducto;
     private String artista;
-    private String genero;
+    private Genero genero;
     private List<String> setlist;
     private Double precio;
     private Integer stock;
@@ -25,7 +25,7 @@ public class Producto {
         
     }
 
-    public Producto(String nombre, String imgProducto, TipoProducto tipoProducto, String artista, String genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
+    public Producto(String nombre, String imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
         this.nombre = nombre;
         this.imgProducto = imgProducto;
         this.tipoProducto = tipoProducto;
@@ -37,7 +37,7 @@ public class Producto {
         this.estado = estado;
     }
 
-    public Producto(Long idProducto, String nombre, String imgProducto, TipoProducto tipoProducto, String artista, String genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
+    public Producto(Long idProducto, String nombre, String imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.imgProducto = imgProducto;
@@ -90,11 +90,11 @@ public class Producto {
         this.artista = artista;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
 

@@ -4,6 +4,10 @@
  */
 package itson.org.ghosttracks.presentacion.gestionProductos;
 
+import itson.org.ghosttracks.controladores.Control;
+import itson.org.ghosttracks.dtos.GeneroDTO;
+import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.dtos.TipoDTO;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -12,12 +16,13 @@ import javax.swing.JFileChooser;
  * @author cinca
  */
 public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
-
+    private final Control controlador;
     /**
      * Creates new form PantallaFormularioAgregarProducto
      */
-    public PantallaFormularioAgregarProducto() {
+    public PantallaFormularioAgregarProducto(Control ctrl) {
         initComponents();
+        this.controlador = ctrl;
     }
 
     /**
@@ -31,12 +36,12 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtArtista = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -50,8 +55,8 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         boxKpop = new javax.swing.JCheckBox();
         btnElegirImagen = new javax.swing.JButton();
         txtURL = new javax.swing.JTextField();
-        botonRedondeado1 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
-        botonRedondeado2 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
+        btnVolver = new itson.org.ghosttracks.utilerias.BotonRedondeado();
+        btnGuardar = new itson.org.ghosttracks.utilerias.BotonRedondeado();
 
         setBackground(new java.awt.Color(237, 229, 222));
         setPreferredSize(new java.awt.Dimension(1100, 675));
@@ -63,20 +68,19 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre del producto");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("jTextField1");
+        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombre.setText("");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Artista");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setText("jTextField2");
+        txtArtista.setBackground(new java.awt.Color(255, 255, 255));
+        txtArtista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtArtista.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -87,18 +91,17 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Stock inicial:");
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setText("jTextField4");
+        txtStock.setBackground(new java.awt.Color(255, 255, 255));
+        txtStock.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtStock.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Precio: $");
+        jLabel5.setText("Precio: ");
 
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.setText("jTextField5");
+        jTextField5.setText("");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -208,7 +211,6 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         txtURL.setBackground(new java.awt.Color(255, 255, 255));
         txtURL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtURL.setForeground(new java.awt.Color(0, 0, 0));
-        txtURL.setText("jTextField3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -218,18 +220,18 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1)
+                    .addComponent(txtNombre)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2)
+                    .addComponent(txtArtista)
                     .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txtURL, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -256,14 +258,14 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -276,7 +278,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -285,15 +287,25 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
-        botonRedondeado1.setBackground(new java.awt.Color(204, 51, 0));
-        botonRedondeado1.setForeground(new java.awt.Color(255, 255, 255));
-        botonRedondeado1.setText("Volver");
-        botonRedondeado1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setBackground(new java.awt.Color(204, 51, 0));
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
-        botonRedondeado2.setBackground(new java.awt.Color(204, 51, 0));
-        botonRedondeado2.setForeground(new java.awt.Color(255, 255, 255));
-        botonRedondeado2.setText("Guardar");
-        botonRedondeado2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardar.setBackground(new java.awt.Color(204, 51, 0));
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -305,9 +317,9 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(316, 316, 316)
-                        .addComponent(botonRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
@@ -317,8 +329,8 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonRedondeado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -362,15 +374,76 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnElegirImagenActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        controlador.mostrarPantallaCatalogoProductos();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    try {
+        if (txtNombre.getText().trim().isEmpty() || txtArtista.getText().trim().isEmpty()) {
+            controlador.mostrarMensaje("El nombre y el artista no deben de estar vacios.", false);
+            return;
+        }
+        ProductoDTO nuevoProducto = new ProductoDTO();
+        nuevoProducto.setNombre(txtNombre.getText().trim());
+        nuevoProducto.setArtista(txtArtista.getText().trim());
+        nuevoProducto.setImgProducto(txtURL.getText().trim());
+
+        try {
+            Integer stock = Integer.parseInt(txtStock.getText().trim());
+            nuevoProducto.setStock(stock);
+        } catch (NumberFormatException e) {
+            controlador.mostrarMensaje("El stock inicial debe ser un número entero válido.", true);
+            return;
+        }
+
+        try {
+            Double precio = Double.parseDouble(jTextField5.getText().trim());
+            nuevoProducto.setPrecio(precio);
+        } catch (NumberFormatException e) {
+            controlador.mostrarMensaje("El precio debe ser un número decimal válido.", true);
+            return;
+        }
+
+        TipoDTO tipoProducto = new TipoDTO();
+        tipoProducto.setNombreTipo(jComboBox2.getSelectedItem().toString());
+
+        nuevoProducto.setTipoProducto(tipoProducto);
+        GeneroDTO generoDTO = new GeneroDTO();
+        
+        if (boxPop.isSelected()) {
+            generoDTO.setNombreGenero("Pop");
+        } else if (boxKpop.isSelected()) {
+            generoDTO.setNombreGenero("K-Pop");
+        } else if (boxAlternativo.isSelected()) {
+            generoDTO.setNombreGenero("Alternativo");
+        } else if (boxRock.isSelected()) {
+            generoDTO.setNombreGenero("Rock");
+        } else {
+            controlador.mostrarMensaje("Por favor, selecciona al menos un género.", false);
+            return;
+        }
+        
+        nuevoProducto.setGenero(generoDTO);
+
+        controlador.guardarProducto(nuevoProducto);
+        controlador.mostrarMensaje("Producto agregado con éxito al catálogo.", true);
+        controlador.mostrarPantallaCatalogoProductos();
+
+    } catch (Exception ex) {
+        controlador.mostrarMensaje("Error inesperado al procesar el producto: " + ex.getMessage(), false);
+    }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado1;
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado2;
     private javax.swing.JCheckBox boxAlternativo;
     private javax.swing.JCheckBox boxKpop;
     private javax.swing.JCheckBox boxPop;
     private javax.swing.JCheckBox boxRock;
     private javax.swing.JButton btnElegirImagen;
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnGuardar;
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnVolver;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -382,10 +455,10 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtArtista;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtURL;
     // End of variables declaration//GEN-END:variables
 }

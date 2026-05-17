@@ -2,7 +2,7 @@
 package itson.org.ghosttracks.utilerias;
 
 
-import itson.org.ghosttracks.controladores.Navegador;
+import itson.org.ghosttracks.controladores.Control;
 
 /**
  *
@@ -10,13 +10,13 @@ import itson.org.ghosttracks.controladores.Navegador;
  */
 public class pnlMenuLateral extends javax.swing.JPanel {
 
-    private final Navegador navegador;
+    private final Control controlador;
     
     /**
      * Creates new form pnlMenuLateral
      */
-    public pnlMenuLateral(Navegador nav) {
-        this.navegador = nav;
+    public pnlMenuLateral(Control ctrl) {
+        this.controlador = ctrl;
         initComponents();
     }
 
@@ -72,7 +72,7 @@ public class pnlMenuLateral extends javax.swing.JPanel {
 
         btnCerrarSesion.setBackground(new java.awt.Color(230, 94, 7));
         btnCerrarSesion.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        btnCerrarSesion.setText("Cerrar sesón");
+        btnCerrarSesion.setText("Cerrar sesión");
         btnCerrarSesion.setActionCommand("Cerrar sesión");
         btnCerrarSesion.setBorder(null);
         btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -129,26 +129,28 @@ public class pnlMenuLateral extends javax.swing.JPanel {
                 .addComponent(btnCerrarSesion)
                 .addContainerGap())
         );
+
+        btnCerrarSesion.getAccessibleContext().setAccessibleName("Cerrar sesión");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompraENLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraENLineaActionPerformed
-        navegador.irInicioCliente();
+        controlador.irInicioCliente();
     }//GEN-LAST:event_btnCompraENLineaActionPerformed
 
     private void btnSeguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeguimientoActionPerformed
-        navegador.irSeguimientoPedido();
+        controlador.mostrarSeguimientoPedido();
     }//GEN-LAST:event_btnSeguimientoActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        navegador.cerrarSesion();
+        controlador.cerrarSesion();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        navegador.irInicioCliente();
+        controlador.irInicioCliente();
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        navegador.irPedidosRealizados();
+        controlador.irPedidosRealizados();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

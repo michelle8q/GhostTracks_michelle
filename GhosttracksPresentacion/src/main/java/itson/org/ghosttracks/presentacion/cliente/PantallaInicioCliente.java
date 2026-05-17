@@ -3,7 +3,7 @@ package itson.org.ghosttracks.presentacion.cliente;
 
 
 import itson.org.ghosttracks.utilerias.pnlProductoCatalogo;
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import java.util.List;
 
@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class PantallaInicioCliente extends javax.swing.JPanel {
 
-    private final ControlVentaEnLinea control;
+    private final Control control;
     
-    public PantallaInicioCliente(ControlVentaEnLinea ctrl) {
+    public PantallaInicioCliente(Control ctrl) {
         this.control = ctrl;
         initComponents();
         control.llenarCatalogo(this);

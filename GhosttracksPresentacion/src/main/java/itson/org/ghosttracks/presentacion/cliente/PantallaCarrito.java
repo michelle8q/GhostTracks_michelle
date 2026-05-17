@@ -1,7 +1,7 @@
 
 package itson.org.ghosttracks.presentacion.cliente;
 
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.CarritoDTO;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import java.util.List;
@@ -13,10 +13,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PantallaCarrito extends javax.swing.JPanel {
 
-    private final ControlVentaEnLinea control;
+    private final Control control;
     private  CarritoDTO carrito;
     
-    public PantallaCarrito(ControlVentaEnLinea ctrl) {
+    public PantallaCarrito(Control ctrl) {
         this.control = ctrl;
        
         initComponents();

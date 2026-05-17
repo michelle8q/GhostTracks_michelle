@@ -4,21 +4,34 @@
  */
 package itson.org.ghosttracks.presentacion.gestionProductos;
 
-import itson.org.ghosttracks.controladores.ControlGestionProductos;
-
+import itson.org.ghosttracks.controladores.Control;
+import itson.org.ghosttracks.dtos.CatalogoProductosDTO;
+import itson.org.ghosttracks.dtos.FiltroProductoDTO;
+import itson.org.ghosttracks.dtos.GeneroDTO;
+import itson.org.ghosttracks.dtos.ProductoDTO;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author cinca
  */
 public class PantallaCatalogo extends javax.swing.JPanel {
-    
+    private final Control controlador;
     
     /**
      * Creates new form pantallaCatalogo
      */
-    public PantallaCatalogo() {
+    public PantallaCatalogo(Control ctrl) {
         initComponents();
+        this.controlador = ctrl;
+        
+        try {
+            llenarTablaTodos();
+        } catch (Exception ex) {
+            controlador.mostrarMensajeErrorProductoNoEncontrado();
+        }
         
     }
 
@@ -38,7 +51,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
         btnImprimirReporte = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         btnAgregarProducto = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProductos = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(237, 229, 222));
         setPreferredSize(new java.awt.Dimension(1100, 675));
@@ -50,7 +63,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
         jLabel1.setText("Buscar producto");
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setText("jTextField1");
+        txtBuscar.setText("");
         txtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnBuscar.setBackground(new java.awt.Color(204, 51, 0));
@@ -86,9 +99,9 @@ public class PantallaCatalogo extends javax.swing.JPanel {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProductos.setBackground(new java.awt.Color(255, 255, 255));
+        tblProductos.setForeground(new java.awt.Color(0, 0, 0));
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -96,11 +109,11 @@ public class PantallaCatalogo extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre", "Genero", "Artista", "Tipo", "Stock", "Title 7"
+                "Codigo", "Nombre", "Genero", "Artista", "Tipo", "Stock", "Seleccionar"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(102, 102, 102));
-        jScrollPane1.setViewportView(jTable1);
+        tblProductos.setGridColor(new java.awt.Color(102, 102, 102));
+        jScrollPane1.setViewportView(tblProductos);
 
         javax.swing.GroupLayout pnlContenedorCatalogoLayout = new javax.swing.GroupLayout(pnlContenedorCatalogo);
         pnlContenedorCatalogo.setLayout(pnlContenedorCatalogoLayout);
@@ -111,14 +124,15 @@ public class PantallaCatalogo extends javax.swing.JPanel {
                 .addGroup(pnlContenedorCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(pnlContenedorCatalogoLayout.createSequentialGroup()
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlContenedorCatalogoLayout.createSequentialGroup()
                         .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(btnImprimirReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlContenedorCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnlContenedorCatalogoLayout.createSequentialGroup()
+                            .addComponent(txtBuscar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         pnlContenedorCatalogoLayout.setVerticalGroup(
@@ -135,8 +149,8 @@ public class PantallaCatalogo extends javax.swing.JPanel {
                     .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImprimirReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -151,14 +165,29 @@ public class PantallaCatalogo extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(pnlContenedorCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        try {
+            FiltroProductoDTO filtro = new FiltroProductoDTO();
+            
+            filtro.setNombre(txtBuscar.getText().trim());
+            filtro.setArtista(txtBuscar.getText().trim());
+            GeneroDTO genero = new GeneroDTO();
+            genero.setNombreGenero(txtBuscar.getText().trim());
+            filtro.setGenero(genero);
+            
+            
+            List<ProductoDTO> productos = controlador.filtrarBusqueda(filtro);
+            llenarTabla(productos);
+           
+        } catch (Exception e) {
+            controlador.mostrarMensaje("Error al buscar productos", true);
+    }
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -168,11 +197,10 @@ public class PantallaCatalogo extends javax.swing.JPanel {
     }//GEN-LAST:event_btnImprimirReporteActionPerformed
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
-        // TODO add your handling code here:
-        
-        
+       controlador.mostrarPantallaFormularioProducto();
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
-
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnAgregarProducto;
@@ -180,8 +208,131 @@ public class PantallaCatalogo extends javax.swing.JPanel {
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnImprimirReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnlContenedorCatalogo;
+    private javax.swing.JTable tblProductos;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
+    
+    
+    private void llenarTabla(List<ProductoDTO> productos) {
+        DefaultTableModel tabla = (DefaultTableModel) tblProductos.getModel();
+        tabla.setRowCount(0);
+        for(ProductoDTO producto: productos) {
+           Object[] fila = { 
+               producto.getIdProducto(),
+               producto.getNombre(),
+               producto.getGenero().getNombreGenero(),
+               producto.getArtista(),
+               producto.getTipoProducto().getNombreTipo(),
+               producto.getStock(),
+               "Seleccionar"
+           }; 
+           tabla.addRow(fila);
+        }
+        
+        tblProductos.getColumnModel().getColumn(6).setCellRenderer(new ButtonRenderer());
+        tblProductos.getColumnModel().getColumn(6).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox()));
+    }
+    
+    private void llenarTablaTodos() {
+       try {
+        List<CatalogoProductosDTO> productos=controlador.listarProductos();
+        
+        DefaultTableModel tabla = (DefaultTableModel) tblProductos.getModel();
+        tabla.setRowCount(0);
+        for(CatalogoProductosDTO producto: productos) {
+            
+            
+            tabla.addRow(new Object[] { 
+               producto.getIdProducto(),
+               producto.getNombre(),
+               producto.getGenero().getNombreGenero(),
+               producto.getArtista(),
+               producto.getTipo().getNombreTipo(),
+               producto.getStock(),
+               "Seleccionar"
+           });  
+        }
+        
+        tblProductos.getColumnModel().getColumn(6).setCellRenderer(new ButtonRenderer());
+        tblProductos.getColumnModel().getColumn(6).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox()));
+        
+    } catch (Exception e) {
+        controlador.mostrarMensaje("Error al cargar productos", true);
+    }
+   }
+    
+   class ButtonRenderer extends javax.swing.JButton implements javax.swing.table.TableCellRenderer {
+        public ButtonRenderer() { 
+            setOpaque(true);
+           
+            setBorder(javax.swing.BorderFactory.createLineBorder(new Color(204, 51, 0), 2));
+        }
+
+        @Override
+        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            setText("Seleccionar");
+            setBackground(new java.awt.Color(204, 51, 0)); 
+            setForeground(java.awt.Color.WHITE);
+            setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
+            return this;
+        }
+    }
+
+    class ButtonEditor extends javax.swing.DefaultCellEditor {
+        protected javax.swing.JButton button;
+        private String label;
+        private boolean isPushed;
+
+        public ButtonEditor(javax.swing.JCheckBox checkBox) {
+            super(checkBox);
+            button = new javax.swing.JButton();
+            button.setOpaque(true);
+            button.addActionListener(e -> fireEditingStopped());
+        }
+
+        @Override
+        public java.awt.Component getTableCellEditorComponent(javax.swing.JTable table, Object value,
+                boolean isSelected, int row, int column) {
+            label = (value == null) ? "Seleccionar" : value.toString();
+            button.setText(label);
+            isPushed = true;
+            return button;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            if (isPushed) {
+                int fila = tblProductos.getSelectedRow();
+                
+                if (fila >= 0) {
+                    Object value = tblProductos.getValueAt(fila, 0); 
+
+                    if (value != null) {
+                        Long idProducto = (Long) value;
+                        javax.swing.SwingUtilities.invokeLater(() -> {
+                            try {
+                                ProductoDTO producto = controlador.obtenerDetallesProductoSeleccionado(idProducto);
+                                controlador.mostrarPantallaDetallesProducto(producto);
+                                
+                                
+                            } catch (Exception ex) {
+                                controlador.mostrarMensaje("no se pudo obtener la informacion del producto", false);
+                            }
+                            
+                        });
+                    }
+                }
+            }
+            isPushed = false;
+            return label;
+        }
+
+        @Override
+        public boolean stopCellEditing() {
+            isPushed = false;
+            return super.stopCellEditing();
+        }
+}
 }

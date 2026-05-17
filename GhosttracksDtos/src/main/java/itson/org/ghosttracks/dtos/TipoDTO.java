@@ -21,6 +21,12 @@ public class TipoDTO {
         this.nombreTipo = nombreTipo;
     }
 
+    public TipoDTO(String nombreTipo) {
+        this.nombreTipo = nombreTipo;
+    }
+    
+    
+
     public Long getIdTipo() {
         return idTipo;
     }

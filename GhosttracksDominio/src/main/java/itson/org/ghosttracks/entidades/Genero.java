@@ -14,11 +14,11 @@ public class Genero {
 
     public Genero(Long idGenero, String nombreGenero) {
         this.idGenero = idGenero;
-        this.nombreGenero = nombreGenero;
+        this.nombreGenero = nombreGenero.toString();
     }
 
     public Genero(String nombreGenero) {
-        this.nombreGenero = nombreGenero;
+        this.nombreGenero = nombreGenero.toString();
     }
     
     
@@ -37,6 +37,11 @@ public class Genero {
 
     public void setNombreGenero(String nombreGenero) {
         this.nombreGenero = nombreGenero;
+    }
+
+    @Override
+    public String toString() {
+        return nombreGenero;
     }
     
     

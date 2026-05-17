@@ -1,7 +1,6 @@
 package itson.org.ghosttracks.dtos;
 
 import itson.org.ghosttracks.enums.EstadoProducto;
-import itson.org.ghosttracks.enums.TipoProducto;
 import java.util.List;
 
 /**
@@ -13,9 +12,9 @@ public class ProductoDTO {
     private Long idProducto;
     private String nombre;
     private String imgProducto;
-    private TipoProducto tipoProducto;
+    private TipoDTO tipoProducto;
     private String artista;
-    private String genero;
+    private GeneroDTO genero;
     private List<String> setlist;
     private Double precio;
     private Integer stock;
@@ -28,9 +27,9 @@ public class ProductoDTO {
             Long idProducto, 
             String nombre, 
             String imgProducto, 
-            TipoProducto tipoProducto, 
+            TipoDTO tipoProducto, 
             String artista, 
-            String genero, 
+            GeneroDTO genero, 
             List<String> setList,
             Double precio, 
             Integer stock, 
@@ -42,7 +41,7 @@ public class ProductoDTO {
         this.tipoProducto = tipoProducto;
         this.artista = artista;
         this.genero = genero;
-        this.setlist = setlist;
+        this.setlist = setList;
         this.precio = precio;
         this.stock = stock;
         this.estado = estado;
@@ -72,11 +71,11 @@ public class ProductoDTO {
         this.imgProducto = imgProducto;
     }
 
-    public TipoProducto getTipoProducto() {
+    public TipoDTO getTipoProducto() {
         return tipoProducto;
     }
 
-    public void setTipoProducto(TipoProducto tipoProducto) {
+    public void setTipoProducto(TipoDTO tipoProducto) {
         this.tipoProducto = tipoProducto;
     }
 
@@ -88,11 +87,11 @@ public class ProductoDTO {
         this.artista = artista;
     }
 
-    public String getGenero() {
+    public GeneroDTO getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(GeneroDTO genero) {
         this.genero = genero;
     }
 
@@ -127,5 +126,7 @@ public class ProductoDTO {
     public void setEstado(EstadoProducto estado) {
         this.estado = estado;
     }
+    
+    
   
 }

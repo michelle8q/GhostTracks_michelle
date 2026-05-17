@@ -1,7 +1,7 @@
 
 package itson.org.ghosttracks.presentacion.cliente;
 
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -12,10 +12,10 @@ import javax.swing.ImageIcon;
  */
 public class PantallaVistaProducto extends javax.swing.JPanel {
 
-    private ControlVentaEnLinea control;
+    private Control control;
     private ProductoDTO producto;
     
-    public PantallaVistaProducto(ControlVentaEnLinea control, ProductoDTO producto) {
+    public PantallaVistaProducto(Control control, ProductoDTO producto) {
         this.control = control;
         this.producto = producto;
         initComponents();

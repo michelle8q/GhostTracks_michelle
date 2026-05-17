@@ -10,26 +10,26 @@ import itson.org.ghosttracks.dtos.ClienteDTO;
  */
 public class ControlLogin {
     
-    private Navegador navegador;
+    private Control controlador;
 
-    public ControlLogin(Navegador navegador) {
-        this.navegador = navegador;
+    public ControlLogin(Control controlador) {
+        this.controlador = controlador;
     }
     
     public void loginCliente(String nombre) {
         ClienteDTO cliente = new ClienteDTO();
         cliente.setNombres(nombre);
         
-        navegador.iniciarSesionClienteExitoso(cliente);
-        navegador.irInicioCliente();
+        controlador.iniciarSesionClienteExitoso(cliente);
+        controlador.irInicioCliente();
     }
     
     public void loginAdmin(String nombre) {
         AdministradorDTO admin = new AdministradorDTO();
         admin.setNombres(nombre);
         
-        navegador.iniciarSesionAdminExitoso(admin);  
-        navegador.irVentasAdmin();
+        controlador.iniciarSesionAdminExitoso(admin);  
+        controlador.irVentasAdmin();
     }
     
 }

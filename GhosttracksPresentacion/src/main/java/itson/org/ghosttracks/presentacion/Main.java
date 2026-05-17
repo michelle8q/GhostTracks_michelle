@@ -1,11 +1,13 @@
 
 package itson.org.ghosttracks.presentacion;
 
-import itson.org.ghosttracks.controladores.Navegador;
+import itson.org.ghosttracks.controladores.Control;
+
+
 
 /**
  *
- * @author oliro
+ * @author cinca
  */
 public class Main {
 
@@ -15,8 +17,9 @@ public class Main {
     public static void main(String[] args) {
         
         VentanaPrincipal ventana = new VentanaPrincipal();
-        Navegador navegador = new Navegador(ventana);
-        navegador.irLogin();
+        Control control = Control.getInstancia();
+        control.setVentana(ventana);
+        control.irLogin();
         ventana.setVisible(true);
         
     }

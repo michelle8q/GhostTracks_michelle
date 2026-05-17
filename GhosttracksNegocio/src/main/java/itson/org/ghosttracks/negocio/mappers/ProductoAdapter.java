@@ -4,8 +4,12 @@
  */
 package itson.org.ghosttracks.negocio.mappers;
 
+import itson.org.ghosttracks.dtos.GeneroDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.dtos.TipoDTO;
+import itson.org.ghosttracks.entidades.Genero;
 import itson.org.ghosttracks.entidades.Producto;
+import itson.org.ghosttracks.enums.TipoProducto; 
 
 /**
  *
@@ -21,14 +25,29 @@ public class ProductoAdapter {
         return new Producto(
                 producto.getNombre(),
                 producto.getImgProducto(),
-                producto.getTipoProducto(),
+                toEntityTipo(producto.getTipoProducto()),
                 producto.getArtista(),
-                producto.getGenero(),
+                toEntityGenero(producto.getGenero()),
                 producto.getSetlist(),
                 producto.getPrecio(),
                 producto.getStock(),
                 producto.getEstado());
             }
+    
+    public static TipoProducto toEntityTipo(TipoDTO tipo) {
+        if (tipo == null || tipo.getNombreTipo() == null) {
+            return null;
+        }
+        return TipoProducto.valueOf(tipo.getNombreTipo().toUpperCase());
+    }
+    
+    public static Genero toEntityGenero(GeneroDTO genero) {
+        if (genero == null || genero.getNombreGenero() == null) {
+            return null;
+        }
+        return new Genero(genero.getNombreGenero());
+    }
+    
     
     public static ProductoDTO toDTO(Producto producto){
         
@@ -36,14 +55,31 @@ public class ProductoAdapter {
                 producto.getIdProducto(),
                 producto.getNombre(),
                 producto.getImgProducto(),
-                producto.getTipo(),
+                toDTOTipo(producto.getTipo()),
                 producto.getArtista(),
-                producto.getGenero(),
+                toDTOGenero(producto.getGenero()),
                 producto.getSetlist(),
                 producto.getPrecio(),
                 producto.getStock(),
                 producto.getEstado());
             }
-        
+    
+    
+
+    public static TipoDTO toDTOTipo(TipoProducto tipo) {
+            if (tipo == null) {
+                return null;
+            }
+
+            return new TipoDTO(tipo.name());
+        }
+    
+     public static GeneroDTO toDTOGenero(Genero genero) {
+            if (genero == null) {
+                return null;
+            }
+
+            return new GeneroDTO(genero.getNombreGenero());
+        }
     
 }

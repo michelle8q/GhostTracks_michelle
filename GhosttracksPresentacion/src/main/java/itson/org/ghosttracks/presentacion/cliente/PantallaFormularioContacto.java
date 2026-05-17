@@ -1,7 +1,7 @@
 
 package itson.org.ghosttracks.presentacion.cliente;
 
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ContactoDTO;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -12,12 +12,12 @@ import java.awt.event.FocusEvent;
  */
 public class PantallaFormularioContacto extends javax.swing.JPanel {
 
-    private final ControlVentaEnLinea control;
+    private final Control control;
     
     private final String PLACEHOLDER_EMAIL = "Email";
     private final String PLACEHOLDER_TEL = "Numero de telefono (Opcional)";
     
-    public PantallaFormularioContacto(ControlVentaEnLinea ctrl) {
+    public PantallaFormularioContacto(Control ctrl) {
         this.control = ctrl;
         initComponents();
         configurarPlaceholders();

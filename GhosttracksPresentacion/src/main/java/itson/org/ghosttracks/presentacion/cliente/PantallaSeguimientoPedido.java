@@ -5,7 +5,7 @@
 
 package itson.org.ghosttracks.presentacion.cliente;
 
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.enums.TipoPago;
@@ -16,13 +16,13 @@ import javax.swing.DefaultListModel;
  * @author cinca
  */
     public class PantallaSeguimientoPedido extends javax.swing.JPanel {
-    private final ControlVentaEnLinea control;
+    private final Control control;
     private final PedidoDTO pedido;
     
     /**
      * Creates new form PantallaSeguimientoPedido
      */
-    public PantallaSeguimientoPedido(ControlVentaEnLinea ctrl, PedidoDTO pedido) {
+    public PantallaSeguimientoPedido(Control ctrl, PedidoDTO pedido) {
         this.control = ctrl;
         this.pedido = pedido;
         initComponents();

@@ -4,11 +4,13 @@
  */
 package itson.org.ghosttracksgestionproductos.interfaces;
 
+import itson.org.ghosttracks.dtos.CatalogoProductosDTO;
 import itson.org.ghosttracks.dtos.FiltroProductoDTO;
 import itson.org.ghosttracks.dtos.GeneroDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.dtos.SucursalDTO;
 import itson.org.ghosttracks.dtos.TipoDTO;
+import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import java.util.List;
 
 /**
@@ -26,13 +28,17 @@ public interface IGestionProductos {
   
     Boolean validarStockInicialProducto(int Stock);
   
-    List<ProductoDTO> obtenerCatalogoProductos(FiltroProductoDTO filtro);
+    List<ProductoDTO> obtenerCatalogoProductosPorFiltro(FiltroProductoDTO filtro) throws NegocioException;
+    
+    List<CatalogoProductosDTO> obtenerCatalogoProductosCompleto() throws NegocioException;
  
     ProductoDTO actualizarProducto (ProductoDTO producto) throws Exception ;
  
     ProductoDTO crearProducto (ProductoDTO producto) throws Exception;
+    
+    ProductoDTO eliminarProducto(ProductoDTO producto) throws Exception;
      
-    ProductoDTO obtenerDetallesProductoSeleccionado (Long idProducto);
+    ProductoDTO obtenerDetallesProductoSeleccionado (Long idProducto) throws NegocioException;
    
     List<GeneroDTO> obtenerGeneros () throws Exception;
     

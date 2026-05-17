@@ -1,5 +1,6 @@
 package itson.org.ghosttracks.test;
 
+import itson.org.ghosttracks.entidades.Genero;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -91,7 +92,7 @@ public class ProductosMockDAOTest {
                 "ram.jpg", 
                 TipoProducto.VINILO, 
                 "Daft Punk", 
-                "Electronic", 
+                new Genero("Electronic"), 
                 new ArrayList<>(Arrays.asList("Give Life Back to Music", "Get Lucky")), 
                 550.00, 
                 10, 
@@ -133,7 +134,7 @@ public class ProductosMockDAOTest {
                 "img.jpg", 
                 TipoProducto.CD, 
                 "Artista", 
-                "Pop", 
+                new Genero("Pop"), 
                 new ArrayList<>(), 
                 100.00, 
                 5, 

@@ -1,7 +1,7 @@
 
 package itson.org.ghosttracks.presentacion.cliente;
 
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.DireccionEntregaDTO;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -13,7 +13,7 @@ import javax.swing.JTextField;
  */
 public class PantallaFormularioEntrega extends javax.swing.JPanel {
 
-    private final ControlVentaEnLinea control;
+    private final Control control;
     
     private final String PH_NOMBRES = "Nombre(s)";
     private final String PH_APELLIDOS = "Apellido(s)";
@@ -23,7 +23,7 @@ public class PantallaFormularioEntrega extends javax.swing.JPanel {
     private final String PH_CIUDAD = "Ciudad";
     private final String PH_ESTADO = "Estado";
     
-    public PantallaFormularioEntrega(ControlVentaEnLinea ctrl) {
+    public PantallaFormularioEntrega(Control ctrl) {
         this.control = ctrl;
         initComponents();
         configurarPlaceholders();

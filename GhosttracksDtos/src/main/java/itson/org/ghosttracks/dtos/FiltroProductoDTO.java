@@ -13,16 +13,18 @@ public class FiltroProductoDTO {
     private String artista;
     private GeneroDTO genero;
     private SucursalDTO sucursal;
+    private TipoDTO tipo;
     
     public FiltroProductoDTO() {
         
     }
 
-    public FiltroProductoDTO(String nombre, String artista, GeneroDTO genero, SucursalDTO sucursal) {
+    public FiltroProductoDTO(String nombre, String artista, GeneroDTO genero, SucursalDTO sucursal, TipoDTO tipo) {
         this.nombre = nombre;
         this.artista = artista;
         this.genero = genero;
         this.sucursal = sucursal;
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -55,6 +57,14 @@ public class FiltroProductoDTO {
 
     public void setSucursal(SucursalDTO sucursal) {
         this.sucursal = sucursal;
+    }
+
+    public TipoDTO getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoDTO tipo) {
+        this.tipo = tipo;
     }
     
     

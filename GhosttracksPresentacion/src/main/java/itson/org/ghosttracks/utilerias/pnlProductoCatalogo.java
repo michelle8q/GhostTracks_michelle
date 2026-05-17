@@ -2,7 +2,7 @@
 package itson.org.ghosttracks.utilerias;
 
 import itson.org.ghosttracks.mocks.ProductosMockDAO;
-import itson.org.ghosttracks.controladores.ControlVentaEnLinea;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -16,12 +16,12 @@ import javax.swing.ImageIcon;
 public class pnlProductoCatalogo extends javax.swing.JPanel {
 
     private ProductoDTO producto;
-    private ControlVentaEnLinea control;
+    private Control control;
     
     /**
      * Creates new form pnlProductoCatalogo
      */
-    public pnlProductoCatalogo(ProductoDTO producto, ControlVentaEnLinea control) {
+    public pnlProductoCatalogo(ProductoDTO producto, Control control) {
         initComponents();
         this.producto = producto;
         this.control = control;

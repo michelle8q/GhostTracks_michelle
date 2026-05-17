@@ -1,7 +1,7 @@
 
 package itson.org.ghosttracks.presentacion.administrador;
 
-import itson.org.ghosttracks.controladores.ControladorVentasAdmin;
+import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ItemCarritoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.utilerias.pnlDetallesPedido;
@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class PantallaVentas extends javax.swing.JPanel {
     
-    private final ControladorVentasAdmin control;
+    private final Control control;
     private final pnlDetallesPedido panelDetalles;
     private PedidoDTO pedido;
     
-    public PantallaVentas(ControladorVentasAdmin ctrl) {
+    public PantallaVentas(Control ctrl) {
         this.control = ctrl;
         initComponents();
         this.panelDetalles = pnlDetallesPedido1;
