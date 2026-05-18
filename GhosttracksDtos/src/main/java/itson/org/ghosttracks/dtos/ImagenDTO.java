@@ -16,8 +16,12 @@ public class ImagenDTO {
         
     }
 
-    public ImagenDTO(Long idImagen, String URL) {
+    public ImagenDTO(Long idImagen, String ruta) {
         this.idImagen = idImagen;
+        this.ruta = ruta;
+    }
+
+    public ImagenDTO(String ruta) {
         this.ruta = ruta;
     }
 

@@ -34,11 +34,14 @@ public class pnlProductoCatalogo extends javax.swing.JPanel {
         
         try {
             
-            ImageIcon imagen = new ImageIcon(getClass().getResource("/img/" + producto.getImgProducto()));
-         
-            Image img = imagen.getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH);
-                  
-            lblImg.setIcon(new ImageIcon(img)); 
+            String ruta= producto.getImgProducto().getRuta();
+            ImageIcon img = new ImageIcon(ruta);
+            
+            Image tamanoImg = img.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+            lblImg.setIcon(new ImageIcon(tamanoImg));
+            
+            
+            lblImg.setText("");  
 
         } catch (Exception e) {
             

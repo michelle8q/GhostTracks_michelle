@@ -41,12 +41,12 @@ import java.util.List;
     }
 
     @Override
-    public List<ProductoDTO> obtenerCatalogo() throws Exception {
+    public List<ProductoDTO> obtenerCatalogo() throws NegocioException {
         return productosBO.obtenerTodos();
     }
 
     @Override
-    public ProductoDTO consultarDetalleProducto(Long id) throws Exception {
+    public ProductoDTO consultarDetalleProducto(Long id) throws NegocioException {
         if (id == null || id <= 0) {
             throw new NegocioException("El ID de producto proporcionado no es válido.");
         }
@@ -54,7 +54,7 @@ import java.util.List;
     }
     
     @Override
-    public ClienteDTO consultarPerfilCliente(Long idCliente, String nombre) throws Exception {
+    public ClienteDTO consultarPerfilCliente(Long idCliente, String nombre) throws NegocioException {
         if (idCliente == null) {
             throw new NegocioException("Administrador no encontrado");
         
@@ -67,7 +67,7 @@ import java.util.List;
     }
     
     @Override
-    public AdministradorDTO consultarPerfilAdministrador(Long idEmpleado, String nombre) throws Exception {
+    public AdministradorDTO consultarPerfilAdministrador(Long idEmpleado, String nombre) throws NegocioException {
         if (idEmpleado == null) {
             throw new NegocioException("Administrador no encontrado");
         
@@ -80,7 +80,7 @@ import java.util.List;
     }
     
     @Override
-    public CarritoDTO agregarAlCarrito(CarritoDTO carritoActual, ProductoDTO producto, Integer cantidad) throws Exception {
+    public CarritoDTO agregarAlCarrito(CarritoDTO carritoActual, ProductoDTO producto, Integer cantidad) throws NegocioException {
         if (carritoActual == null) {
             carritoActual = new CarritoDTO();
         }
@@ -97,7 +97,7 @@ import java.util.List;
     }
     
     @Override
-    public CarritoDTO eliminarDelCarrito(CarritoDTO carrito, Long idProducto) throws Exception {
+    public CarritoDTO eliminarDelCarrito(CarritoDTO carrito, Long idProducto) throws NegocioException {
         if (carrito == null || carrito.getProductos().isEmpty()) {
             throw new NegocioException("No hay productos en el carrito para eliminar.");
         }
@@ -134,7 +134,7 @@ import java.util.List;
     }
   
     @Override
-    public PedidoDTO confirmarCompra(PedidoDTO pedidoDto) throws Exception {
+    public PedidoDTO confirmarCompra(PedidoDTO pedidoDto) throws NegocioException {
         if (pedidoDto == null || pedidoDto.getProductos() == null || pedidoDto.getProductos().isEmpty()) {
             throw new NegocioException("No se puede procesar un pedido vacío.");
         }
@@ -145,7 +145,7 @@ import java.util.List;
     }
     
     @Override
-        public PedidoDTO actualizarEstadoPedido(Long idPedido, EstadoPedidoDTO nuevoEstado) throws Exception {
+        public PedidoDTO actualizarEstadoPedido(Long idPedido, EstadoPedidoDTO nuevoEstado) throws NegocioException {
         if (idPedido == null || idPedido <= 0) {
             throw new NegocioException("El ID del pedido no es válido.");
         }
@@ -158,7 +158,7 @@ import java.util.List;
     }
         
     @Override
-    public List<PedidoDTO> obtenerTodosLosPedidos() throws Exception {
+    public List<PedidoDTO> obtenerTodosLosPedidos() throws NegocioException {
         return pedidosBO.obtenerTodosLosPedidos();
     }
     

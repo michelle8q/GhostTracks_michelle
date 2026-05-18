@@ -8,7 +8,6 @@ import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelMetodoPagoT
 import itson.org.ghosttracks.presentacion.cliente.metodosDePago.PanelSeleccionMetodoPago;
 import itson.org.ghosttracks.utilerias.pnlResumenPedido;
 import java.awt.CardLayout;
-import java.util.List;
 
 /**
  *

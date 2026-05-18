@@ -132,7 +132,7 @@ public class pnlMenuLateralAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        controlador.irVentasAdmin();
+        controlador.irInicioCliente();
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btnArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticulosActionPerformed

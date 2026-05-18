@@ -19,23 +19,23 @@ import java.util.List;
  */
 public interface IVentaEnLinea {
 
-    List<ProductoDTO> obtenerCatalogo() throws Exception;
+    List<ProductoDTO> obtenerCatalogo() throws NegocioException;
 
-    ProductoDTO consultarDetalleProducto(Long id) throws Exception;
+    ProductoDTO consultarDetalleProducto(Long id) throws NegocioException;
 
-    ClienteDTO consultarPerfilCliente(Long idCliente, String nombre) throws Exception;
+    ClienteDTO consultarPerfilCliente(Long idCliente, String nombre) throws NegocioException;
     
-    AdministradorDTO consultarPerfilAdministrador(Long idEmpleado, String nombre) throws Exception;
+    AdministradorDTO consultarPerfilAdministrador(Long idEmpleado, String nombre) throws NegocioException;
     
-    CarritoDTO agregarAlCarrito(CarritoDTO carritoActual, ProductoDTO producto, Integer cantidad) throws Exception;
+    CarritoDTO agregarAlCarrito(CarritoDTO carritoActual, ProductoDTO producto, Integer cantidad) throws NegocioException;
     
-    PedidoDTO confirmarCompra(PedidoDTO pedido) throws Exception;
+    PedidoDTO confirmarCompra(PedidoDTO pedido) throws NegocioException;
     
-    PedidoDTO actualizarEstadoPedido(Long idPedido, EstadoPedidoDTO nuevoEstado) throws Exception;
+    PedidoDTO actualizarEstadoPedido(Long idPedido, EstadoPedidoDTO nuevoEstado) throws NegocioException;
     
-    CarritoDTO eliminarDelCarrito(CarritoDTO carrito, Long idProducto) throws Exception;
+    CarritoDTO eliminarDelCarrito(CarritoDTO carrito, Long idProducto) throws NegocioException;
     
-    List<PedidoDTO> obtenerTodosLosPedidos() throws Exception;
+    List<PedidoDTO> obtenerTodosLosPedidos() throws NegocioException;
     
     void calcularTotalesPedido(PedidoDTO pedidoDto);
     

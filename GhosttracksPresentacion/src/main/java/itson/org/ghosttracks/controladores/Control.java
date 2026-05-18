@@ -26,6 +26,7 @@ import itson.org.ghosttracks.infrastructura.pagos.MercadoPagoStrategy;
 import itson.org.ghosttracks.infrastructura.pagos.TarjetaDebitoStrategy;
 import itson.org.ghosttracks.presentacion.VentanaPrincipal;
 import itson.org.ghosttracks.presentacion.administrador.PantallaVentas;
+import itson.org.ghosttracks.presentacion.cliente.PantallaFormularioContacto;
 import itson.org.ghosttracks.presentacion.cliente.PantallaFormularioEntrega;
 import itson.org.ghosttracks.presentacion.cliente.PantallaSeguimientoPedido;
 import itson.org.ghosttracks.presentacion.cliente.PantallaSeleccionMetodoDePago;
@@ -122,7 +123,8 @@ public class Control {
         
         System.out.println("Productos en pedido: " + pedidoDTO.getProductos().size());
         
-        procesarPedidoMetodoPago();
+        procesarContactoCliente();
+        //procesarPedidoMetodoPago();
     }
     
     public void procesoPedidoEntrega() {
@@ -132,6 +134,11 @@ public class Control {
     
     public void procesarPedidoMetodoPago() {
         PantallaSeleccionMetodoDePago vista = new PantallaSeleccionMetodoDePago(this);
+        ventana.cambiarPantalla(vista);
+    }
+    
+    public void procesarContactoCliente() {
+        PantallaFormularioContacto vista = new PantallaFormularioContacto(this);
         ventana.cambiarPantalla(vista);
     }
     

@@ -11,7 +11,7 @@ public class ProductoDTO {
     
     private Long idProducto;
     private String nombre;
-    private String imgProducto;
+    private ImagenDTO imgProducto;
     private TipoDTO tipoProducto;
     private String artista;
     private GeneroDTO genero;
@@ -26,7 +26,7 @@ public class ProductoDTO {
     public ProductoDTO(
             Long idProducto, 
             String nombre, 
-            String imgProducto, 
+            ImagenDTO imgProducto, 
             TipoDTO tipoProducto, 
             String artista, 
             GeneroDTO genero, 
@@ -63,11 +63,11 @@ public class ProductoDTO {
         this.nombre = nombre;
     }
 
-    public String getImgProducto() {
+    public ImagenDTO getImgProducto() {
         return imgProducto;
     }
 
-    public void setImgProducto(String imgProducto) {
+    public void setImgProducto(ImagenDTO imgProducto) {
         this.imgProducto = imgProducto;
     }
 

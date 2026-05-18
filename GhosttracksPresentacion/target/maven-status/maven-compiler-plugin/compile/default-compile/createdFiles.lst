@@ -3,6 +3,7 @@ itson\org\ghosttracks\presentacion\VentanaPrincipal.class
 itson\org\ghosttracks\presentacion\gestionProductos\PantallaFormularioAgregarProducto$7.class
 itson\org\ghosttracks\presentacion\cliente\PantallaVistaProducto.class
 itson\org\ghosttracks\presentacion\cliente\PantallaCarrito$ButtonRenderer.class
+itson\org\ghosttracks\presentacion\gestionProductos\PantallaDetallesProducto$3.class
 itson\org\ghosttracks\presentacion\cliente\PantallaSeguimientoPedido.class
 itson\org\ghosttracks\presentacion\gestionProductos\PantallaFormularioAgregarProducto$3.class
 itson\org\ghosttracks\presentacion\gestionProductos\PantallaCatalogo.class

@@ -9,6 +9,7 @@ import itson.org.ghosttracks.dtos.CatalogoProductosDTO;
 import itson.org.ghosttracks.dtos.FiltroProductoDTO;
 import itson.org.ghosttracks.dtos.GeneroDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.dtos.TipoDTO;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -180,10 +181,16 @@ public class PantallaCatalogo extends javax.swing.JPanel {
             GeneroDTO genero = new GeneroDTO();
             genero.setNombreGenero(txtBuscar.getText().trim());
             filtro.setGenero(genero);
+            TipoDTO tipo = new TipoDTO();
+            tipo.setNombreTipo(txtBuscar.getText().trim());
+            filtro.setTipo(tipo);
             
             
             List<ProductoDTO> productos = controlador.filtrarBusqueda(filtro);
             llenarTabla(productos);
+            if(productos == null || productos.isEmpty()){
+                controlador.mostrarMensajeErrorProductoNoEncontrado();
+            }
            
         } catch (Exception e) {
             controlador.mostrarMensaje("Error al buscar productos", true);
@@ -241,8 +248,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
         DefaultTableModel tabla = (DefaultTableModel) tblProductos.getModel();
         tabla.setRowCount(0);
         for(CatalogoProductosDTO producto: productos) {
-            
-            
+
             tabla.addRow(new Object[] { 
                producto.getIdProducto(),
                producto.getNombre(),
@@ -318,7 +324,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
                                 
                                 
                             } catch (Exception ex) {
-                                controlador.mostrarMensaje("no se pudo obtener la informacion del producto", false);
+                                controlador.mostrarMensaje("werror" + ex.getMessage(), false);
                             }
                             
                         });

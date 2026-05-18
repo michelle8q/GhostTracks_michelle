@@ -1,6 +1,7 @@
 package itson.org.ghosttracks.test;
 
 import itson.org.ghosttracks.entidades.Genero;
+import itson.org.ghosttracks.entidades.ImagenProducto;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -89,7 +90,7 @@ public class ProductosMockDAOTest {
         Producto nuevoProducto = new Producto(
                 null, 
                 "Random Access Memories", 
-                "ram.jpg", 
+                new ImagenProducto("ram.jpg"), 
                 TipoProducto.VINILO, 
                 "Daft Punk", 
                 new Genero("Electronic"), 
@@ -131,7 +132,7 @@ public class ProductosMockDAOTest {
         Producto productoInvalido = new Producto(
                 null, 
                 "", // Nombre vacío intencionalmente
-                "img.jpg", 
+                new ImagenProducto("img.jpg"), 
                 TipoProducto.CD, 
                 "Artista", 
                 new Genero("Pop"), 

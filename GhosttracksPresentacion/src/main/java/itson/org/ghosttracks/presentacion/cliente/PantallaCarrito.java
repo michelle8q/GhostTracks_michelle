@@ -187,7 +187,9 @@ public class PantallaCarrito extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRedondeado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRedondeado1ActionPerformed
+
         control.comenzarProcesoPedido();
+        control.procesarContactoCliente();
         
     }//GEN-LAST:event_botonRedondeado1ActionPerformed
 

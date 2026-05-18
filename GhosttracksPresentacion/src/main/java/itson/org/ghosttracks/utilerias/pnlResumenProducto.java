@@ -26,14 +26,11 @@ public class pnlResumenProducto extends javax.swing.JPanel {
         lblPrecio.setText(String.format("$%.2f", producto.getPrecio()));
         
         try {
-            ImageIcon imagen = new ImageIcon(getClass().getResource("/img/" + producto.getImgProducto()));
-         
-            Image img = imagen.getImage().getScaledInstance(101,88, Image.SCALE_SMOOTH);
-                  
-            lblImg.setIcon(new ImageIcon(img));
+           String ruta= producto.getImgProducto().getRuta();
+            ImageIcon img = new ImageIcon(ruta);
             
-            lblImg.setIcon(new javax.swing.ImageIcon(img));
-            lblImg.setText(""); 
+            Image tamanoImg = img.getImage().getScaledInstance(101, 88, Image.SCALE_SMOOTH);
+            lblImg.setIcon(new ImageIcon(tamanoImg));
             
         } catch (Exception e) {
             System.out.println("Error cargando imagen principal de: " + producto.getNombre());

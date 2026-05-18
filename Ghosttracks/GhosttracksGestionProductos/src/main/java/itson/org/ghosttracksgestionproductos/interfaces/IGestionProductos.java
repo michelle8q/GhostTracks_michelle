@@ -32,20 +32,20 @@ public interface IGestionProductos {
     
     List<CatalogoProductosDTO> obtenerCatalogoProductosCompleto() throws NegocioException;
  
-    ProductoDTO actualizarProducto (ProductoDTO producto) throws Exception ;
+    ProductoDTO actualizarProducto (ProductoDTO producto) throws NegocioException ;
  
-    ProductoDTO crearProducto (ProductoDTO producto) throws Exception;
+    ProductoDTO crearProducto (ProductoDTO producto) throws NegocioException;
     
-    ProductoDTO eliminarProducto(ProductoDTO producto) throws Exception;
+    ProductoDTO eliminarProducto(ProductoDTO producto) throws NegocioException;
      
     ProductoDTO obtenerDetallesProductoSeleccionado (Long idProducto) throws NegocioException;
    
-    List<GeneroDTO> obtenerGeneros () throws Exception;
+    List<GeneroDTO> obtenerGeneros () throws NegocioException;
     
-    List<SucursalDTO> obtenerSucursales() throws Exception;
+    List<SucursalDTO> obtenerSucursales() throws NegocioException;
      
 
-    List<TipoDTO> obtenerTipos() throws Exception;
+    List<TipoDTO> obtenerTipos() throws NegocioException;
         
      
 }

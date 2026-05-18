@@ -2,6 +2,7 @@ package itson.org.ghosttracks.mocks;
 
 import itson.org.ghosttracks.daos.IProductosDAO;
 import itson.org.ghosttracks.entidades.Genero;
+import itson.org.ghosttracks.entidades.ImagenProducto;
 import itson.org.ghosttracks.entidades.Producto;
 import itson.org.ghosttracks.enums.EstadoProducto;
 import itson.org.ghosttracks.enums.TipoProducto;
@@ -37,7 +38,7 @@ public class ProductosMockDAO implements IProductosDAO {
         Producto producto1 = new Producto(
                 1L,                       
                 "Abbey Road",             
-                "abbey_road.jpg",         
+                new ImagenProducto("C:\\Users\\cinca\\Downloads\\abbey_road.jpg"),         
                 TipoProducto.VINILO,       
                 "The Beatles",            
                 new Genero("Rock"),                   
@@ -52,7 +53,7 @@ public class ProductosMockDAO implements IProductosDAO {
         Producto producto2 = new Producto(
                 2L, 
                 "Thriller", 
-                "thriller.jpg", 
+                new ImagenProducto("C:\\Users\\cinca\\Downloads\\thriller.jpg"), 
                 TipoProducto.CD,         
                 "Michael Jackson", 
                 new Genero("Pop"), 
@@ -67,7 +68,7 @@ public class ProductosMockDAO implements IProductosDAO {
         Producto producto3 = new Producto(
                 3L, 
                 "The Dark Side of the Moon", 
-                "dark_side.jpg", 
+                 new ImagenProducto("C:\\Users\\cinca\\Downloads\\dark_side.webp"), 
                 TipoProducto.CASSETTE,    
                 "Pink Floyd", 
                 new Genero("Rock Progresivo"), 
@@ -228,10 +229,10 @@ public class ProductosMockDAO implements IProductosDAO {
             for(int i = 0; i  < productosDB.size(); i++) {
                 Producto productoActual = productosDB.get(i);
                 
-                if(productoActual.getIdProducto().equals(producto.getIdProducto()));
-                Producto eliminado = productosDB.remove(i);
-                return eliminado;
-                
+                if(productoActual.getIdProducto().equals(producto.getIdProducto())) {
+                    Producto eliminado = productosDB.remove(i);
+                    return eliminado;
+                }
             }
             throw new PersistenciaException("No se puedo eliminar el producto");
 

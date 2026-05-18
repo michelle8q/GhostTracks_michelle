@@ -6,7 +6,8 @@ package itson.org.ghosttracks.presentacion.gestionProductos;
 
 import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ProductoDTO;
-import itson.org.ghosttracks.dtos.TipoDTO;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -39,7 +40,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
         lblId = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         panelRedondeado1 = new itson.org.ghosttracks.utilerias.PanelRedondeado();
-        pnlImg = new javax.swing.JPanel();
+        lblImg = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,7 +54,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
         lblGenero = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
         btnVolver = new itson.org.ghosttracks.utilerias.BotonRedondeado();
-        botonRedondeado2 = new itson.org.ghosttracks.utilerias.BotonRedondeado();
+        btnActualizarProducto = new itson.org.ghosttracks.utilerias.BotonRedondeado();
         btnEliminar = new itson.org.ghosttracks.utilerias.BotonRedondeado();
 
         setBackground(new java.awt.Color(237, 229, 222));
@@ -76,31 +77,20 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
 
         panelRedondeado1.setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout pnlImgLayout = new javax.swing.GroupLayout(pnlImg);
-        pnlImg.setLayout(pnlImgLayout);
-        pnlImgLayout.setHorizontalGroup(
-            pnlImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
-        );
-        pnlImgLayout.setVerticalGroup(
-            pnlImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 233, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
         panelRedondeado1Layout.setHorizontalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(pnlImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         panelRedondeado1Layout.setVerticalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(pnlImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -147,6 +137,10 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTipo)
+                            .addComponent(lblGenero)
+                            .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
                                 .addComponent(jSeparator3)
@@ -154,12 +148,8 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                                 .addComponent(jLabel2)
                                 .addComponent(jSeparator2)
                                 .addComponent(jLabel7)
-                                .addComponent(jSeparator4))
-                            .addComponent(lblArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTipo)
-                            .addComponent(lblGenero)
-                            .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                                .addComponent(jSeparator4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -206,10 +196,15 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
             }
         });
 
-        botonRedondeado2.setBackground(new java.awt.Color(204, 51, 0));
-        botonRedondeado2.setForeground(new java.awt.Color(255, 255, 255));
-        botonRedondeado2.setText("Actualizar");
-        botonRedondeado2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnActualizarProducto.setBackground(new java.awt.Color(204, 51, 0));
+        btnActualizarProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarProducto.setText("Actualizar");
+        btnActualizarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnActualizarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarProductoActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setBackground(new java.awt.Color(204, 51, 0));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +226,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActualizarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41))
@@ -243,7 +238,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                                 .addComponent(lblId))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(14, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +254,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -271,11 +266,16 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
+            controlador.mostrarPantallaEliminarProducto(producto);
             controlador.eliminarProducto(producto);
         } catch (Exception ex) {
             controlador.mostrarMensaje("Error al eliminar el producto", false);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProductoActionPerformed
+        controlador.mostrarPantallaFormularioProducto();
+    }//GEN-LAST:event_btnActualizarProductoActionPerformed
  
     private void mostrarInformacionProducto() {
         if (producto == null) {
@@ -291,16 +291,22 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
             lblGenero.setText(producto.getGenero().getNombreGenero());
         }
         if (producto.getTipoProducto() != null) {
-            //TipoDTO tipo= new TipoDTO();
             lblTipo.setText(producto.getTipoProducto().getNombreTipo());
         }
-        if (producto.getImgProducto() != null && !producto.getImgProducto().isEmpty()) {
-            //pnlImg.setIcon(new javax.swing.ImageIcon(getClass().getResource(producto.getImgProducto())));
+        if (producto.getImgProducto() != null && producto.getImgProducto().getRuta() != null && 
+                !producto.getImgProducto().getRuta().isEmpty()) {
+        
+            String ruta= producto.getImgProducto().getRuta();
+            ImageIcon img = new ImageIcon(ruta);
+            
+            Image tamanoImg = img.getImage().getScaledInstance(266, 228, Image.SCALE_SMOOTH);
+            lblImg.setIcon(new ImageIcon(tamanoImg));
         }
+   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private itson.org.ghosttracks.utilerias.BotonRedondeado botonRedondeado2;
+    private itson.org.ghosttracks.utilerias.BotonRedondeado btnActualizarProducto;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnEliminar;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnVolver;
     private javax.swing.JLabel jLabel2;
@@ -316,10 +322,10 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
     private javax.swing.JLabel lblArtista;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTipo;
     private itson.org.ghosttracks.utilerias.PanelRedondeado panelRedondeado1;
-    private javax.swing.JPanel pnlImg;
     // End of variables declaration//GEN-END:variables
 }

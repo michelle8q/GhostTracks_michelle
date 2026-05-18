@@ -418,7 +418,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         lblPrecio.setPreferredSize(new java.awt.Dimension(200, 35));
 
         cantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        cantidad.setText("Cantidad");
+        cantidad.setText("1");
         cantidad.setPreferredSize(new java.awt.Dimension(100, 35));
         cantidad.addActionListener(this::cantidadActionPerformed);
 
@@ -567,7 +567,7 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_botonRedondeado1ActionPerformed
 
     private void btnAniadirAlCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAniadirAlCarritoActionPerformed
-        // TODO
+
         control.agregarProductoCarrito(producto, Integer.parseInt(cantidad.getText()));
         control.mostrarMensaje("Producto agregado con exito", false);
     }//GEN-LAST:event_btnAniadirAlCarritoActionPerformed
@@ -577,11 +577,19 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_cantidadActionPerformed
 
     private void btnAumentarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarCantidadActionPerformed
-        // TODO add your handling code here:
+        int cantidadActual = Integer.parseInt(cantidad.getText());
+
+        if (cantidadActual < producto.getStock()) {
+            cantidad.setText(String.valueOf(cantidadActual + 1));
+        }
     }//GEN-LAST:event_btnAumentarCantidadActionPerformed
 
     private void btnRestarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestarCantidadActionPerformed
-        // TODO add your handling code here:
+        int cantidadActual = Integer.parseInt(cantidad.getText());
+
+        if (cantidadActual > 1) {
+            cantidad.setText(String.valueOf(cantidadActual - 1));
+        }
     }//GEN-LAST:event_btnRestarCantidadActionPerformed
 
     private void cargarDatosProducto() {
@@ -599,13 +607,13 @@ public class PantallaVistaProducto extends javax.swing.JPanel {
         }
 
         try {
-            ImageIcon imagen = new ImageIcon(getClass().getResource("/img/" + producto.getImgProducto()));
-         
-            Image img = imagen.getImage().getScaledInstance(400,400, Image.SCALE_SMOOTH);
-                  
-            lblImgProducto.setIcon(new ImageIcon(img));
+            String ruta= producto.getImgProducto().getRuta();
+            ImageIcon img = new ImageIcon(ruta);
             
-            lblImgProducto.setIcon(new javax.swing.ImageIcon(img));
+            Image tamanoImg = img.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH);
+            lblImgProducto.setIcon(new ImageIcon(tamanoImg));
+            
+            
             lblImgProducto.setText(""); 
             
         } catch (Exception e) {

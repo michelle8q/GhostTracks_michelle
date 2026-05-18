@@ -759,7 +759,7 @@
                 <Component class="itson.org.ghosttracks.utilerias.TextFieldRedondeado" name="cantidad">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Cantidad"/>
+                    <Property name="text" type="java.lang.String" value="1"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 35]"/>
                     </Property>

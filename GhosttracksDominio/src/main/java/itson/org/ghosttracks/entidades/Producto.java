@@ -12,7 +12,7 @@ public class Producto {
     private Long idProducto; 
     
     private String nombre;
-    private String imgProducto;
+    private ImagenProducto imgProducto;
     private TipoProducto tipoProducto;
     private String artista;
     private Genero genero;
@@ -25,7 +25,7 @@ public class Producto {
         
     }
 
-    public Producto(String nombre, String imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
+    public Producto(String nombre, ImagenProducto imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
         this.nombre = nombre;
         this.imgProducto = imgProducto;
         this.tipoProducto = tipoProducto;
@@ -37,7 +37,7 @@ public class Producto {
         this.estado = estado;
     }
 
-    public Producto(Long idProducto, String nombre, String imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
+    public Producto(Long idProducto, String nombre, ImagenProducto imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.imgProducto = imgProducto;
@@ -66,11 +66,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getImgProducto() {
+    public ImagenProducto getImgProducto() {
         return imgProducto;
     }
 
-    public void setImgProducto(String imgProducto) {
+    public void setImgProducto(ImagenProducto imgProducto) {
         this.imgProducto = imgProducto;
     }
 

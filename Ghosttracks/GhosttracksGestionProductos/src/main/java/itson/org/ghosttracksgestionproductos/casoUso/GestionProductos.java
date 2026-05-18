@@ -63,7 +63,6 @@ public class GestionProductos implements IGestionProductos {
     @Override
     public Boolean validarPrecioProducto(float precioProducto) {
         return precioProducto > 0;
-
     }
 
     @Override
@@ -159,12 +158,12 @@ public class GestionProductos implements IGestionProductos {
     }
 
     @Override
-    public ProductoDTO actualizarProducto(ProductoDTO producto) throws Exception {
+    public ProductoDTO actualizarProducto(ProductoDTO producto) throws NegocioException {
         return productosBO.actualizarProducto(producto);
     }
 
     @Override
-    public ProductoDTO crearProducto(ProductoDTO producto) throws Exception {
+    public ProductoDTO crearProducto(ProductoDTO producto) throws NegocioException {
         if (validarProductoExistente(producto)) {
             throw new NegocioException("El producto ya existe");
         }
@@ -172,7 +171,7 @@ public class GestionProductos implements IGestionProductos {
     }
     
     @Override
-    public ProductoDTO eliminarProducto(ProductoDTO producto) throws Exception {
+    public ProductoDTO eliminarProducto(ProductoDTO producto) throws NegocioException {
         return productosBO.eliminarProducto(producto);
     }
 
@@ -182,18 +181,18 @@ public class GestionProductos implements IGestionProductos {
     }
 
     @Override
-    public List<GeneroDTO> obtenerGeneros() throws Exception {
+    public List<GeneroDTO> obtenerGeneros() throws NegocioException {
         return generosBO.obtenerGeneros();
     }
 
     @Override
-    public List<SucursalDTO> obtenerSucursales() throws Exception {
+    public List<SucursalDTO> obtenerSucursales() throws NegocioException {
         return sucursalesBO.obtenerTodos();
 
     }
 
     @Override
-    public List<TipoDTO> obtenerTipos() throws Exception {
+    public List<TipoDTO> obtenerTipos() throws NegocioException {
         return tiposBO.obtenerTipos();
     }
 }

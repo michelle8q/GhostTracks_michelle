@@ -21,11 +21,8 @@ import itson.org.ghosttracks.entidades.Sucursal;
 import itson.org.ghosttracks.entidades.TipoProducto;
 import itson.org.ghosttracks.enums.EstadoPedido;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
-import itson.org.ghosttracks.mocks.AdministradoresMockDAO;
-import itson.org.ghosttracks.mocks.ClientesMockDAO;
 import itson.org.ghosttracks.mocks.FactoryDAO;
 import itson.org.ghosttracks.mocks.MockDAOFactory;
-import itson.org.ghosttracks.mocks.PedidosMockDAO;
 import java.util.List;
 
 /**
@@ -34,7 +31,7 @@ import java.util.List;
  */
 public class PersistenciaFachada implements IPersistencia {
     
-    private static PersistenciaFachada instance; //Singleton
+    private static PersistenciaFachada instance; 
     private final FactoryDAO factory;
     
     private IProductosDAO productoDao;
@@ -43,7 +40,7 @@ public class PersistenciaFachada implements IPersistencia {
     private ITiposDAO tiposDao;
     private IPedidosDAO pedidosDao;
     private IClientesDAO clientesDao;
-    private IAdministradoresDAO adminDao; //los debo construir
+    private IAdministradoresDAO adminDao; 
 
     private PersistenciaFachada() {
         this.factory = new MockDAOFactory();
