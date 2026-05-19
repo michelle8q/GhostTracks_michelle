@@ -120,7 +120,7 @@ public class GestionProductos implements IGestionProductos {
                 }
                 
             }
-
+            
             return productosConFiltro;
 
         } catch (Exception e) {

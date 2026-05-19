@@ -201,15 +201,13 @@ public class ProductosMockDAO implements IProductosDAO {
         try {
             for(int i = 0; i  < productosDB.size(); i++) {
                 Producto productoActual = productosDB.get(i);
-                
-                if(productoActual.getIdProducto().equals(producto.getIdProducto())) 
-                
-                productosDB.set(i, producto);
-                
-                return producto;
+                if(productoActual.getIdProducto().equals(producto.getIdProducto())) {  
+                    productosDB.set(i, producto);  
+                    return producto;
+                }
             }
             
-            throw new PersistenciaException("No se encontr el producto con id: " + producto.getIdProducto());
+            throw new PersistenciaException("No se encontro el producto con id: " + producto.getIdProducto());
 
         } catch (PersistenciaException e) {
             throw e;

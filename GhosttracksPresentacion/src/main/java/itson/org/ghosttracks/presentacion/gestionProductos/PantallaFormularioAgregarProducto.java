@@ -11,7 +11,6 @@ import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.dtos.TipoDTO;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.JFileChooser;
 
@@ -21,12 +20,29 @@ import javax.swing.JFileChooser;
  */
 public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
     private final Control controlador;
+    private ProductoDTO prodActualizar;
     /**
      * Creates new form PantallaFormularioAgregarProducto
      */
     public PantallaFormularioAgregarProducto(Control ctrl) {
         initComponents();
         this.controlador = ctrl;
+    }
+    
+    /**
+     * Se creo otro constructor para cuando se quiera actualizar el producto, y asi, no
+     * hay necesidad de hacer otra pantalla con el mismo formulario.
+     * 
+     * Se cambia el texto del boton segun el contexto de actualizar y se llamo al 
+     * metodo de mostrarInformacionProducto() que pone la info del producto seleccionado.
+     */
+    public PantallaFormularioAgregarProducto(Control ctrl, ProductoDTO prodActualizado) {
+        initComponents();
+        this.controlador = ctrl;
+        this.prodActualizar = prodActualizado;
+        
+        btnGuardar.setText("Guardar prodcuto actualizado");
+        mostrarInformacionProducto();
     }
 
     /**
@@ -47,10 +63,10 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboTipo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         boxPop = new javax.swing.JCheckBox();
@@ -106,12 +122,12 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Precio: ");
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.setText("");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        txtPrecio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPrecio.setText("");
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtPrecioActionPerformed(evt);
             }
         });
 
@@ -129,10 +145,10 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Sucursal");
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CD", "Cassete", "Vinilo" }));
+        comboTipo.setBackground(new java.awt.Color(255, 255, 255));
+        comboTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboTipo.setForeground(new java.awt.Color(0, 0, 0));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CD", "CASSETTE", "VINILO" }));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -248,7 +264,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txtURL, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -260,12 +276,10 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(93, 93, 93)))
+                    .addComponent(jLabel6))
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
@@ -295,7 +309,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -307,7 +321,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))))
@@ -326,7 +340,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
 
         btnGuardar.setBackground(new java.awt.Color(204, 51, 0));
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setText("Guardar");
+        btnGuardar.setText("Guardar producto");
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,16 +352,15 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(430, Short.MAX_VALUE)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(433, 433, 433))
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,16 +368,16 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                 .addGap(76, 76, 76)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -408,13 +421,19 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     try {
         if (txtNombre.getText().trim().isEmpty() || txtArtista.getText().trim().isEmpty()) {
-            controlador.mostrarMensaje("El nombre y el artista no deben de estar vacios.", false);
+            controlador.mostrarMensaje("El nombre y el artista no deben de estar vacios.", true);
             return;
         }
-        ProductoDTO nuevoProducto = new ProductoDTO();
         
-        nuevoProducto.setNombre(txtNombre.getText().trim());
-        nuevoProducto.setArtista(txtArtista.getText().trim());
+        ProductoDTO producto;
+        if(prodActualizar != null) {
+           producto = prodActualizar; 
+        } else {
+           producto = new ProductoDTO();
+        }
+        
+        producto.setNombre(txtNombre.getText().trim());
+        producto.setArtista(txtArtista.getText().trim());
         
         String setList = txtSetList.getText().trim();
         List<String> listaCanciones = new ArrayList<>();
@@ -426,30 +445,29 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                 listaCanciones.add(cancion);
             }
         }
-        nuevoProducto.setSetlist(listaCanciones);
-        
-        nuevoProducto.setImgProducto(new ImagenDTO(txtURL.getText().trim()));
+        producto.setSetlist(listaCanciones);
+        producto.setImgProducto(new ImagenDTO(txtURL.getText().trim()));
 
         try {
             Integer stock = Integer.parseInt(txtStock.getText().trim());
-            nuevoProducto.setStock(stock);
+            producto.setStock(stock);
         } catch (NumberFormatException e) {
-            controlador.mostrarMensaje("El stock inicial debe ser un número entero válido.", true);
+            controlador.mostrarMensaje("El stock inicial debe ser un número entero valido.", true);
             return;
         }
 
         try {
-            Double precio = Double.parseDouble(jTextField5.getText().trim());
-            nuevoProducto.setPrecio(precio);
+            Double precio = Double.parseDouble(txtPrecio.getText().trim());
+            producto.setPrecio(precio);
         } catch (NumberFormatException e) {
             controlador.mostrarMensaje("El precio debe ser un número decimal válido.", true);
             return;
         }
 
         TipoDTO tipoProducto = new TipoDTO();
-        tipoProducto.setNombreTipo(jComboBox2.getSelectedItem().toString());
+        tipoProducto.setNombreTipo(comboTipo.getSelectedItem().toString());
 
-        nuevoProducto.setTipoProducto(tipoProducto);
+        producto.setTipoProducto(tipoProducto);
         GeneroDTO generoDTO = new GeneroDTO();
         
         if (boxPop.isSelected()) {
@@ -461,21 +479,63 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         } else if (boxRock.isSelected()) {
             generoDTO.setNombreGenero("Rock");
         } else {
-            controlador.mostrarMensaje("Por favor, selecciona al menos un género.", false);
+            controlador.mostrarMensaje("Por favor, selecciona al menos un género.", true);
             return;
         }
         
-        nuevoProducto.setGenero(generoDTO);
-
-        controlador.guardarProducto(nuevoProducto);
-        controlador.mostrarMensaje("Producto agregado con éxito al catálogo.", true);
+        producto.setGenero(generoDTO);
+        
+        if(prodActualizar !=null) {
+            controlador.actualizarProducto(producto);
+            controlador.mostrarMensaje("Producto actualizado..", false);
+        } else {
+            controlador.guardarProducto(producto);
+            controlador.mostrarMensaje("Producto agregado con exito al catálogo.", false);
+        }
         controlador.mostrarPantallaCatalogoProductos();
 
     } catch (Exception ex) {
-        controlador.mostrarMensaje("Error inesperado al procesar el producto: " + ex.getMessage(), false);
+        controlador.mostrarMensaje("Error inesperado al procesar el producto: " + ex.getMessage(), true);
     }
+    
     }//GEN-LAST:event_btnGuardarActionPerformed
-
+    
+   
+    private void mostrarInformacionProducto() {
+        if(prodActualizar == null) {
+            return;
+        }
+        txtNombre.setText(prodActualizar.getNombre());
+        txtArtista.setText(prodActualizar.getArtista());
+        txtStock.setText(String.valueOf(prodActualizar.getStock()));
+        txtPrecio.setText(String.valueOf(prodActualizar.getPrecio()));
+        
+        if(prodActualizar.getImgProducto() != null) {
+            txtURL.setText(prodActualizar.getImgProducto().getRuta());
+        }
+        
+        if(prodActualizar.getSetlist() != null){
+            txtSetList.setText(String.join("\n", prodActualizar.getSetlist()));
+        }
+        
+        if(prodActualizar.getTipoProducto() != null) {
+           comboTipo.setSelectedItem(prodActualizar.getTipoProducto().getNombreTipo());
+        }
+        
+        if(prodActualizar.getGenero() !=null) {
+           String genero= prodActualizar.getGenero().getNombreGenero();
+           switch(genero){
+               case "Pop":boxPop.setSelected(true); 
+               break;
+               case "K-Pop":boxPop.setSelected(true);
+               break;
+               case "Alternativo":boxPop.setSelected(true); 
+               break;
+               case "Rock":boxPop.setSelected(true); 
+               break;
+           }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox boxAlternativo;
@@ -485,8 +545,8 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
     private javax.swing.JButton btnElegirImagen;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnGuardar;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnVolver;
+    private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -497,11 +557,10 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField txtArtista;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextArea txtSetList;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtURL;

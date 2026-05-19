@@ -274,7 +274,8 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProductoActionPerformed
-        controlador.mostrarPantallaFormularioProducto();
+
+        controlador.mostrarPantallaFormularioProducto(producto);
     }//GEN-LAST:event_btnActualizarProductoActionPerformed
  
     private void mostrarInformacionProducto() {

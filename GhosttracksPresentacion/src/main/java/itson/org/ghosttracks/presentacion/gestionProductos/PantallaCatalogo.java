@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PantallaCatalogo extends javax.swing.JPanel {
     private final Control controlador;
+    ProductoDTO producto;
     
     /**
      * Creates new form pantallaCatalogo
@@ -204,7 +205,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
     }//GEN-LAST:event_btnImprimirReporteActionPerformed
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
-       controlador.mostrarPantallaFormularioProducto();
+       controlador.mostrarPantallaFormularioProducto(producto);
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
     
     

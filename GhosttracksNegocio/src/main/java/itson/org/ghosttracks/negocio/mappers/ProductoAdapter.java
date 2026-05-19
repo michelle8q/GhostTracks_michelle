@@ -25,6 +25,7 @@ public class ProductoAdapter {
     public static Producto toEntity(ProductoDTO producto){
         
         return new Producto(
+                producto.getIdProducto(),
                 producto.getNombre(),
                 toEntityImagen(producto.getImgProducto()),
                 toEntityTipo(producto.getTipoProducto()),
@@ -40,6 +41,7 @@ public class ProductoAdapter {
         if (tipo == null || tipo.getNombreTipo() == null) {
             return null;
         }
+        
         return TipoProducto.valueOf(tipo.getNombreTipo().toUpperCase());
     }
     

@@ -295,8 +295,12 @@ public class Control {
         return gestionProductos.crearProducto(producto);
     }
     
+     public ProductoDTO actualizarProducto(ProductoDTO producto) throws Exception {
+        return gestionProductos.actualizarProducto(producto);
+    }
+    
     public ProductoDTO eliminarProducto(ProductoDTO producto) throws Exception {
-        return gestionProductos.eliminarProducto(producto);
+        return gestionProductos.actualizarProducto(producto);
     }
     
     public void mostrarPantallaCatalogoProductos() {
@@ -309,8 +313,8 @@ public class Control {
         ventana.cambiarPantalla(detalles);
     }
      
-    public void mostrarPantallaFormularioProducto() {
-        PantallaFormularioAgregarProducto form = new PantallaFormularioAgregarProducto(this);
+    public void mostrarPantallaFormularioProducto(ProductoDTO producto) {
+        PantallaFormularioAgregarProducto form = new PantallaFormularioAgregarProducto(this, producto);
         
         ventana.cambiarPantalla(form);
     } 
