@@ -25,6 +25,8 @@ import itson.org.ghosttracks.negocio.objetosNegocio.pagos.GestorPagosStrategy;
 import itson.org.ghosttracks.enums.TipoPago;
 import itson.org.ghosttracks.infrastructura.pagos.MercadoPagoStrategy;
 import itson.org.ghosttracks.infrastructura.pagos.TarjetaDebitoStrategy;
+import itson.org.ghosttracks.infrastructura.servicioGeneradorReportes.GeneradorReportes;
+import itson.org.ghosttracks.negocio.interfaces.IServicioGeneradorReportes;
 import itson.org.ghosttracks.presentacion.VentanaPrincipal;
 import itson.org.ghosttracks.presentacion.administrador.PantallaVentas;
 import itson.org.ghosttracks.presentacion.cliente.PantallaFormularioContacto;
@@ -63,6 +65,7 @@ public class Control {
     private ClienteDTO cliente;
     private AdministradorDTO admin;
     private String rol;
+    private IServicioGeneradorReportes generadorReporte;
     
     private Control() {
         this.ventaFachada = new VentaEnLinea();
@@ -71,6 +74,7 @@ public class Control {
         this.ventana = new VentanaPrincipal();
         this.pedidoDTO = new PedidoDTO();
         this.carrito = new CarritoDTO();
+        this.generadorReporte = new GeneradorReportes();
  
     }
     
@@ -279,7 +283,10 @@ public class Control {
         ventana.mostrarMensaje(mensaje, esError);
     }
     
-    // Gestion de productos
+   
+    
+    
+    
      public List<CatalogoProductosDTO> listarProductos() throws NegocioException {
         return gestionProductos.obtenerCatalogoProductosCompleto();
     }
@@ -320,6 +327,11 @@ public class Control {
     
     public ProductoDTO eliminarProducto(ProductoDTO producto) throws NegocioException {
         return gestionProductos.eliminarProducto(producto);
+    }
+    
+    public void generarReporteProductos() throws NegocioException {
+        List<CatalogoProductosDTO> productos = gestionProductos.obtenerCatalogoProductosCompleto();
+        generadorReporte.generarInformeProductos(productos);
     }
     
     public void mostrarPantallaCatalogoProductos() {

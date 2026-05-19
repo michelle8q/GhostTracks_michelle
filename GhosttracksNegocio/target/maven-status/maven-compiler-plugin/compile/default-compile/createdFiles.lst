@@ -17,6 +17,7 @@ itson\org\ghosttracks\negocio\mappers\TipoProductoAdapter.class
 itson\org\ghosttracks\negocio\objetosNegocio\Excepciones\NegocioException.class
 itson\org\ghosttracks\negocio\directores\DirectorPedidos.class
 itson\org\ghosttracks\negocio\interfaces\IProductosBO.class
+itson\org\ghosttracks\negocio\interfaces\IServicioGeneradorReportes.class
 itson\org\ghosttracks\negocio\objetosNegocio\GenerosBO.class
 itson\org\ghosttracks\negocio\mappers\ClienteAdapter.class
 itson\org\ghosttracks\negocio\mappers\ProductoPedidoAdapter.class

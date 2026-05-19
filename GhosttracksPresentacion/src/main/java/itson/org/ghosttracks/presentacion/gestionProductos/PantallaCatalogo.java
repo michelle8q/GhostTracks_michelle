@@ -10,8 +10,11 @@ import itson.org.ghosttracks.dtos.FiltroProductoDTO;
 import itson.org.ghosttracks.dtos.GeneroDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.dtos.TipoDTO;
+import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import java.awt.Color;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -200,7 +203,13 @@ public class PantallaCatalogo extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnImprimirReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirReporteActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            controlador.generarReporteProductos();
+        } catch (NegocioException ex) {
+            controlador.mostrarMensaje("No se pudo generar el reporte", true);
+        
+        }
         
     }//GEN-LAST:event_btnImprimirReporteActionPerformed
 

@@ -5,6 +5,7 @@ C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\i
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\IGenerosBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\IPedidosBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\IProductosBO.java
+C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\IServicioGeneradorReportes.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\ISucursalesBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\interfaces\ITiposBO.java
 C:\Users\cinca\Documents\GhostTracks_michelle\GhosttracksNegocio\src\main\java\itson\org\ghosttracks\negocio\mappers\AdministradorAdapter.java
