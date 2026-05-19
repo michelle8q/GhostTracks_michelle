@@ -13,6 +13,7 @@ import itson.org.ghosttracks.dtos.DireccionEntregaDTO;
 import itson.org.ghosttracks.dtos.FiltroProductoDTO;
 import itson.org.ghosttracks.dtos.PedidoDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.dtos.SucursalDTO;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
@@ -289,6 +290,24 @@ public class Control {
      
     public ProductoDTO obtenerDetallesProductoSeleccionado(Long idProducto) throws NegocioException {
         return gestionProductos.obtenerDetallesProductoSeleccionado(idProducto);
+    }
+    
+    public Integer obtenerStockPorSucursal(Long idProd, Long idSucursal) {
+        try {
+            return gestionProductos.obtenerStockPorSucursal(idProd, idSucursal);
+        } catch (NegocioException ex) {
+            Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public SucursalDTO obtenerSucursalSeleccionada(Long idSucursal) {
+        try {
+            return gestionProductos.obtenerSucursalSeleccionada(idSucursal);
+        } catch (NegocioException ex) {
+            Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public ProductoDTO guardarProducto(ProductoDTO producto) throws NegocioException {

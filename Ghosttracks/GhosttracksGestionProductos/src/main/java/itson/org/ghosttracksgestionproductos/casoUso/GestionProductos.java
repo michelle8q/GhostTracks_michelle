@@ -190,9 +190,27 @@ public class GestionProductos implements IGestionProductos {
         return sucursalesBO.obtenerTodos();
 
     }
+    
+    @Override
+    public SucursalDTO obtenerSucursalSeleccionada(Long idSucursal) throws NegocioException {
+        return sucursalesBO.obtenerSucursalPorId(idSucursal);
+    }
 
     @Override
     public List<TipoDTO> obtenerTipos() throws NegocioException {
         return tiposBO.obtenerTipos();
     }
+    
+     @Override
+     public Integer obtenerStockPorSucursal(Long idProducto, Long idSucursal) throws NegocioException {
+        try {
+            ProductoDTO producto = productosBO.obtenerProductoPorId(idProducto);
+            if(producto.getSucursal() != null && producto.getSucursal().getIdSucursal().equals(idSucursal)) { 
+                return producto.getStock();
+            }  
+        } catch (NegocioException ex) {
+            throw new NegocioException("Error al obtener stock por sucursal: " + ex.getMessage());
+        }
+        return 0;
+     }
 }

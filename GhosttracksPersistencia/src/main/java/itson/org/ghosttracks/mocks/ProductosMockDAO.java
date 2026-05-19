@@ -4,19 +4,22 @@ import itson.org.ghosttracks.daos.IProductosDAO;
 import itson.org.ghosttracks.entidades.Genero;
 import itson.org.ghosttracks.entidades.ImagenProducto;
 import itson.org.ghosttracks.entidades.Producto;
+import itson.org.ghosttracks.entidades.Sucursal;
 import itson.org.ghosttracks.enums.EstadoProducto;
 import itson.org.ghosttracks.enums.TipoProducto;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
- * @author emyla
+ * @author cinca
  */
 public class ProductosMockDAO implements IProductosDAO {
+    private SucursalesMockDAO sucursal;
 
     private static final Logger LOGGER = Logger.getLogger(ProductosMockDAO.class.getName());
     
@@ -24,7 +27,7 @@ public class ProductosMockDAO implements IProductosDAO {
     private Long contadorId = 1L;
 
     public ProductosMockDAO() {
-       
+        this.sucursal = new SucursalesMockDAO();
         this.productosDB = new ArrayList<>();
         cargarDatosDummy();
  
@@ -34,6 +37,9 @@ public class ProductosMockDAO implements IProductosDAO {
      * Carga de datos iniciales adaptada a ProductoDTO
      */
     private void cargarDatosDummy() {
+        try {
+            Sucursal sucursal1 = sucursal.obtenerSucursalPorId(1L);
+        
         
         Producto producto1 = new Producto(
                 1L,                       
@@ -45,8 +51,10 @@ public class ProductosMockDAO implements IProductosDAO {
                 Arrays.asList("Come Together", "Something", "Maxwell's Silver Hammer", "Oh! Darling", "Octopus's Garden", "I Want You", "Here Comes the Sun"), // setlist
                 650.00,                  
                 15,                       
-                EstadoProducto.DISPONIBLE 
+                EstadoProducto.DISPONIBLE,
+                sucursal1     
         );
+        
         this.productosDB.add(producto1);
         contadorId++;
 
@@ -60,7 +68,8 @@ public class ProductosMockDAO implements IProductosDAO {
                 Arrays.asList("Wanna Be Startin' Somethin'", "Baby Be Mine", "The Girl Is Mine", "Thriller", "Beat It", "Billie Jean", "Human Nature"),
                 350.00, 
                 20, 
-                EstadoProducto.DISPONIBLE
+                EstadoProducto.DISPONIBLE,
+                sucursal1
         );
         this.productosDB.add(producto2);
         contadorId++;
@@ -75,10 +84,15 @@ public class ProductosMockDAO implements IProductosDAO {
                 Arrays.asList("Speak to Me", "Breathe (In the Air)", "On the Run", "Time", "The Great Gig in the Sky", "Money", "Us and Them"), 
                 200.00, 
                 5, 
-                EstadoProducto.DISPONIBLE
+                EstadoProducto.DISPONIBLE,
+                sucursal1
         );
         this.productosDB.add(producto3);
         contadorId++;
+        
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(ProductosMockDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Override
@@ -132,6 +146,7 @@ public class ProductosMockDAO implements IProductosDAO {
         if (nuevoProducto.getPrecio() <= 0) {
            throw new PersistenciaException("El producto debe tener un precio válido.");
         }
+        
 
         try {
             Producto nuevaEntidad = new Producto(
@@ -144,7 +159,8 @@ public class ProductosMockDAO implements IProductosDAO {
             nuevoProducto.getSetlist(),
             nuevoProducto.getPrecio(),
             nuevoProducto.getStock(),
-            nuevoProducto.getEstado()
+            nuevoProducto.getEstado(),
+            nuevoProducto.getSucursal()
         );
 
         this.productosDB.add(nuevaEntidad);

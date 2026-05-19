@@ -20,12 +20,13 @@ public class Producto {
     private Double precio;
     private Integer stock;
     private EstadoProducto estado;
+    private Sucursal sucursal;
 
     public Producto() {
         
     }
 
-    public Producto(String nombre, ImagenProducto imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
+    public Producto(String nombre, ImagenProducto imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado, Sucursal sucursal) {
         this.nombre = nombre;
         this.imgProducto = imgProducto;
         this.tipoProducto = tipoProducto;
@@ -35,9 +36,10 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.estado = estado;
+        this.sucursal = sucursal;
     }
 
-    public Producto(Long idProducto, String nombre, ImagenProducto imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado) {
+    public Producto(Long idProducto, String nombre, ImagenProducto imgProducto, TipoProducto tipoProducto, String artista, Genero genero, List<String> setlist, Double precio, Integer stock, EstadoProducto estado, Sucursal sucursal) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.imgProducto = imgProducto;
@@ -48,6 +50,7 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.estado = estado;
+        this.sucursal = sucursal;
     }
 
     public Long getIdProducto() {
@@ -129,5 +132,16 @@ public class Producto {
     public void setEstado(EstadoProducto estado) {
         this.estado = estado;
     }
+
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
+    
+    
 
 }

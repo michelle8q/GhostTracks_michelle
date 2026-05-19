@@ -19,6 +19,7 @@ public class ProductoDTO {
     private Double precio;
     private Integer stock;
     private EstadoProducto estado;
+    private SucursalDTO sucursal;
 
     public ProductoDTO() {
     }
@@ -33,7 +34,8 @@ public class ProductoDTO {
             List<String> setList,
             Double precio, 
             Integer stock, 
-            EstadoProducto estado
+            EstadoProducto estado,
+            SucursalDTO sucursal
     ) {
         this.idProducto = idProducto;
         this.nombre = nombre;
@@ -45,6 +47,7 @@ public class ProductoDTO {
         this.precio = precio;
         this.stock = stock;
         this.estado = estado;
+        this.sucursal = sucursal;
     }
 
     public Long getIdProducto() {
@@ -125,6 +128,14 @@ public class ProductoDTO {
 
     public void setEstado(EstadoProducto estado) {
         this.estado = estado;
+    }
+
+    public SucursalDTO getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalDTO sucursal) {
+        this.sucursal = sucursal;
     }
     
     

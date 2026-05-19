@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 public class pnlResumenProducto extends javax.swing.JPanel {
 
     /**
-     * Creates new form pnllResumenProducto
+     * Creates new form pnlResumenProducto
      */
     public pnlResumenProducto(ProductoDTO producto) {
         initComponents();
@@ -24,7 +24,7 @@ public class pnlResumenProducto extends javax.swing.JPanel {
         lblNombre.setText(producto.getNombre());
         lblArtista.setText(producto.getArtista());
         lblPrecio.setText(String.format("$%.2f", producto.getPrecio()));
-        
+       
         try {
            String ruta= producto.getImgProducto().getRuta();
             ImageIcon img = new ImageIcon(ruta);

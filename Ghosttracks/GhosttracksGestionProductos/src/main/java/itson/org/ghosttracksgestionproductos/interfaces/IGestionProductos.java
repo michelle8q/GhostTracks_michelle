@@ -46,6 +46,10 @@ public interface IGestionProductos {
      
 
     List<TipoDTO> obtenerTipos() throws NegocioException;
+    
+    Integer obtenerStockPorSucursal(Long idProducto, Long idSucursal) throws NegocioException;
+    
+    SucursalDTO obtenerSucursalSeleccionada(Long idSucursal) throws NegocioException;
         
      
 }

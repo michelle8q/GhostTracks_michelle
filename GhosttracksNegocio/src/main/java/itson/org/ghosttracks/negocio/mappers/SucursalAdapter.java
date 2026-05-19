@@ -16,6 +16,7 @@ import itson.org.ghosttracks.entidades.Sucursal;
 public class SucursalAdapter {
     public static Sucursal toEntity(SucursalDTO sucursal) {
         return new Sucursal (
+                sucursal.getIdSucursal(),
                 toEntityDireccion(sucursal.getDireccion()),
                 sucursal.getTelefono(),
                 sucursal.getNombre());
@@ -33,6 +34,7 @@ public class SucursalAdapter {
     
     public static SucursalDTO toDTO(Sucursal sucursal) {
         return new SucursalDTO (
+                sucursal.getIdSucursal(),
                 toDTODireccion(sucursal.getDireccion()),
                 sucursal.getTelefono(),
                 sucursal.getNombre());

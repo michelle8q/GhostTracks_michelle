@@ -8,6 +8,7 @@ import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.GeneroDTO;
 import itson.org.ghosttracks.dtos.ImagenDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.dtos.SucursalDTO;
 import itson.org.ghosttracks.dtos.TipoDTO;
 import java.io.File;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         txtStock = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboSucursal = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         comboTipo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
@@ -131,13 +132,13 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cd. Obregon", "Hermosillo" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboSucursal.setBackground(new java.awt.Color(255, 255, 255));
+        comboSucursal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboSucursal.setForeground(new java.awt.Color(0, 0, 0));
+        comboSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cd. Obregon", "Hermosillo" }));
+        comboSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboSucursalActionPerformed(evt);
             }
         });
 
@@ -275,7 +276,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                     .addComponent(jLabel8))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,7 +318,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -379,9 +380,9 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboSucursalActionPerformed
 
     private void boxAlternativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxAlternativoActionPerformed
         // TODO add your handling code here:
@@ -470,6 +471,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         producto.setTipoProducto(tipoProducto);
         GeneroDTO generoDTO = new GeneroDTO();
         
+
         if (boxPop.isSelected()) {
             generoDTO.setNombreGenero("Pop");
         } else if (boxKpop.isSelected()) {
@@ -484,6 +486,9 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         }
         
         producto.setGenero(generoDTO);
+        
+        SucursalDTO sucursal= obtenerSucursalSeleccionado();
+        producto.setSucursal(sucursal);
         
         if(prodActualizar !=null) {
             controlador.actualizarProducto(producto);
@@ -510,6 +515,7 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         txtStock.setText(String.valueOf(prodActualizar.getStock()));
         txtPrecio.setText(String.valueOf(prodActualizar.getPrecio()));
         
+        
         if(prodActualizar.getImgProducto() != null) {
             txtURL.setText(prodActualizar.getImgProducto().getRuta());
         }
@@ -520,6 +526,9 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
         
         if(prodActualizar.getTipoProducto() != null) {
            comboTipo.setSelectedItem(prodActualizar.getTipoProducto().getNombreTipo());
+        }
+        if(prodActualizar.getSucursal() != null) {
+            comboSucursal.setSelectedItem(prodActualizar.getSucursal().getNombre());
         }
         
         if(prodActualizar.getGenero() !=null) {
@@ -536,6 +545,17 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
            }
         }
     }
+    
+    private SucursalDTO obtenerSucursalSeleccionado() {
+        String sucursalSeleccionado = comboSucursal.getSelectedItem().toString();
+        if(sucursalSeleccionado.equals("Cd. Obregon")) {
+            return controlador.obtenerSucursalSeleccionada(1L);
+        }
+        if(sucursalSeleccionado.equals("Hermosillo")) {
+            return controlador.obtenerSucursalSeleccionada(2L);
+        }
+        return null;  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox boxAlternativo;
@@ -545,8 +565,8 @@ public class PantallaFormularioAgregarProducto extends javax.swing.JPanel {
     private javax.swing.JButton btnElegirImagen;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnGuardar;
     private itson.org.ghosttracks.utilerias.BotonRedondeado btnVolver;
+    private javax.swing.JComboBox<String> comboSucursal;
     private javax.swing.JComboBox<String> comboTipo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

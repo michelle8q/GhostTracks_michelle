@@ -1,5 +1,6 @@
 package itson.org.ghosttracks.test;
 
+import itson.org.ghosttracks.entidades.Direccion;
 import itson.org.ghosttracks.entidades.Genero;
 import itson.org.ghosttracks.entidades.ImagenProducto;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import itson.org.ghosttracks.entidades.Producto;
+import itson.org.ghosttracks.entidades.Sucursal;
 import itson.org.ghosttracks.enums.EstadoProducto;
 import itson.org.ghosttracks.enums.TipoProducto;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
@@ -97,7 +99,10 @@ public class ProductosMockDAOTest {
                 new ArrayList<>(Arrays.asList("Give Life Back to Music", "Get Lucky")), 
                 550.00, 
                 10, 
-                EstadoProducto.DISPONIBLE
+                EstadoProducto.DISPONIBLE,
+                new Sucursal(new Direccion("Morelos", "Norte","456", "Hermosillo",  "83100", "Sonora"),
+                "6629876543",
+                "Ghosttracks Norte")
         );
         
         // Ejecución
@@ -139,7 +144,9 @@ public class ProductosMockDAOTest {
                 new ArrayList<>(), 
                 100.00, 
                 5, 
-                EstadoProducto.DISPONIBLE
+                EstadoProducto.DISPONIBLE,
+                new Sucursal(new Direccion("Miguel Alemán","Centro","123","Ciudad Obregón","85000", "Sonora"),
+                "6441234567","Ghosttracks Centro")
         );
         
         // Ejecución y Verificación

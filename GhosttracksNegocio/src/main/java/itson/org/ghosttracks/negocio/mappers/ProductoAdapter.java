@@ -7,10 +7,12 @@ package itson.org.ghosttracks.negocio.mappers;
 import itson.org.ghosttracks.dtos.GeneroDTO;
 import itson.org.ghosttracks.dtos.ImagenDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.dtos.SucursalDTO;
 import itson.org.ghosttracks.dtos.TipoDTO;
 import itson.org.ghosttracks.entidades.Genero;
 import itson.org.ghosttracks.entidades.ImagenProducto;
 import itson.org.ghosttracks.entidades.Producto;
+import itson.org.ghosttracks.entidades.Sucursal;
 import itson.org.ghosttracks.enums.TipoProducto; 
 
 /**
@@ -34,7 +36,8 @@ public class ProductoAdapter {
                 producto.getSetlist(),
                 producto.getPrecio(),
                 producto.getStock(),
-                producto.getEstado());
+                producto.getEstado(),
+                SucursalAdapter.toEntity(producto.getSucursal()));
             }
     
     public static TipoProducto toEntityTipo(TipoDTO tipo) {
@@ -58,6 +61,7 @@ public class ProductoAdapter {
         }
         return new ImagenProducto(imagen.getRuta());
     }
+     
     
     
     public static ProductoDTO toDTO(Producto producto){
@@ -72,7 +76,8 @@ public class ProductoAdapter {
                 producto.getSetlist(),
                 producto.getPrecio(),
                 producto.getStock(),
-                producto.getEstado());
+                producto.getEstado(),
+                SucursalAdapter.toDTO(producto.getSucursal()));
             }
     
     

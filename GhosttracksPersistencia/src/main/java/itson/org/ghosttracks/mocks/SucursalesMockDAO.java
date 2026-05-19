@@ -5,6 +5,7 @@
 package itson.org.ghosttracks.mocks;
 
 import itson.org.ghosttracks.daos.ISucursalesDAO;
+import itson.org.ghosttracks.entidades.Direccion;
 import itson.org.ghosttracks.entidades.Sucursal;
 import itson.org.ghosttracks.exceptions.PersistenciaException;
 import java.util.ArrayList;
@@ -22,8 +23,26 @@ public class SucursalesMockDAO implements ISucursalesDAO {
     
     public SucursalesMockDAO() {
         this.bdSucursales = new ArrayList<>();
+        cargarSucursales();
+        
     }
     
+    private void cargarSucursales() {
+        Sucursal sucursal1 = new Sucursal(
+            1L,
+            new Direccion("Miguel Alemán","Centro","123","Ciudad Obregón","85000", "Sonora"),
+            "6441234567",
+            "Ghosttracks Centro");
+
+        Sucursal sucursal2 = new Sucursal(
+                2L,
+                new Direccion("Morelos", "Norte","456", "Hermosillo",  "83100", "Sonora"),
+                "6629876543",
+                "Ghosttracks Norte");
+        
+        bdSucursales.add(sucursal1);
+        bdSucursales.add(sucursal2); 
+    }
     
     @Override
     public List<Sucursal> obtenerSucursales() throws PersistenciaException {
