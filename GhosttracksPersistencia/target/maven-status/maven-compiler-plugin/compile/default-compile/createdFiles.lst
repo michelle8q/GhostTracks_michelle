@@ -1,4 +1,3 @@
-itson\org\ghosttracks\mocks\FactoryDAO.class
 itson\org\ghosttracks\mocks\SucursalesMockDAO.class
 itson\org\ghosttracks\daos\IPedidosDAO.class
 itson\org\ghosttracks\daos\IAdministradoresDAO.class
@@ -7,6 +6,7 @@ itson\org\ghosttracks\fachadas\PersistenciaFachada.class
 itson\org\ghosttracks\mocks\AdministradoresMockDAO.class
 itson\org\ghosttracks\mocks\ClientesMockDAO.class
 itson\org\ghosttracks\daos\ISucursalesDAO.class
+itson\org\ghosttracks\mocks\IFactoryDAO.class
 itson\ghosttracks\interfaces\IPersistencia.class
 itson\org\ghosttracks\mocks\TiposMockDAO.class
 itson\org\ghosttracks\mocks\PedidosMockDAO.class

@@ -19,7 +19,7 @@ import itson.org.ghosttracks.daos.ITiposDAO;
  * Creador concreto
  * 
  */
-public class MockDAOFactory extends FactoryDAO {
+public class MockDAOFactory extends IFactoryDAO {
 
     @Override
     public IProductosDAO crearProductosDAO() {

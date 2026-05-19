@@ -22,8 +22,6 @@ import itson.org.ghosttracks.negocio.objetosNegocio.TiposBO;
 import itson.org.ghosttracksgestionproductos.interfaces.IGestionProductos;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -45,17 +43,18 @@ public class GestionProductos implements IGestionProductos {
     }
 
     @Override
-    public Boolean validarProductoExistente(ProductoDTO producto) {
+    public Boolean validarProductoExistente(ProductoDTO producto) throws NegocioException {
         try {
             List<ProductoDTO> productos = productosBO.obtenerTodos();
             for (ProductoDTO productoGuardado : productos) {
-                if (productoGuardado.getNombre().equalsIgnoreCase(producto.getNombre()) || productoGuardado.getArtista().equalsIgnoreCase(producto.getArtista())) {
+                if (productoGuardado.getNombre().equalsIgnoreCase(producto.getNombre()) && 
+                        productoGuardado.getArtista().equalsIgnoreCase(producto.getArtista())) {
                     return true;
                 }
             }
 
         } catch (NegocioException ex) {
-            Logger.getLogger(GestionProductos.class.getName()).log(Level.SEVERE, null, ex);
+            throw new NegocioException("Error al obtener los productos: " + ex.getMessage());
         }
         return false;
     }
@@ -123,7 +122,7 @@ public class GestionProductos implements IGestionProductos {
             
             return productosConFiltro;
 
-        } catch (Exception e) {
+        } catch (NegocioException e) {
             throw new NegocioException("Error al obtener productos filtrados: " + e.getMessage());
         }
     }
@@ -209,7 +208,7 @@ public class GestionProductos implements IGestionProductos {
                 return producto.getStock();
             }  
         } catch (NegocioException ex) {
-            throw new NegocioException("Error al obtener stock por sucursal: " + ex.getMessage());
+            throw new NegocioException("Error al obtener el producto: " + ex.getMessage());
         }
         return 0;
      }

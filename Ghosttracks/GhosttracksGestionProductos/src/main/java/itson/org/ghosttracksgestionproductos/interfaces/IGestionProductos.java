@@ -18,7 +18,7 @@ import java.util.List;
  * @author cinca
  */
 public interface IGestionProductos {
-    Boolean validarProductoExistente(ProductoDTO producto);
+    Boolean validarProductoExistente(ProductoDTO producto) throws NegocioException;
    
     Boolean validarPrecioProducto(float precioProducto);
     

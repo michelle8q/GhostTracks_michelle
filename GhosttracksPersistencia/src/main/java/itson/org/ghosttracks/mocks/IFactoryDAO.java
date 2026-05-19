@@ -19,7 +19,7 @@ import itson.org.ghosttracks.daos.ITiposDAO;
  * Implementacion de patron Factory.
  * Esta clase es la creadora que declara los metodos fabrica.
  */
-public abstract class FactoryDAO {
+public abstract class IFactoryDAO {
     
     public abstract IProductosDAO crearProductosDAO();
     public abstract ITiposDAO crearTiposDAO();

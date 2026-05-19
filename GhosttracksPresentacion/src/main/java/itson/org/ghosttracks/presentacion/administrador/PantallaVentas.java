@@ -114,13 +114,12 @@ public class PantallaVentas extends javax.swing.JPanel {
         modelo.setRowCount(0);
 
         for (PedidoDTO pedido : pedidos) {
-            Object[] fila = new Object[5]; 
+             int piezasTotales = 0; 
             
-            int piezasTotales = 0; 
-        
             for (ItemCarritoDTO item : pedido.getProductos()) { 
                 piezasTotales += item.getCantidad();
-
+            }
+            Object[] fila = new Object[5]; 
             fila[0] = pedido.getIdPedido(); 
             fila[1] = pedido.getIdCliente(); 
             fila[2] = piezasTotales;
@@ -130,5 +129,5 @@ public class PantallaVentas extends javax.swing.JPanel {
             modelo.addRow(fila);
         }
     }
-    }
+    
 }
