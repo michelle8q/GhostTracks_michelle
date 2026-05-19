@@ -268,8 +268,9 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
         try {
             controlador.mostrarPantallaEliminarProducto(producto);
             controlador.eliminarProducto(producto);
+            controlador.mostrarPantallaCatalogoProductos();
         } catch (Exception ex) {
-            controlador.mostrarMensaje("Error al eliminar el producto", false);
+            controlador.mostrarMensaje(ex.getMessage(), true);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

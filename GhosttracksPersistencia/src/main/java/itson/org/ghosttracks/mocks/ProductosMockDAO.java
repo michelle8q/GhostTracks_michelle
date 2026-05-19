@@ -232,7 +232,7 @@ public class ProductosMockDAO implements IProductosDAO {
                     return eliminado;
                 }
             }
-            throw new PersistenciaException("No se puedo eliminar el producto");
+            throw new PersistenciaException("No se encontro el producto");
 
         } catch (PersistenciaException e) {
             throw e;

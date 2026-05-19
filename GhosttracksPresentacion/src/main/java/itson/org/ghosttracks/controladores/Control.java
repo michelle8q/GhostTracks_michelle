@@ -279,28 +279,28 @@ public class Control {
     }
     
     // Gestion de productos
-     public List<CatalogoProductosDTO> listarProductos() throws Exception {
+     public List<CatalogoProductosDTO> listarProductos() throws NegocioException {
         return gestionProductos.obtenerCatalogoProductosCompleto();
     }
     
-    public List<ProductoDTO> filtrarBusqueda(FiltroProductoDTO filtro) throws Exception {
+    public List<ProductoDTO> filtrarBusqueda(FiltroProductoDTO filtro) throws NegocioException {
         return gestionProductos.obtenerCatalogoProductosPorFiltro(filtro);
     }
      
-    public ProductoDTO obtenerDetallesProductoSeleccionado(Long idProducto) throws Exception {
+    public ProductoDTO obtenerDetallesProductoSeleccionado(Long idProducto) throws NegocioException {
         return gestionProductos.obtenerDetallesProductoSeleccionado(idProducto);
     }
     
-    public ProductoDTO guardarProducto(ProductoDTO producto) throws Exception {
+    public ProductoDTO guardarProducto(ProductoDTO producto) throws NegocioException {
         return gestionProductos.crearProducto(producto);
     }
     
-     public ProductoDTO actualizarProducto(ProductoDTO producto) throws Exception {
+     public ProductoDTO actualizarProducto(ProductoDTO producto) throws NegocioException {
         return gestionProductos.actualizarProducto(producto);
     }
     
-    public ProductoDTO eliminarProducto(ProductoDTO producto) throws Exception {
-        return gestionProductos.actualizarProducto(producto);
+    public ProductoDTO eliminarProducto(ProductoDTO producto) throws NegocioException {
+        return gestionProductos.eliminarProducto(producto);
     }
     
     public void mostrarPantallaCatalogoProductos() {
@@ -321,15 +321,11 @@ public class Control {
     
     public void mostrarPantallaEliminarProducto(ProductoDTO producto) {
         int seleccion= JOptionPane.showConfirmDialog(null, "¿Desea eliminar el producto?", "confirmar",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.YES_NO_OPTION);
+        
         if(seleccion== JOptionPane.YES_OPTION) {
-            try {
-                gestionProductos.eliminarProducto(producto);
-                JOptionPane.showMessageDialog(null, "Producto eliminado");
-            } catch (Exception ex) {
-                Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
-            }
-  
+           JOptionPane.showMessageDialog(null, "Producto eliminado");
+           
         }
     }
     
@@ -372,7 +368,7 @@ public class Control {
             List<PedidoDTO> pedidos = ventaFachada.obtenerTodosLosPedidos();
             vista.llenarTabla(pedidos);
             
-        } catch (Exception ex) {
+        } catch (NegocioException ex) {
             mostrarMensaje("Error al cargar los pedidos: " + ex.getMessage(), true);
         }
     }
