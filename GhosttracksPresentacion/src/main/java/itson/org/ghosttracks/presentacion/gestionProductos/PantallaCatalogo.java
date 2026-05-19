@@ -65,7 +65,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Buscar producto");
+        jLabel1.setText("Buscar producto (Nombre, artista, tipo o genero)");
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscar.setText("");
@@ -83,7 +83,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
 
         btnImprimirReporte.setBackground(new java.awt.Color(204, 51, 0));
         btnImprimirReporte.setForeground(new java.awt.Color(255, 255, 255));
-        btnImprimirReporte.setText("Imprimir reporte");
+        btnImprimirReporte.setText("Generar reporte");
         btnImprimirReporte.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnImprimirReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

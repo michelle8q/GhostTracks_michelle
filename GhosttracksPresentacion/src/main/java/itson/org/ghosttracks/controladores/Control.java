@@ -19,7 +19,7 @@ import itson.org.ghosttracks.presentacion.cliente.PantallaCarrito;
 import itson.org.ghosttracks.presentacion.cliente.PantallaInicioCliente;
 import itson.org.ghosttracks.presentacion.cliente.PantallaPedidosProceso;
 import itson.org.ghosttracks.utilerias.pnlResumenPedido;
-import itson.org.ghosttracksventaenlinea.fachada.VentaEnLinea;
+import itson.org.ghosttracksventaenlinea.CasoUso.VentaEnLinea;
 import itson.org.ghosttracksventaenlinea.interfaces.IVentaEnLinea;
 import itson.org.ghosttracks.negocio.objetosNegocio.pagos.GestorPagosStrategy;
 import itson.org.ghosttracks.enums.TipoPago;

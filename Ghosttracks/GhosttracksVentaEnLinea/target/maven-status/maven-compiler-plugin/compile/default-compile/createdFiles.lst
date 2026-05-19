@@ -1,2 +1,2 @@
 itson\org\ghosttracksventaenlinea\interfaces\IVentaEnLinea.class
-itson\org\ghosttracksventaenlinea\fachada\VentaEnLinea.class
+itson\org\ghosttracksventaenlinea\CasoUso\VentaEnLinea.class

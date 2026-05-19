@@ -1,4 +1,4 @@
-package itson.org.ghosttracksventaenlinea.fachada;
+package itson.org.ghosttracksventaenlinea.CasoUso;
 
 import itson.org.ghosttracks.dtos.AdministradorDTO;
 import itson.org.ghosttracks.dtos.CarritoDTO;
