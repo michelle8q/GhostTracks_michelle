@@ -47,12 +47,13 @@ public class GestionProductos implements IGestionProductos {
         try {
             List<ProductoDTO> productos = productosBO.obtenerTodos();
             for (ProductoDTO productoGuardado : productos) {
-                if (productoGuardado.getNombre().equalsIgnoreCase(producto.getNombre()) && 
-                        productoGuardado.getArtista().equalsIgnoreCase(producto.getArtista())) {
+                if (productoGuardado.getNombre().equalsIgnoreCase(producto.getNombre())) {
+                    
+                    if (productoGuardado.getArtista().equalsIgnoreCase(producto.getArtista())) {
                     return true;
                 }
             }
-
+        }
         } catch (NegocioException ex) {
             throw new NegocioException("Error al obtener los productos: " + ex.getMessage());
         }
@@ -60,104 +61,137 @@ public class GestionProductos implements IGestionProductos {
     }
 
     @Override
-    public Boolean validarPrecioProducto(float precioProducto) {
-        return precioProducto > 0;
+    public Boolean validarPrecioProducto(Float precioProducto) throws NegocioException {
+        if(precioProducto == null) {
+            throw new NegocioException("El precio no debe estar vacio.");
+        }
+        
+        if(precioProducto <= 0) {
+            throw new NegocioException("El precio debe ser mayor a 0.");
+        }
+        
+        return true;
     }
 
     @Override
-    public Boolean validarNombreProducto(String nombreProducto) {
-
-        return (nombreProducto != null || !nombreProducto.trim().isEmpty());
+    public Boolean validarNombreProducto(String nombreProducto) throws NegocioException {
+        if(nombreProducto == null || nombreProducto.trim().isEmpty()) {
+            throw new NegocioException("El nombre del producto no debe estar vacio.");
+        }
+        
+        if(nombreProducto.length() > 50) {
+            throw new NegocioException("El nombre del producto no puede tener cmas de 50 caracteres");
+        }
+        
+        return true;
     }
 
     @Override
-    public Boolean validarArtistaProducto(String artistaProducto) {
-        return (artistaProducto != null || !artistaProducto.trim().isEmpty());
+    public Boolean validarArtistaProducto(String artistaProducto) throws NegocioException {
+        if(artistaProducto == null || artistaProducto.trim().isEmpty()) {
+            throw new NegocioException("El artista del producto no debe estar vacio.");
+        }
+        
+        if(artistaProducto.length() > 30) {
+            throw new NegocioException("El nombre del artista no puede tener mas de 30 caracteres");
+        }
+        
+        return true;
     }
 
     @Override
-    public Boolean validarStockInicialProducto(int stock) {
-        return stock >= 0;
+    public Boolean validarStockInicialProducto(Integer stock) throws NegocioException {
+        if(stock == null) {
+            throw new NegocioException("El stock no debe estar vacio.");
+        }
+        
+        if(stock <= 0) {
+            throw new NegocioException("El stock debe ser mayor a 0.");
+        }
+        
+        return true;
+    }
+    
+    @Override
+    public Boolean validarGeneroProducto(GeneroDTO genero) throws NegocioException {
+        if(genero == null) {
+           throw new NegocioException("El genero no puede estar vacio");
+        }
+        
+        return true;
+    }
+    
+    @Override
+    public Boolean validarTipoProducto(TipoDTO tipo) throws NegocioException {
+        if(tipo == null) {
+           throw new NegocioException("El tipo no puede estar vacio");
+        }
+       
+        return true;
     }
 
     @Override
-    public List<ProductoDTO> obtenerCatalogoProductosPorFiltro(FiltroProductoDTO filtro) throws NegocioException {
+    public List<CatalogoProductosDTO> obtenerCatalogoProductosPorFiltro(FiltroProductoDTO filtro) throws NegocioException {
         try {
             List<ProductoDTO> productos = productosBO.obtenerTodos();
-            if (filtro == null) {
-                return productos;
-            }
-            List<ProductoDTO> productosConFiltro = new ArrayList<>();
+            List<CatalogoProductosDTO> catalogo = new ArrayList<>();
             for (ProductoDTO producto : productos) {
                 boolean existe = false;
-
-                if (filtro.getNombre() != null && !filtro.getNombre().trim().isEmpty()) {
-                    if (producto.getNombre() != null && producto.getNombre().toLowerCase().contains(filtro.getNombre().toLowerCase())) {
+                if(filtro == null) {
+                    existe = true;
+                }
+                if (!existe && producto.getNombre().toLowerCase().contains(filtro.getNombre().toLowerCase())) {
+                    existe = true;
+                    }
+                if (!existe &&producto.getArtista().toLowerCase().contains(filtro.getArtista().toLowerCase())) {
                         existe = true;
                     }
-                }
-
-                if (!existe && filtro.getArtista() != null && !filtro.getArtista().trim().isEmpty()) {
-                    if (producto.getArtista() != null && producto.getArtista().toLowerCase().contains(filtro.getArtista().toLowerCase())) {
+                if (!existe && producto.getGenero().getNombreGenero().toLowerCase().contains(filtro.getGenero().getNombreGenero().toLowerCase())) {
                         existe = true;
                     }
-                }
-
-                if (!existe && filtro.getGenero() != null) {
-                    if (producto.getGenero() != null && producto.getGenero().getNombreGenero().toLowerCase().contains(filtro.getGenero().getNombreGenero().toLowerCase())) {
+                if (!existe && producto.getTipoProducto().getNombreTipo().toLowerCase().contains(filtro.getTipo().getNombreTipo().toLowerCase())) {
                         existe = true;
                     }
-                }
-                if (!existe && filtro.getTipo() != null) {
-                    if (producto.getTipoProducto()!= null && producto.getTipoProducto().getNombreTipo().toLowerCase().contains(filtro.getTipo().getNombreTipo().toLowerCase())) {
-                        existe = true;
-                    }
-                }
                 
                 if (existe) {
-                    productosConFiltro.add(producto);
-                }
-                
-            }
-            
-            return productosConFiltro;
+                   CatalogoProductosDTO catalogoDTO = new CatalogoProductosDTO();
+                   catalogoDTO.setIdProducto(producto.getIdProducto());
+                   catalogoDTO.setNombre(producto.getNombre());
+                   catalogoDTO.setArtista(producto.getArtista());
+                   catalogoDTO.setStock(producto.getStock());
 
+                    GeneroDTO genero = new GeneroDTO();
+                    if(producto.getGenero() != null) {
+                        genero.setNombreGenero(producto.getGenero().getNombreGenero());
+                        catalogoDTO.setGenero(genero);
+                    }
+            
+                    TipoDTO tipo = new TipoDTO();
+                    if(producto.getTipoProducto() != null) {
+                        tipo.setNombreTipo(producto.getTipoProducto().getNombreTipo());
+                        catalogoDTO.setTipo(tipo);
+                    }
+                    catalogo.add(catalogoDTO);
+                }  
+            } 
+            
+            return catalogo;
         } catch (NegocioException e) {
             throw new NegocioException("Error al obtener productos filtrados: " + e.getMessage());
         }
-    }
-    @Override
-    public List<CatalogoProductosDTO> obtenerCatalogoProductosCompleto() throws NegocioException {
-        List<ProductoDTO> productos = productosBO.obtenerTodos();
-        List<CatalogoProductosDTO> catalogo = new ArrayList<>();
-
-        for (ProductoDTO producto : productos) {
-            CatalogoProductosDTO catalogoDTO = new CatalogoProductosDTO();
-
-            catalogoDTO.setIdProducto(producto.getIdProducto());
-            catalogoDTO.setNombre(producto.getNombre());
-            catalogoDTO.setArtista(producto.getArtista());
-            catalogoDTO.setStock(producto.getStock());
-
-            GeneroDTO genero = new GeneroDTO();
-            if(producto.getGenero() != null) {
-                genero.setNombreGenero(producto.getGenero().getNombreGenero());
-                catalogoDTO.setGenero(genero);
-            }
-            
-            TipoDTO tipo = new TipoDTO();
-            if(producto.getTipoProducto() != null) {
-                tipo.setNombreTipo(producto.getTipoProducto().getNombreTipo());
-                catalogoDTO.setTipo(tipo);
-            }
-            catalogo.add(catalogoDTO);
-
-        }
-        return catalogo;
-    }
-
+        
+     }
+    
+    
     @Override
     public ProductoDTO actualizarProducto(ProductoDTO producto) throws NegocioException {
+        validarNombreProducto(producto.getNombre());
+        validarArtistaProducto(producto.getArtista());
+        validarPrecioProducto(producto.getPrecio().floatValue());
+        //validarStockProducto(producto.getStock());
+        validarGeneroProducto(new GeneroDTO(producto.getGenero().getNombreGenero()));
+        validarTipoProducto(new TipoDTO(producto.getTipoProducto().getNombreTipo()));
+        
         return productosBO.actualizarProducto(producto);
     }
 
@@ -166,38 +200,81 @@ public class GestionProductos implements IGestionProductos {
         if (validarProductoExistente(producto)) {
             throw new NegocioException("El producto ya existe");
         }
+        
+        validarNombreProducto(producto.getNombre());
+        validarArtistaProducto(producto.getArtista());
+        validarPrecioProducto(producto.getPrecio().floatValue());
+        //validarStockProducto(producto.getStock());
+        validarGeneroProducto(new GeneroDTO(producto.getGenero().getNombreGenero()));
+        validarTipoProducto(new TipoDTO(producto.getTipoProducto().getNombreTipo()));
+        
         return productosBO.crearProducto(producto);
     }
     
     @Override
     public ProductoDTO eliminarProducto(ProductoDTO producto) throws NegocioException {
+        if (producto == null) {
+            throw new NegocioException("No se puede eliminar un producto nulo.");
+        }
         return productosBO.eliminarProducto(producto);
     }
 
     @Override
     public ProductoDTO obtenerDetallesProductoSeleccionado(Long idProducto) throws NegocioException {
+        if (idProducto == null) {
+            throw new NegocioException("El ID del producto a buscar no puede ser nulo");
+        }
         return productosBO.obtenerProductoPorId(idProducto);
     }
 
     @Override
     public List<GeneroDTO> obtenerGeneros() throws NegocioException {
-        return generosBO.obtenerGeneros();
+        List<GeneroDTO> generos= generosBO.obtenerGeneros();
+        if(generos == null) {
+                throw new NegocioException("La lista de generos no existe");
+        }
+        if(generos.isEmpty()) {
+           throw new NegocioException("La lista de generos esta vacia");
+        }
+             
+        return  generos;
     }
 
     @Override
     public List<SucursalDTO> obtenerSucursales() throws NegocioException {
-        return sucursalesBO.obtenerTodos();
+        List<SucursalDTO> sucursales = sucursalesBO.obtenerTodos();
+        if(sucursales == null) {
+                throw new NegocioException("La lista de sucursales no existe");
+        }
+        if(sucursales.isEmpty()) {
+           throw new NegocioException("La lista de generos esta vacia");
+        }
+        
+        return sucursales;
 
     }
     
     @Override
     public SucursalDTO obtenerSucursalSeleccionada(Long idSucursal) throws NegocioException {
+        if(idSucursal == null) {
+          throw new NegocioException("La sucursal seleccionada no existe");
+        }
+        
         return sucursalesBO.obtenerSucursalPorId(idSucursal);
     }
 
     @Override
     public List<TipoDTO> obtenerTipos() throws NegocioException {
-        return tiposBO.obtenerTipos();
+        List<TipoDTO> tipos= tiposBO.obtenerTipos();
+        if(tipos == null) {
+                throw new NegocioException("La lista de tipos no existe");
+        }
+        if(tipos.isEmpty()) {
+           throw new NegocioException("La lista de tipos esta vacia");
+        }
+             
+        return tipos;
+
     }
     
      @Override

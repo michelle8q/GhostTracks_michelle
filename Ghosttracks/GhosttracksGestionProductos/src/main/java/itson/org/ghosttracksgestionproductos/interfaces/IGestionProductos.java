@@ -20,18 +20,20 @@ import java.util.List;
 public interface IGestionProductos {
     Boolean validarProductoExistente(ProductoDTO producto) throws NegocioException;
    
-    Boolean validarPrecioProducto(float precioProducto);
+    Boolean validarPrecioProducto(Float precioProducto) throws NegocioException;
     
-    Boolean validarNombreProducto(String nombreProducto);
+    Boolean validarNombreProducto(String nombreProducto) throws NegocioException;
   
-    Boolean validarArtistaProducto(String artistaProducto);
+    Boolean validarArtistaProducto(String artistaProducto) throws NegocioException;
   
-    Boolean validarStockInicialProducto(int Stock);
-  
-    List<ProductoDTO> obtenerCatalogoProductosPorFiltro(FiltroProductoDTO filtro) throws NegocioException;
+    Boolean validarStockInicialProducto(Integer Stock) throws NegocioException;
     
-    List<CatalogoProductosDTO> obtenerCatalogoProductosCompleto() throws NegocioException;
- 
+    Boolean validarGeneroProducto(GeneroDTO genero) throws NegocioException;
+    
+    Boolean validarTipoProducto(TipoDTO tipo) throws NegocioException;
+  
+    List<CatalogoProductosDTO> obtenerCatalogoProductosPorFiltro(FiltroProductoDTO filtro) throws NegocioException;
+    
     ProductoDTO actualizarProducto (ProductoDTO producto) throws NegocioException ;
  
     ProductoDTO crearProducto (ProductoDTO producto) throws NegocioException;

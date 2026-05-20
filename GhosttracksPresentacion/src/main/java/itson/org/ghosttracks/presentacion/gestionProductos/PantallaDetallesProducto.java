@@ -6,6 +6,7 @@ package itson.org.ghosttracks.presentacion.gestionProductos;
 
 import itson.org.ghosttracks.controladores.Control;
 import itson.org.ghosttracks.dtos.ProductoDTO;
+import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -19,7 +20,7 @@ public class PantallaDetallesProducto extends javax.swing.JPanel {
     /**
      * Creates new form PantallaDetallesProducto
      */
-    public PantallaDetallesProducto(Control ctrl, ProductoDTO producto)  {
+    public PantallaDetallesProducto(Control ctrl, ProductoDTO producto) {
         initComponents();
         this.controlador = ctrl;
         this.producto = producto;

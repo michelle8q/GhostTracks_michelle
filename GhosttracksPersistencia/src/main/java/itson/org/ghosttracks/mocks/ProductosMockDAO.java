@@ -98,8 +98,13 @@ public class ProductosMockDAO implements IProductosDAO {
     @Override
     public List<Producto> obtenerProductos() throws PersistenciaException {
         try {
+            if(productosDB == null) {
+                throw new PersistenciaException("La lista de productos no existe");
+            }
+            
             return new ArrayList<>(this.productosDB);
-        } catch (Exception e) {
+            
+        } catch (PersistenciaException e) {
             LOGGER.severe("Error crítico e inesperado al intentar obtener todos los productos" + e.getMessage());
             throw new PersistenciaException("Ocurrió un error al consultar el catálogo de productos.", e);
         }

@@ -283,18 +283,11 @@ public class Control {
         ventana.mostrarMensaje(mensaje, esError);
     }
     
-   
     
-    
-    
-     public List<CatalogoProductosDTO> listarProductos() throws NegocioException {
-        return gestionProductos.obtenerCatalogoProductosCompleto();
-    }
-    
-    public List<ProductoDTO> filtrarBusqueda(FiltroProductoDTO filtro) throws NegocioException {
+     public List<CatalogoProductosDTO> listarProductos(FiltroProductoDTO filtro) throws NegocioException {
         return gestionProductos.obtenerCatalogoProductosPorFiltro(filtro);
     }
-     
+        
     public ProductoDTO obtenerDetallesProductoSeleccionado(Long idProducto) throws NegocioException {
         return gestionProductos.obtenerDetallesProductoSeleccionado(idProducto);
     }
@@ -305,20 +298,22 @@ public class Control {
         } catch (NegocioException ex) {
             Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return null; 
     }
     
-    public SucursalDTO obtenerSucursalSeleccionada(Long idSucursal) {
+    public SucursalDTO obtenerSucursalSeleccionada(Long idSucursal)  {
         try {
             return gestionProductos.obtenerSucursalSeleccionada(idSucursal);
         } catch (NegocioException ex) {
             Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+      
     }
     
     public ProductoDTO guardarProducto(ProductoDTO producto) throws NegocioException {
         return gestionProductos.crearProducto(producto);
+        
     }
     
      public ProductoDTO actualizarProducto(ProductoDTO producto) throws NegocioException {
@@ -330,7 +325,7 @@ public class Control {
     }
     
     public void generarReporteProductos() throws NegocioException {
-        List<CatalogoProductosDTO> productos = gestionProductos.obtenerCatalogoProductosCompleto();
+        List<CatalogoProductosDTO> productos = gestionProductos.obtenerCatalogoProductosPorFiltro(null);
         generadorReporte.generarInformeProductos(productos);
     }
     

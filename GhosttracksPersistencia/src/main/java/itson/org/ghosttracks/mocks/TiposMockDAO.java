@@ -28,6 +28,12 @@ public class TiposMockDAO implements ITiposDAO{
     @Override
     public List<TipoProducto> obtenerTipos() throws PersistenciaException {
         try {
+            if(bdTipos == null) {
+                throw new PersistenciaException("La lista de tipos no existe");
+            }
+            if(bdTipos.isEmpty()) {
+                throw new PersistenciaException("La lista de tipos esta vacia");
+            }
             return new ArrayList<>(bdTipos);
         } catch (Exception e) {
             throw new PersistenciaException("Error al obtener los tipos: " + e.getMessage());

@@ -44,7 +44,7 @@
                           </Group>
                           <Component id="lblNombre" alignment="0" min="-2" pref="657" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="450" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>

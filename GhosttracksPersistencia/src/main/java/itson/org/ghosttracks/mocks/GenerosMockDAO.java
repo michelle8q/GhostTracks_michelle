@@ -29,6 +29,12 @@ public class GenerosMockDAO implements IGenerosDAO {
     @Override
     public List<Genero> obtenerGeneros() throws PersistenciaException {
         try {
+            if(bdGeneros == null) {
+                throw new PersistenciaException("La lista de generos no existe");
+            }
+             if(bdGeneros.isEmpty()) {
+                throw new PersistenciaException("La lista de generos esta vacia");
+            }
             return new ArrayList<>(bdGeneros);
         } catch (Exception e) {
             throw new PersistenciaException("Error al obtener los generos: " + e.getMessage());

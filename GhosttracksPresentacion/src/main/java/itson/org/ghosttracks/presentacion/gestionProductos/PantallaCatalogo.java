@@ -11,10 +11,7 @@ import itson.org.ghosttracks.dtos.GeneroDTO;
 import itson.org.ghosttracks.dtos.ProductoDTO;
 import itson.org.ghosttracks.dtos.TipoDTO;
 import itson.org.ghosttracks.negocio.objetosNegocio.Excepciones.NegocioException;
-import java.awt.Color;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -190,7 +187,7 @@ public class PantallaCatalogo extends javax.swing.JPanel {
             filtro.setTipo(tipo);
             
             
-            List<ProductoDTO> productos = controlador.filtrarBusqueda(filtro);
+            List<CatalogoProductosDTO> productos = controlador.listarProductos(filtro);
             llenarTabla(productos);
             if(productos == null || productos.isEmpty()){
                 controlador.mostrarMensajeErrorProductoNoEncontrado();
@@ -231,29 +228,30 @@ public class PantallaCatalogo extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
     
-    private void llenarTabla(List<ProductoDTO> productos) {
+    private void llenarTabla(List<CatalogoProductosDTO> productos) {
         DefaultTableModel tabla = (DefaultTableModel) tblProductos.getModel();
         tabla.setRowCount(0);
-        for(ProductoDTO producto: productos) {
+        for(CatalogoProductosDTO producto: productos) {
            Object[] fila = { 
                producto.getIdProducto(),
                producto.getNombre(),
                producto.getGenero().getNombreGenero(),
                producto.getArtista(),
-               producto.getTipoProducto().getNombreTipo(),
+               producto.getTipo().getNombreTipo(),
                producto.getStock(),
                "Seleccionar"
            }; 
            tabla.addRow(fila);
         }
         
-        tblProductos.getColumnModel().getColumn(6).setCellRenderer(new ButtonRenderer());
-        tblProductos.getColumnModel().getColumn(6).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox()));
+        tblProductos.getColumnModel().getColumn(6);
+        tblProductos.getColumnModel().getColumn(6);
     }
     
     private void llenarTablaTodos() {
        try {
-        List<CatalogoProductosDTO> productos=controlador.listarProductos();
+        FiltroProductoDTO filtro = new FiltroProductoDTO();
+        List<CatalogoProductosDTO> productos=controlador.listarProductos(null);
         
         DefaultTableModel tabla = (DefaultTableModel) tblProductos.getModel();
         tabla.setRowCount(0);
@@ -270,85 +268,11 @@ public class PantallaCatalogo extends javax.swing.JPanel {
            });  
         }
         
-        tblProductos.getColumnModel().getColumn(6).setCellRenderer(new ButtonRenderer());
-        tblProductos.getColumnModel().getColumn(6).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox()));
+        tblProductos.getColumnModel().getColumn(6);
+        tblProductos.getColumnModel().getColumn(6);
         
     } catch (Exception e) {
         controlador.mostrarMensaje("Error al cargar productos", true);
     }
    }
-    
-   class ButtonRenderer extends javax.swing.JButton implements javax.swing.table.TableCellRenderer {
-        public ButtonRenderer() { 
-            setOpaque(true);
-           
-            setBorder(javax.swing.BorderFactory.createLineBorder(new Color(204, 51, 0), 2));
-        }
-
-        @Override
-        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
-            setText("Seleccionar");
-            setBackground(new java.awt.Color(204, 51, 0)); 
-            setForeground(java.awt.Color.WHITE);
-            setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
-            return this;
-        }
-    }
-
-    class ButtonEditor extends javax.swing.DefaultCellEditor {
-        protected javax.swing.JButton button;
-        private String label;
-        private boolean isPushed;
-
-        public ButtonEditor(javax.swing.JCheckBox checkBox) {
-            super(checkBox);
-            button = new javax.swing.JButton();
-            button.setOpaque(true);
-            button.addActionListener(e -> fireEditingStopped());
-        }
-
-        @Override
-        public java.awt.Component getTableCellEditorComponent(javax.swing.JTable table, Object value,
-                boolean isSelected, int row, int column) {
-            label = (value == null) ? "Seleccionar" : value.toString();
-            button.setText(label);
-            isPushed = true;
-            return button;
-        }
-
-        @Override
-        public Object getCellEditorValue() {
-            if (isPushed) {
-                int fila = tblProductos.getSelectedRow();
-                
-                if (fila >= 0) {
-                    Object value = tblProductos.getValueAt(fila, 0); 
-
-                    if (value != null) {
-                        Long idProducto = (Long) value;
-                        javax.swing.SwingUtilities.invokeLater(() -> {
-                            try {
-                                ProductoDTO producto = controlador.obtenerDetallesProductoSeleccionado(idProducto);
-                                controlador.mostrarPantallaDetallesProducto(producto);
-                                
-                                
-                            } catch (Exception ex) {
-                                controlador.mostrarMensaje("werror" + ex.getMessage(), false);
-                            }
-                            
-                        });
-                    }
-                }
-            }
-            isPushed = false;
-            return label;
-        }
-
-        @Override
-        public boolean stopCellEditing() {
-            isPushed = false;
-            return super.stopCellEditing();
-        }
-}
 }
